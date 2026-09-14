@@ -72,8 +72,7 @@ export default function HomePage() {
         </div>
         <div className="container-x relative py-16 sm:py-20 lg:py-40">
           <div className="max-w-xl">
-            <span className="mark">Do things for other people!</span>
-            <h2 className="display mt-4 text-4xl sm:text-5xl lg:text-6xl">
+            <h2 className="display text-4xl sm:text-5xl lg:text-6xl">
               국민의 건강·행복·
               <br />
               안전지킴이

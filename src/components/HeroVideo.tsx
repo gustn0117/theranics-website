@@ -58,7 +58,7 @@ export function HeroVideo({ src, placeholderLabel, label, title, description, bu
 
       <div className="container-x relative z-10 w-full pb-32 pt-32 sm:pb-36">
         <div className="max-w-3xl border-l-4 border-lime pl-6 sm:pl-8 animate-fade-up">
-          <span className="mark mark-light">{label}</span>
+          <span className="text-sm font-semibold text-white/75">{label}</span>
           <h1 id={`hero-${index}-title`} className="display mt-4 text-[2.4rem] sm:text-6xl lg:text-7xl">
             {title}
           </h1>

@@ -17,8 +17,7 @@ export default function ContactPage() {
       <section className="bg-lime pt-32 pb-16 sm:pt-44 sm:pb-24">
         <div className="container-x grid gap-10 lg:grid-cols-[7fr_5fr] lg:items-end">
           <div>
-            <span className="mark">Contact us</span>
-            <h1 className="display mt-4 text-5xl sm:text-6xl lg:text-7xl">
+            <h1 className="display text-5xl sm:text-6xl lg:text-7xl">
               함께 만드는
               <br />
               안전한 이동

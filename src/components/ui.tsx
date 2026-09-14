@@ -3,7 +3,6 @@ import Link from "next/link";
 import { cn } from "@/lib/cn";
 
 export function SectionHeading({
-  label,
   title,
   description,
   className,
@@ -19,7 +18,6 @@ export function SectionHeading({
 }) {
   return (
     <div className={cn("max-w-3xl", className)}>
-      {label && <span className={cn("mark", light && "mark-light")}>{label}</span>}
       <h2
         className={cn(
           "display mt-4",
@@ -82,7 +80,6 @@ export function ButtonLink({
  */
 export function PhotoHero({
   image,
-  label,
   title,
   description,
   children,
@@ -137,8 +134,7 @@ export function PhotoHero({
       <div className="container-x relative py-14 sm:py-16 lg:py-40">
         <div className="max-w-2xl">
           {logo}
-          {label && <span className={cn("mark", dark && "mark-light")}>{label}</span>}
-          <h1 className="display mt-4 text-[2.5rem] sm:text-6xl lg:text-7xl">{title}</h1>
+          <h1 className="display text-[2.5rem] sm:text-6xl lg:text-7xl">{title}</h1>
           {description && (
             <p className={cn("mt-7 max-w-xl text-lg leading-[1.8] sm:text-xl", dark ? "text-white/85" : "text-ink-soft")}>
               {description}

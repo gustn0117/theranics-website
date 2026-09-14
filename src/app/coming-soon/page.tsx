@@ -16,8 +16,7 @@ export default function ComingSoonPage() {
   return (
     <section className="container-x grid min-h-[80svh] items-center gap-12 py-32 lg:grid-cols-[5fr_7fr]">
       <div>
-        <span className="mark">준비 중</span>
-        <h1 className="display mt-4 text-4xl sm:text-5xl">새로운 페이지를 준비하고 있습니다</h1>
+        <h1 className="display text-4xl sm:text-5xl">새로운 페이지를 준비하고 있습니다</h1>
         <p className="mt-5 text-lg leading-[1.8] text-ink-soft">고용권을 주제로 한 콘텐츠와 신규 서비스 소개가 곧 공개됩니다.</p>
         <div className="mt-10 flex gap-3">
           <ButtonLink href="/">메인으로</ButtonLink>
