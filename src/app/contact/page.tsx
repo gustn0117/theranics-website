@@ -73,8 +73,16 @@ export default function ContactPage() {
 
           <div>
             <SectionHeading label="오시는 길" title="의정부 더리브센텀스퀘어Ⅲ" />
-            <div className="mt-8 border border-ink">
-              <Placeholder label="약도 · 지도 영역" hint="네이버/카카오 지도 API 키 발급 후 지도로 교체" className="aspect-[4/3] w-full sm:aspect-[16/10]" />
+            <div className="relative mt-8 aspect-[4/3] w-full border border-ink sm:aspect-[16/10]">
+              <Placeholder label="약도 · 지도 영역" hint="지도를 불러오지 못하면 아래 지도 링크를 이용해 주세요" className="absolute inset-0" />
+              <iframe
+                title="(주)테라닉스 오시는 길 지도"
+                src={`https://www.google.com/maps?q=${mapQuery}&output=embed&hl=ko&z=16`}
+                className="absolute inset-0 h-full w-full"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+              />
             </div>
             <div className="grid gap-px border border-t-0 border-ink bg-line sm:grid-cols-[1fr_auto]">
               <div className="bg-white p-5">
