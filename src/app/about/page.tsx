@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { ButtonLink, PhotoHero, SectionHeading, StatRow } from "@/components/ui";
-import { activities, certificates, history, missionParagraphs, team } from "@/data/about";
+import { activities, certificates, globalHow, globalSteps, history, marketNotes, marketStats, missionParagraphs, productFamily, team } from "@/data/about";
 
 export const metadata: Metadata = {
   title: "About us · 회사소개",
@@ -105,8 +105,58 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* 시장과 확장 */}
+      <section id="market" className="bg-white">
+        <div className="container-x py-20 sm:py-28">
+          <SectionHeading
+            title="고령화와 함께 커지는 시장, 국가가 이미 지불하는 수요"
+            description="협회 회원 기반의 조직화된 수요와 건강보험공단 급여 제도 위에서 마이리프트를 시작합니다."
+          />
+          <div className="mt-12">
+            <StatRow items={marketStats} />
+          </div>
+          <ul className="mt-6 space-y-1 text-sm text-ink-soft">
+            {marketNotes.map((n) => (
+              <li key={n}>{n}</li>
+            ))}
+          </ul>
+
+          <div className="mt-20 grid gap-12 lg:grid-cols-[7fr_5fr]">
+            <div>
+              <h3 className="display text-2xl sm:text-3xl">마이리프트 단품을 넘어 유니버설 제조기업으로</h3>
+              <ul className="mt-8 border-t border-ink">
+                {productFamily.map((f) => (
+                  <li key={f.en} className="grid grid-cols-[8.5rem_1fr] gap-4 border-b border-line py-4 sm:grid-cols-[10rem_1fr]">
+                    <div>
+                      <p className="font-extrabold">{f.name}</p>
+                      <p className="text-xs font-semibold text-ink-soft">{f.en}</p>
+                    </div>
+                    <p className="text-[15px] leading-[1.7] text-ink-soft">{f.desc}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 className="display text-2xl sm:text-3xl">신발을 벗는 문화권부터 순차 진출</h3>
+              <ol className="mt-8 border-t border-ink">
+                {globalSteps.map((g, i) => (
+                  <li key={g.step} className="grid grid-cols-[3rem_1fr] gap-3 border-b border-line py-4">
+                    <span className="display text-2xl text-lime-deep">{i === 0 ? "—" : String(i).padStart(2, "0")}</span>
+                    <div>
+                      <p className="font-extrabold">{g.step}</p>
+                      <p className="text-sm text-ink-soft">{g.desc}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+              <p className="mt-4 text-sm text-ink-soft">진출 방식: {globalHow}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* 경영진 */}
-      <section id="team" className="bg-white">
+      <section id="team" className="bg-paper">
         <div className="container-x py-20 sm:py-28">
           <SectionHeading
             label="경영진"
@@ -158,7 +208,7 @@ export default function AboutPage() {
       </section>
 
       {/* 주요 연혁 */}
-      <section id="history" className="bg-paper">
+      <section id="history" className="bg-white">
         <div className="container-x py-20 sm:py-28">
           <SectionHeading label="주요 연혁" title="회사가 걸어온 길" description="2022년 사업의 만남에서 2026년 마이리프트 시제품 완성까지." />
           <div className="mt-14 border-t border-ink">
@@ -183,7 +233,7 @@ export default function AboutPage() {
       </section>
 
       {/* 인증 및 수상 */}
-      <section id="awards" className="bg-white">
+      <section id="awards" className="bg-paper">
         <div className="container-x py-20 sm:py-28">
           <SectionHeading label="인증 및 수상" title="정부와 지자체가 검증한 사회적 기업" />
           <ul className="mt-12 grid grid-cols-2 gap-px border border-line bg-line sm:grid-cols-4 lg:grid-cols-7">

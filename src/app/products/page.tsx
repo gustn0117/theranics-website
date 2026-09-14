@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { Placeholder } from "@/components/Placeholder";
 import { ButtonLink, PhotoHero, SectionHeading } from "@/components/ui";
-import { comparison, features, ipSummary, lineup, mylift2Features, problems, usageSteps } from "@/data/products";
+import { comparison, customerValues, features, ipSummary, lineup, mylift2Features, overseas, portableUses, problems, usageSteps } from "@/data/products";
 import { cn } from "@/lib/cn";
 
 export const metadata: Metadata = {
@@ -65,6 +65,21 @@ export default function ProductsPage() {
           <p className="mt-10 border-l-4 border-lime pl-5 text-lg font-bold sm:text-xl">
             낙상사고 + 호흡기 질환 + 휠체어 중복수급 = 건강보험·민간보험으로 확산되는 사회적 비용
           </p>
+
+          <div className="mt-14 grid gap-8 border-t border-white/20 pt-10 lg:grid-cols-[5fr_7fr]">
+            <div>
+              <h3 className="display text-2xl sm:text-3xl">해외에서도 같은 문제</h3>
+              <p className="mt-4 text-[15px] leading-[1.8] text-white/75">{overseas.intro}</p>
+            </div>
+            <ul className="grid grid-cols-2 gap-px bg-white/15">
+              {overseas.cases.map((c, i) => (
+                <li key={c} className="bg-ink p-5">
+                  <span className="display text-2xl text-lime">0{i + 1}</span>
+                  <p className="mt-2 font-bold">{c}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
 
@@ -188,6 +203,44 @@ export default function ProductsPage() {
             ))}
           </div>
           <p className="mt-5 text-sm text-ink-soft">금융할부 · 장기렌탈 가능. 낙상사고, 호흡기 질환, 휠체어 중복구입 방지로 정부와 보험사 비용을 절약합니다.</p>
+
+          <div className="mt-16 grid gap-10 lg:grid-cols-[5fr_7fr] lg:items-center">
+            <div>
+              <h3 className="display text-2xl sm:text-3xl">기본형 본체는 들고 다닙니다</h3>
+              <p className="mt-4 text-[15px] leading-[1.8] text-ink-soft">
+                현관에서 사용하면서 집 안, 외출, 여행, 차량 탑승 시 휴대하여 사용하는 포터블 디자인입니다.
+              </p>
+            </div>
+            <ul className="grid grid-cols-2 gap-px bg-line">
+              {portableUses.map((u) => (
+                <li key={u.title} className="bg-white">
+                  <div className="relative aspect-[4/5]">
+                    <Image src={u.image} alt={u.title} fill sizes="(min-width: 1024px) 30vw, 50vw" quality={90} className="object-cover" />
+                  </div>
+                  <div className="p-4">
+                    <p className="font-bold">{u.title}</p>
+                    <p className="mt-1 text-sm text-ink-soft">{u.desc}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* 고객가치 제안 */}
+      <section className="bg-lime-soft">
+        <div className="container-x py-20 sm:py-28">
+          <SectionHeading title="마이리프트가 바꾸는 여섯 가지" description="휠체어 사용자, 가족, 그리고 사회가 함께 얻는 가치입니다." />
+          <ol className="mt-12 grid gap-px border border-ink bg-ink sm:grid-cols-2 lg:grid-cols-3">
+            {customerValues.map((v, i) => (
+              <li key={v.title} className="bg-lime-soft p-6">
+                <span className="display text-3xl text-lime-deep">{String(i + 1).padStart(2, "0")}</span>
+                <h3 className="mt-3 text-lg font-extrabold">{v.title}</h3>
+                <p className="mt-2 text-sm leading-[1.75] text-ink-soft">{v.desc}</p>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 

@@ -175,7 +175,7 @@ export function StatRow({
             light ? "border-white/20" : "border-line",
           )}
         >
-          <dd className={cn("display text-4xl sm:text-5xl", light ? "text-lime" : "text-ink")}>{s.value}</dd>
+          <dd className={cn("display text-3xl sm:text-5xl", light ? "text-lime" : "text-ink")}>{s.value}</dd>
           <dt className={cn("mt-2 text-sm font-semibold", light ? "text-white/70" : "text-ink-soft")}>{s.label}</dt>
         </div>
       ))}

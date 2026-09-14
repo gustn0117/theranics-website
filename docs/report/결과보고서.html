@@ -73,8 +73,8 @@
   <tr><td>4</td><td>첫 페이지 이동권 영상, 두 번째 페이지 고용권 영상 (총 2개 영상 영역)</td><td class="ok">완료</td><td>영역·재생 기능 구현. 영상 파일은 <code>public/videos/mobility.mp4</code>, <code>employment.mp4</code> 위치에 넣으면 자동 재생. 파일 확정 전까지 빗금 임시 영역 표시</td></tr>
   <tr><td>5</td><td>첫 영상 영역 중앙 하단에 MYLIFT 제품소개 이동 버튼</td><td class="ok">완료</td><td>“MYLIFT 제품소개” 버튼 → /products (동작 검증)</td></tr>
   <tr><td>6</td><td>두 번째 영상 영역 중앙 하단에 글씨 없는 빈 버튼, 향후 페이지 연결 가능</td><td class="ok">완료</td><td>빈 버튼 → 예비 페이지 /coming-soon. 연결 대상은 설정 파일 한 줄(<code>secondVideoButtonHref</code>)로 변경 (동작 검증)</td></tr>
-  <tr><td>7</td><td>About us: IR PPT 1번 21p 소셜미션, 17~18p 주요연혁 참고</td><td class="ok">완료</td><td>소셜미션 4개 문단 원문 반영, 2022.06~2026.04 연혁 24건, 경영진 3인, 인증 7종, 대외활동 12건</td></tr>
-  <tr><td>8</td><td>Products: MYLIFT 제품정보 기반 제품소개</td><td class="ok">완료</td><td>사업 배경, 아이디어·사용 5단계, 핵심 기능, 라인업 3종(가격·출시), 구조·사이즈, 리모컨, MYLIFT2, 경쟁 비교표, 지식재산</td></tr>
+  <tr><td>7</td><td>About us: IR PPT 1번 21p 소셜미션, 17~18p 주요연혁 참고</td><td class="ok">완료</td><td>소셜미션 4개 문단 원문 반영, 2022.06~2026.04 연혁 24건, 시장 규모·제품군 확장·글로벌 진출 전략, 경영진 3인, 인증 7종, 대외활동 12건</td></tr>
+  <tr><td>8</td><td>Products: MYLIFT 제품정보 기반 제품소개</td><td class="ok">완료</td><td>사업 배경(국내·해외), 아이디어·사용 5단계, 핵심 기능, 라인업 3종(가격·출시)·휴대 사용, 고객가치 6가지, 구조·사이즈, 리모컨, MYLIFT2, 경쟁 비교표, 지식재산</td></tr>
   <tr><td>9</td><td>Contact us: 22p 회사정보·연락처·주소, 오시는 길(약도)</td><td class="ok">완료</td><td>회사정보 표, 이메일·전화 바로가기, 자체 제작 약도 이미지, 네이버·카카오·구글 지도 링크</td></tr>
   <tr><td>10</td><td>세부 페이지 수·메뉴 구성은 견적서·화면구성안에 따름</td><td class="ok">완료</td><td>4개 메뉴 + 예비 페이지 1개 + 404 페이지</td></tr>
 </table>
@@ -98,7 +98,7 @@
   <tr><td>2</td><td>About us 소셜미션·회사소개·걸어온 길·연혁</td><td class="ok">완료</td><td>IR PPT 1번 17~18p, 21p 원문 반영</td></tr>
   <tr><td>3</td><td>Products MYLIFT 제품소개 콘텐츠</td><td class="ok">완료</td><td>IR PPT 1번 4~14p, 2번 9~15p 내용 반영</td></tr>
   <tr><td>5</td><td>이동권·고용권 영상은 저작권 없는 콘텐츠 사용</td><td class="hold">보류</td><td>영상 선정 전. 발주자 검수 시 후보 영상(CC0)을 협의해 확정 후 파일 등록 예정. 등록 전까지 빗금 임시 영역 표시</td></tr>
-  <tr><td>6</td><td>제공 자료를 화면에 맞게 편집 사용</td><td class="ok">완료</td><td>사진 크기·배치 조정, 로고 흰색 버전 제작(다크 배경용)</td></tr>
+  <tr><td>6</td><td>제공 자료를 화면에 맞게 편집 사용</td><td class="ok">완료</td><td>사진 크기·배치 조정, 로고 흰색 버전 제작(다크 배경용). 해외 사례 슬라이드의 SNS 화면 캡처 사진은 저작권 문제로 게시하지 않고 내용만 반영</td></tr>
   <tr><td>7</td><td>계약상대자 제공 자료의 저작권 책임</td><td class="ok">확인</td><td>추가 사용 자료: Pretendard 서체(SIL OFL, 무료). 그 외 자료는 모두 발주자 제공분</td></tr>
 </table>
 
@@ -106,8 +106,8 @@
 <table>
   <tr><th style="width:18%">경로</th><th style="width:16%">메뉴</th><th>구성</th></tr>
   <tr><td>/</td><td>Main</td><td>이동권 영상 영역(버튼 → Products) → 고용권 영상 영역(빈 버튼 → 예비 페이지) → 기업 소개(비전·3대 가치) → MYLIFT 요약(핵심 수치) → 문의 배너</td></tr>
-  <tr><td>/about</td><td>About us</td><td>소셜미션 → 회사 개요(수치·인증) → 경영진 → 주요 연혁 → 인증·수상 → 대외활동</td></tr>
-  <tr><td>/products</td><td>Products</td><td>제품 히어로 → 사업 배경 → 아이디어·사용 5단계 → 핵심 역량 → 라인업 → 구조·사이즈 → 리모컨 → MYLIFT2 → 경쟁 비교 → 지식재산 → 시연 영상 영역·문의</td></tr>
+  <tr><td>/about</td><td>About us</td><td>소셜미션 → 회사 개요(수치·인증) → 시장과 확장(시장 규모·제품군·글로벌) → 경영진 → 주요 연혁 → 인증·수상 → 대외활동</td></tr>
+  <tr><td>/products</td><td>Products</td><td>제품 히어로 → 사업 배경(국내·해외) → 아이디어·사용 5단계 → 핵심 역량 → 라인업·휴대 사용 → 고객가치 → 구조·사이즈 → 리모컨 → MYLIFT2 → 경쟁 비교 → 지식재산 → 시연 영상 영역·문의</td></tr>
   <tr><td>/contact</td><td>Contact us</td><td>회사 정보 표 → 이메일·전화 문의 → 지도·주소·지도 링크</td></tr>
   <tr><td>/coming-soon</td><td>(예비)</td><td>두 번째 영상 빈 버튼의 기본 이동 페이지. 검색엔진 색인 제외</td></tr>
 </table>

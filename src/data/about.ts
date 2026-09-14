@@ -127,3 +127,34 @@ export const activities = [
   { image: "/images/activity/act-105.jpg", title: "경기 스타트업 아카데미 창업가 역량강화 교육", desc: "2025년 11월 · 경기도경제과학진흥원 데모데이 최종 2위" },
   { image: "/images/activity/act-103.jpg", title: "재창업 특화교육 및 컨설팅", desc: "2025년 11월 · 중소벤처기업진흥공단 데모데이 최종 10인" },
 ];
+
+/** 참고용2 7p: 시장 규모 */
+export const marketStats = [
+  { value: "2조 7,400억", label: "글로벌 휠체어 시장 규모 (2025, 연 7% 성장)" },
+  { value: "262만 명", label: "국내 등록 장애인 (2025)" },
+  { value: "26만 명", label: "국내 휠체어 사용 장애인 (전체 사용자 146만)" },
+  { value: "78만 명", label: "지체·신체·척수장애인협회 회원 (45만+28만+5만)" },
+];
+export const marketNotes = [
+  "대한노인회 회원 334만 명이 잠재 접점입니다.",
+  "건강보험공단이 활동형 휠체어 급여 100만원을 지원하며, 매년 800~1,000명이 구매하고 5년마다 교체 급여가 반복됩니다.",
+];
+
+/** 참고용1 15p · 참고용2 18p: 제품군 확장 */
+export const productFamily = [
+  { name: "마이리프트", en: "MYLIFT", desc: "휠체어 휠 교체용 전동 리프트" },
+  { name: "마이스포츠", en: "MYSPORTS", desc: "장애인 직장 운동 경기부 근태·훈련·경기 기록 앱" },
+  { name: "마이바이크", en: "MYBIKE", desc: "수동 휠체어용 하이브리드 바이크" },
+  { name: "마이프렌드", en: "MYFRIEND", desc: "사회적약자 돌봄·복지용품 플랫폼, 장애인 길안내" },
+  { name: "마이에너지", en: "MYENERGY", desc: "모니터링 가능한 전동보장구 충전소, 배터리 방문교환" },
+  { name: "마이아이즈", en: "MYEYES", desc: "시각장애인 실시간 길안내 스마트 글래스" },
+];
+
+/** 참고용2 18p: 글로벌 확장 */
+export const globalSteps = [
+  { step: "한국", desc: "제조 및 수요 검증 완료" },
+  { step: "1차 · 일본", desc: "신발 벗는 문화, 복지 공감대, 동일한 급여 수급 제도" },
+  { step: "2차 · 중국·동남아", desc: "인접 아시아 확대" },
+  { step: "3차 · 중동·유럽·북중미", desc: "휴대형 제품으로 확장" },
+];
+export const globalHow = "국내·글로벌 전시회 참가 및 바이어 계약, 글로벌 유통사·제조사 B2B, MOQ 기준 대량 수출(FOB)";
