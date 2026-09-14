@@ -108,7 +108,7 @@ export default function HomePage() {
               alt="MYLIFT 마이리프트"
               width={1033}
               height={640}
-              className="h-20 w-auto sm:h-24"
+              className="h-20 w-auto self-start sm:h-24"
             />
             <SectionHeading
               light
