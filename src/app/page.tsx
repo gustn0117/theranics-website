@@ -140,7 +140,7 @@ export default function HomePage() {
               <ButtonLink href="/products">제품 자세히 보기</ButtonLink>
             </div>
           </div>
-          <div className="relative min-h-[420px] bg-[#1b1c1e] lg:min-h-0">
+          <div className="relative min-h-[420px] lg:min-h-0">
             <Image
               src="/images/product/mylift-hero.png"
               alt="MYLIFT 본체, 경사판, 리모컨"
