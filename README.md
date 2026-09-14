@@ -48,6 +48,11 @@ npm run lint
 - 운영 도메인 확정 후 `src/config/site.ts` 의 `url` 을 변경하면 sitemap/OG URL 이 함께 바뀝니다
 - Vercel 에 그대로 배포 가능. 커스텀 도메인 연결 시 HTTPS 자동 적용
 
-## 설계 문서
+## 산출물
 
-`docs/2026-09-14-theranics-website-design.md`
+| 산출물 | 위치 |
+| --- | --- |
+| 설계 문서 | `docs/2026-09-14-theranics-website-design.md` |
+| 결과보고서 (PDF/HTML) | `docs/report/결과보고서.pdf`, `docs/report/결과보고서.html` |
+| 주요 화면 캡처 (PC·태블릿·모바일) | `docs/captures/` |
+| 자동 검증 결과 | `docs/report/verify-results.json` |
