@@ -20,22 +20,21 @@ export function Placeholder({ label, hint, className, dark }: PlaceholderProps) 
       aria-label={label ?? "준비 중인 콘텐츠"}
       className={cn(
         "flex items-center justify-center overflow-hidden",
-        dark ? "hatch-dark text-white/80" : "hatch text-ink-soft",
+        dark ? "hatch-dark text-white/85" : "hatch text-ink-soft",
         className,
       )}
     >
       {(label || hint) && (
         <div
           className={cn(
-            "mx-4 flex max-w-md flex-col items-center gap-1 rounded-xl px-5 py-3 text-center backdrop-blur-sm",
-            dark ? "bg-black/40" : "bg-white/80",
+            "mx-4 flex max-w-md flex-col items-center gap-1 border px-5 py-3 text-center",
+            dark ? "border-white/30 bg-black/50" : "border-ink/20 bg-white/85",
           )}
         >
-          <span className="flex items-center gap-2 text-xs font-bold tracking-[0.18em] uppercase">
-            <span className="inline-block h-1.5 w-1.5 rounded-full bg-lime" />
-            Placeholder
+          <span className="mark text-xs" style={{ color: "inherit" }}>
+            임시 영역
           </span>
-          {label && <span className="text-sm font-semibold sm:text-base">{label}</span>}
+          {label && <span className="text-sm font-bold sm:text-base">{label}</span>}
           {hint && <span className="text-xs opacity-80">{hint}</span>}
         </div>
       )}

@@ -1,23 +1,19 @@
 import Image from "next/image";
-import Link from "next/link";
 import { HeroVideo } from "@/components/HeroVideo";
-import { ButtonLink, SectionHeading } from "@/components/ui";
+import { ButtonLink, SectionHeading, StatRow } from "@/components/ui";
 import { siteConfig } from "@/config/site";
 
 const values = [
   {
-    title: "이동권 보장",
-    en: "Mobility",
-    body: "휠체어를 옮겨타지 않고 앉은 채 뒷바퀴만 교체해, 외출과 귀가의 두려움을 없앱니다.",
+    title: "이동권",
+    body: "휠체어를 옮겨타지 않고 앉은 채 뒷바퀴만 교체합니다. 외출과 귀가의 두려움이 사라집니다.",
   },
   {
-    title: "고용권 지원",
-    en: "Employment",
+    title: "고용권",
     body: "취약계층의 고용을 도와 적극적인 경제활동과 자립을 지원하는 일자리 제공형 예비사회적기업입니다.",
   },
   {
     title: "안전과 청결",
-    en: "Safety & Clean",
     body: "낙상사고와 실내 오염, 호흡기 질환을 동시에 해결하는 유니버설 디자인 제품을 만듭니다.",
   },
 ];
@@ -30,7 +26,7 @@ export default function HomePage() {
         index={1}
         src="/videos/mobility.mp4"
         placeholderLabel="영상 영역 1 · 이동권"
-        eyebrow="Mobility Rights · 이동권"
+        label="이동권"
         title={
           <>
             누구나 두려움 없이
@@ -47,7 +43,7 @@ export default function HomePage() {
         index={2}
         src="/videos/employment.mp4"
         placeholderLabel="영상 영역 2 · 고용권"
-        eyebrow="Employment Rights · 고용권"
+        label="고용권"
         title={
           <>
             사회적 약자가
@@ -59,74 +55,66 @@ export default function HomePage() {
         button={{ href: siteConfig.secondVideoButtonHref, ariaLabel: "다음 페이지로 이동" }}
       />
 
-      {/* 3. 기업 소개 */}
-      <section className="bg-white py-20 sm:py-28">
-        <div className="container-x">
-          <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-center">
-            <div>
-              <SectionHeading
-                eyebrow="Do things for other people!"
-                title={
-                  <>
-                    국민의 건강·행복·안전지킴이,
-                    <br />
-                    예비사회적기업 (주)테라닉스
-                  </>
-                }
-                description="교통약자의 이동을 도와 안전한 사회참여를 지원하고, 취약계층의 고용을 도와 적극적인 경제활동을 지원합니다. 사회적 약자를 돕는 솔루션으로 새로운 일자리를 만들어 갑니다."
-              />
-              <div className="mt-8 flex flex-wrap gap-3">
-                <ButtonLink href="/about">회사소개 보기</ButtonLink>
-                <ButtonLink href="/contact" variant="outline">
-                  문의하기
-                </ButtonLink>
-              </div>
+      {/* 3. 기업 소개: 사진 배경 + 여백에 텍스트 */}
+      <section className="relative isolate overflow-hidden bg-paper">
+        <div className="relative aspect-[4/3] w-full sm:aspect-[16/9] lg:hidden">
+          <Image
+            src="/images/photo/wheel-change.jpg"
+            alt="MYLIFT 위에서 앉은 채 뒷바퀴를 교체하는 휠체어 사용자"
+            fill
+            sizes="100vw"
+            className="object-cover object-[75%_50%]"
+          />
+        </div>
+        <div className="absolute inset-0 hidden lg:block">
+          <Image src="/images/photo/wheel-change.jpg" alt="" fill sizes="100vw" className="object-cover object-[75%_50%]" />
+          <div aria-hidden className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/40 to-white/10" />
+        </div>
+        <div className="container-x relative py-16 sm:py-20 lg:py-40">
+          <div className="max-w-xl">
+            <span className="mark">Do things for other people!</span>
+            <h2 className="display mt-4 text-4xl sm:text-5xl lg:text-6xl">
+              국민의 건강·행복·
+              <br />
+              안전지킴이
+            </h2>
+            <p className="mt-6 text-lg leading-[1.8] text-ink-soft">
+              예비사회적기업 (주)테라닉스는 교통약자의 이동을 도와 안전한 사회참여를 지원하고, 취약계층의 고용을
+              도와 적극적인 경제활동을 지원합니다.
+            </p>
+            <ul className="mt-10 border-t border-ink">
+              {values.map((v) => (
+                <li key={v.title} className="grid grid-cols-[7rem_1fr] gap-4 border-b border-ink/20 py-5">
+                  <span className="display text-xl">{v.title}</span>
+                  <span className="text-[15px] leading-[1.75] text-ink-soft">{v.body}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-10 flex flex-wrap gap-3">
+              <ButtonLink href="/about">회사소개 보기</ButtonLink>
+              <ButtonLink href="/contact" variant="outline">
+                문의하기
+              </ButtonLink>
             </div>
-            <div className="relative">
-              <div className="absolute inset-0 -z-10 rounded-[2rem] bg-lime-soft" />
-              <Image
-                src="/images/illust/isometric.png"
-                alt="데이터와 사람을 잇는 테라닉스의 서비스 일러스트"
-                width={837}
-                height={468}
-                className="h-auto w-full p-6 sm:p-10"
-              />
-            </div>
-          </div>
-
-          <div className="mt-16 grid gap-5 sm:grid-cols-3">
-            {values.map((v, i) => (
-              <div
-                key={v.title}
-                className="group rounded-2xl border border-line bg-white p-7 transition hover:-translate-y-1 hover:border-lime hover:shadow-[0_20px_40px_rgba(153,212,32,0.15)]"
-              >
-                <span className="text-xs font-bold tracking-[0.2em] text-lime-deep uppercase">
-                  0{i + 1} · {v.en}
-                </span>
-                <h3 className="mt-3 text-xl font-extrabold">{v.title}</h3>
-                <p className="mt-3 text-[15px] leading-relaxed text-ink-soft">{v.body}</p>
-              </div>
-            ))}
           </div>
         </div>
       </section>
 
       {/* 4. MYLIFT 하이라이트 */}
-      <section className="relative overflow-hidden bg-ink py-20 text-white sm:py-28">
-        <div className="pointer-events-none absolute right-0 top-0 h-[520px] w-[520px] translate-x-1/3 -translate-y-1/3 rounded-full bg-sky/25 blur-3xl" />
-        <div className="container-x grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr]">
-          <div>
+      <section className="bg-ink text-white">
+        <div className="grid lg:grid-cols-[1fr_1.15fr]">
+          <div className="container-x flex flex-col justify-center py-20 lg:max-w-none lg:pl-16 lg:pr-12 lg:py-28">
             <Image
-              src="/images/logo/mylift.png"
+              src="/images/logo/mylift-white.png"
               alt="MYLIFT 마이리프트"
               width={1033}
               height={640}
-              className="h-24 w-auto"
+              className="h-20 w-auto sm:h-24"
             />
             <SectionHeading
               light
-              className="mt-8"
-              eyebrow="Product"
+              className="mt-10"
+              label="제품"
               title={
                 <>
                   옮겨타지 않고, 앉은 채로
@@ -136,56 +124,55 @@ export default function HomePage() {
               }
               description="시저형 리프트가 뒷바퀴만 살짝 들어올리면 퀵릴리즈 휠을 원터치로 분리해 실내용 휠로 교체합니다. 낙상 위험과 실내 오염을 한 번에 해결하는 세계 최초 휠 교체용 전동 리프트입니다."
             />
-            <dl className="mt-8 grid grid-cols-3 gap-4 border-t border-white/15 pt-6">
-              {[
-                ["20초", "휠 교체 시간"],
-                ["255kg", "최대 하중"],
-                ["10건", "마이리프트 IP"],
-              ].map(([v, l]) => (
-                <div key={l}>
-                  <dt className="text-xs font-medium text-white/60">{l}</dt>
-                  <dd className="mt-1 text-2xl font-extrabold tracking-tight text-lime sm:text-3xl">{v}</dd>
-                </div>
-              ))}
-            </dl>
-            <div className="mt-8">
+            <div className="mt-10 max-w-lg">
+              <StatRow
+                light
+                cols={2}
+                items={[
+                  { value: "20초", label: "휠 교체 시간" },
+                  { value: "255kg", label: "최대 하중" },
+                  { value: "10건", label: "마이리프트 지식재산" },
+                  { value: "2026.10", label: "시제품 완성" },
+                ]}
+              />
+            </div>
+            <div className="mt-10">
               <ButtonLink href="/products">제품 자세히 보기</ButtonLink>
             </div>
           </div>
-          <div className="relative">
+          <div className="relative min-h-[420px] bg-[#1b1c1e] lg:min-h-0">
             <Image
               src="/images/product/mylift-hero.png"
-              alt="MYLIFT 본체, 경사판, 리모컨 렌더링"
-              width={1920}
-              height={1262}
-              className="h-auto w-full drop-shadow-[0_40px_60px_rgba(0,0,0,0.6)]"
+              alt="MYLIFT 본체, 경사판, 리모컨"
+              fill
               sizes="(min-width: 1024px) 55vw, 100vw"
+              className="object-contain p-8 lg:p-14"
             />
           </div>
         </div>
       </section>
 
       {/* 5. 문의 CTA */}
-      <section className="bg-lime-soft py-16 sm:py-20">
-        <div className="container-x flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
+      <section className="bg-lime">
+        <div className="container-x grid gap-8 py-16 sm:py-20 lg:grid-cols-[1fr_auto] lg:items-end">
           <div>
-            <h2 className="text-2xl font-extrabold tracking-tight sm:text-3xl">
-              MYLIFT 도입·협력·시범사업 문의
+            <h2 className="display text-3xl sm:text-5xl">
+              MYLIFT 도입·협력·시범사업,
+              <br />
+              지금 이야기해 주세요
             </h2>
-            <p className="mt-2 text-ink-soft">
-              장애인 협회, 지자체, 유통·제조 파트너와 함께 안전한 이동을 만듭니다.
-            </p>
+            <p className="mt-4 text-lg text-ink/75">장애인 협회, 지자체, 유통·제조 파트너와 함께 안전한 이동을 만듭니다.</p>
           </div>
           <div className="flex flex-wrap gap-3">
             <ButtonLink href="/contact" variant="dark">
-              Contact us
+              문의하기
             </ButtonLink>
-            <Link
+            <a
               href={`mailto:${siteConfig.contact.email}`}
-              className="inline-flex items-center rounded-full border border-ink/15 bg-white px-6 py-3 text-[15px] font-bold hover:border-ink"
+              className="inline-flex h-13 items-center border border-ink px-7 text-[15px] font-bold hover:bg-ink hover:text-white"
             >
               {siteConfig.contact.email}
-            </Link>
+            </a>
           </div>
         </div>
       </section>

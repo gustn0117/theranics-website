@@ -5,9 +5,9 @@ import { siteConfig } from "@/config/site";
 export function Footer() {
   const { contact } = siteConfig;
   return (
-    <footer className="border-t border-line bg-mist">
-      <div className="container-x py-12 sm:py-16">
-        <div className="grid gap-10 lg:grid-cols-[1.3fr_1fr_1fr]">
+    <footer className="border-t-4 border-ink bg-paper">
+      <div className="container-x py-14 sm:py-20">
+        <div className="grid gap-12 lg:grid-cols-[1.4fr_0.8fr_1fr]">
           <div>
             <Image
               src="/images/logo/theranics-lockup.png"
@@ -16,22 +16,22 @@ export function Footer() {
               height={285}
               className="h-12 w-auto"
             />
-            <p className="mt-4 max-w-md text-sm leading-relaxed text-ink-soft">
-              {siteConfig.slogan} 국민의 건강·행복·안전지킴이를 비전으로 사회적 약자의
-              안전구현을 위한 제품과 서비스를 개발합니다.
+            <p className="mt-5 max-w-md text-sm leading-[1.8] text-ink-soft">
+              {siteConfig.slogan} 국민의 건강·행복·안전지킴이를 비전으로 사회적 약자의 안전구현을 위한
+              제품과 서비스를 개발합니다.
             </p>
             <Image
               src="/images/logo/partners-row.png"
               alt="고용노동부 예비사회적기업 · 중소벤처기업부 소셜벤처기업 · 한국사회적기업진흥원 사회적기업가 육성사업"
               width={1771}
               height={142}
-              className="mt-6 h-8 w-auto max-w-full opacity-90"
+              className="mt-7 h-8 w-auto max-w-full"
             />
           </div>
 
           <div>
-            <h3 className="text-xs font-bold tracking-[0.18em] text-ink-soft uppercase">Menu</h3>
-            <ul className="mt-4 space-y-2.5 text-[15px] font-semibold">
+            <p className="mark">메뉴</p>
+            <ul className="mt-5 space-y-3 text-[15px] font-semibold">
               <li>
                 <Link href="/" className="hover:text-lime-deep">
                   Main
@@ -49,8 +49,8 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="text-xs font-bold tracking-[0.18em] text-ink-soft uppercase">Contact</h3>
-            <address className="mt-4 space-y-2 text-sm not-italic leading-relaxed text-ink-soft">
+            <p className="mark">연락처</p>
+            <address className="mt-5 space-y-2 text-sm not-italic leading-[1.8] text-ink-soft">
               <p>
                 {contact.address}
                 <br />
@@ -65,10 +65,7 @@ export function Footer() {
                 Fax. {contact.fax}
               </p>
               <p>
-                <a
-                  href={`mailto:${contact.email}`}
-                  className="font-semibold text-ink hover:text-lime-deep"
-                >
+                <a href={`mailto:${contact.email}`} className="font-semibold text-ink hover:text-lime-deep">
                   {contact.email}
                 </a>
               </p>
@@ -76,7 +73,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col gap-3 border-t border-line pt-6 text-xs text-ink-soft sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-14 flex flex-col gap-3 border-t border-ink/20 pt-6 text-xs text-ink-soft sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} THERANICS Co., Ltd. All rights reserved.</p>
           <p>예비사회적기업 · 소셜벤처기업 · 사회적기업가 육성사업 선정기업</p>
         </div>

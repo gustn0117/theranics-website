@@ -3,43 +3,34 @@ import Link from "next/link";
 import { cn } from "@/lib/cn";
 
 export function SectionHeading({
-  eyebrow,
+  label,
   title,
   description,
-  align = "left",
   className,
   light,
+  size = "md",
 }: {
-  eyebrow?: string;
+  label?: string;
   title: React.ReactNode;
   description?: React.ReactNode;
-  align?: "left" | "center";
   className?: string;
   light?: boolean;
+  size?: "md" | "lg";
 }) {
   return (
-    <div
-      className={cn(
-        "max-w-3xl",
-        align === "center" && "mx-auto text-center",
-        className,
-      )}
-    >
-      {eyebrow && (
-        <span className={cn("eyebrow", align === "center" && "justify-center", light && "text-lime")}>
-          {eyebrow}
-        </span>
-      )}
+    <div className={cn("max-w-3xl", className)}>
+      {label && <span className={cn("mark", light && "mark-light")}>{label}</span>}
       <h2
         className={cn(
-          "mt-3 text-3xl font-extrabold leading-[1.2] tracking-tight sm:text-4xl lg:text-[2.75rem]",
+          "display mt-4",
+          size === "lg" ? "text-4xl sm:text-5xl lg:text-6xl" : "text-3xl sm:text-4xl lg:text-5xl",
           light ? "text-white" : "text-ink",
         )}
       >
         {title}
       </h2>
       {description && (
-        <p className={cn("mt-4 text-base leading-relaxed sm:text-lg", light ? "text-white/75" : "text-ink-soft")}>
+        <p className={cn("mt-5 max-w-2xl text-base leading-[1.8] sm:text-lg", light ? "text-white/80" : "text-ink-soft")}>
           {description}
         </p>
       )}
@@ -56,18 +47,18 @@ export function ButtonLink({
 }: {
   href: string;
   children: React.ReactNode;
-  variant?: "primary" | "outline" | "dark" | "ghost";
+  variant?: "primary" | "outline" | "dark" | "white";
   className?: string;
   external?: boolean;
 }) {
   const styles = {
-    primary: "bg-lime text-ink hover:bg-lime-light",
-    outline: "border border-ink/20 text-ink hover:border-ink hover:bg-ink hover:text-white",
-    dark: "bg-ink text-white hover:bg-ink/85",
-    ghost: "text-ink hover:text-lime-deep underline-offset-4 hover:underline px-0",
+    primary: "bg-lime text-ink hover:bg-ink hover:text-white",
+    outline: "border border-ink text-ink hover:bg-ink hover:text-white",
+    dark: "bg-ink text-white hover:bg-lime hover:text-ink",
+    white: "bg-white text-ink hover:bg-lime",
   }[variant];
   const cls = cn(
-    "inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-[15px] font-bold transition",
+    "inline-flex h-13 items-center justify-center gap-3 px-7 text-[15px] font-bold transition-colors",
     styles,
     className,
   );
@@ -85,55 +76,111 @@ export function ButtonLink({
   );
 }
 
-export function PageHero({
-  eyebrow,
+/**
+ * 사진을 배경 전체에 깔고 사진의 빈 여백(왼쪽)에 텍스트를 얹는 히어로.
+ * 사진은 왼쪽이 밝은 여백, 오른쪽에 피사체가 있는 구도를 전제로 한다.
+ */
+export function PhotoHero({
+  image,
+  label,
   title,
   description,
-  image,
+  children,
+  logo,
+  tone = "light",
+  minH = "lg:min-h-[88svh]",
 }: {
-  eyebrow: string;
+  image: { src: string; alt: string; position?: string };
+  label?: string;
   title: React.ReactNode;
   description?: string;
-  image?: { src: string; alt: string };
+  children?: React.ReactNode;
+  logo?: React.ReactNode;
+  /** light: 밝은 사진 위 검정 글자 / dark: 어두운 오버레이 위 흰 글자 */
+  tone?: "light" | "dark";
+  minH?: string;
 }) {
+  const dark = tone === "dark";
   return (
-    <section className="relative overflow-hidden bg-ink pt-32 pb-16 text-white sm:pt-40 sm:pb-24">
-      <div className="pointer-events-none absolute -right-24 -top-24 h-[420px] w-[420px] rounded-full bg-lime/20 blur-3xl" />
-      <div className="pointer-events-none absolute -left-32 bottom-0 h-[320px] w-[320px] rounded-full bg-sky/20 blur-3xl" />
-      <div className="container-x relative grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
-        <div>
-          <span className="eyebrow text-lime">{eyebrow}</span>
-          <h1 className="mt-4 text-4xl font-extrabold leading-[1.15] tracking-tight sm:text-5xl lg:text-6xl">
-            {title}
-          </h1>
+    <section className={cn("relative isolate flex flex-col overflow-hidden lg:items-center", minH, dark ? "bg-ink text-white" : "bg-paper text-ink")}>
+      {/* 모바일·태블릿: 사진을 위에 블록으로, 텍스트는 아래 */}
+      <div className="relative mt-16 aspect-[4/3] w-full sm:mt-20 sm:aspect-[16/9] lg:hidden">
+        <Image
+          src={image.src}
+          alt={image.alt}
+          fill
+          preload
+          sizes="100vw"
+          className="object-cover"
+          style={{ objectPosition: image.position ?? "70% 50%" }}
+        />
+      </div>
+      {/* 데스크톱: 사진을 배경 전체에 깔고 왼쪽 여백에 텍스트 */}
+      <div className="absolute inset-0 hidden lg:block">
+        <Image
+          src={image.src}
+          alt=""
+          fill
+          preload
+          sizes="100vw"
+          className="object-cover"
+          style={{ objectPosition: image.position ?? "70% 50%" }}
+        />
+        <div
+          aria-hidden
+          className={cn(
+            "absolute inset-0",
+            dark ? "bg-gradient-to-r from-black/80 via-black/40 to-transparent" : "bg-gradient-to-r from-white/90 via-white/30 to-transparent",
+          )}
+        />
+      </div>
+      <div className="container-x relative py-14 sm:py-16 lg:py-40">
+        <div className="max-w-2xl">
+          {logo}
+          {label && <span className={cn("mark", dark && "mark-light")}>{label}</span>}
+          <h1 className="display mt-4 text-[2.5rem] sm:text-6xl lg:text-7xl">{title}</h1>
           {description && (
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-white/75 sm:text-lg">
+            <p className={cn("mt-7 max-w-xl text-lg leading-[1.8] sm:text-xl", dark ? "text-white/85" : "text-ink-soft")}>
               {description}
             </p>
           )}
+          {children && <div className="mt-10 flex flex-wrap gap-3">{children}</div>}
         </div>
-        {image && (
-          <div className="relative mx-auto w-full max-w-lg lg:max-w-none">
-            <Image
-              src={image.src}
-              alt={image.alt}
-              width={1200}
-              height={800}
-              className="h-auto w-full drop-shadow-[0_30px_50px_rgba(0,0,0,0.5)]"
-              preload
-            />
-          </div>
-        )}
       </div>
     </section>
   );
 }
 
-export function Stat({ value, label, className }: { value: string; label: string; className?: string }) {
+/** 1px 선으로 구분되는 수치 행 (카드 없이) */
+export function StatRow({
+  items,
+  light,
+  cols = 4,
+}: {
+  items: { value: string; label: string }[];
+  light?: boolean;
+  cols?: 2 | 4;
+}) {
   return (
-    <div className={cn("rounded-2xl border border-line bg-white p-6", className)}>
-      <p className="text-3xl font-extrabold tracking-tight text-ink sm:text-4xl">{value}</p>
-      <p className="mt-1 text-sm font-medium text-ink-soft">{label}</p>
-    </div>
+    <dl
+      className={cn(
+        "grid grid-cols-2 border-t",
+        cols === 4 && "lg:grid-cols-4",
+        light ? "border-white/20" : "border-ink",
+      )}
+    >
+      {items.map((s) => (
+        <div
+          key={s.label}
+          className={cn(
+            "border-b py-7 pr-4 sm:py-9",
+            light ? "border-white/20" : "border-line",
+          )}
+        >
+          <dd className={cn("display text-4xl sm:text-5xl", light ? "text-lime" : "text-ink")}>{s.value}</dd>
+          <dt className={cn("mt-2 text-sm font-semibold", light ? "text-white/70" : "text-ink-soft")}>{s.label}</dt>
+        </div>
+      ))}
+    </dl>
   );
 }

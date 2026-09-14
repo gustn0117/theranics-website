@@ -14,19 +14,19 @@ export const metadata: Metadata = {
  */
 export default function ComingSoonPage() {
   return (
-    <section className="container-x flex min-h-[80svh] flex-col items-center justify-center py-32 text-center">
-      <span className="eyebrow justify-center">Coming soon</span>
-      <h1 className="mt-4 text-3xl font-extrabold tracking-tight sm:text-5xl">새로운 페이지를 준비하고 있습니다</h1>
-      <p className="mt-4 max-w-md text-ink-soft">고용권을 주제로 한 콘텐츠와 신규 서비스 소개가 곧 공개됩니다.</p>
-      <div className="mt-10 w-full max-w-2xl overflow-hidden rounded-3xl">
-        <Placeholder label="신규 페이지 콘텐츠 영역" className="aspect-[16/9] w-full" />
+    <section className="container-x grid min-h-[80svh] items-center gap-12 py-32 lg:grid-cols-[5fr_7fr]">
+      <div>
+        <span className="mark">준비 중</span>
+        <h1 className="display mt-4 text-4xl sm:text-5xl">새로운 페이지를 준비하고 있습니다</h1>
+        <p className="mt-5 text-lg leading-[1.8] text-ink-soft">고용권을 주제로 한 콘텐츠와 신규 서비스 소개가 곧 공개됩니다.</p>
+        <div className="mt-10 flex gap-3">
+          <ButtonLink href="/">메인으로</ButtonLink>
+          <ButtonLink href="/about" variant="outline">
+            회사소개
+          </ButtonLink>
+        </div>
       </div>
-      <div className="mt-10 flex gap-3">
-        <ButtonLink href="/">메인으로</ButtonLink>
-        <ButtonLink href="/about" variant="outline">
-          회사소개
-        </ButtonLink>
-      </div>
+      <Placeholder label="신규 페이지 콘텐츠 영역" className="aspect-[16/9] w-full border border-ink" />
     </section>
   );
 }
