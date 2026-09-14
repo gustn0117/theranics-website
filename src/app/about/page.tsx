@@ -21,7 +21,7 @@ export default function AboutPage() {
   return (
     <>
       <PhotoHero
-        image={{ src: "/images/photo/wheel-change.jpg", alt: "MYLIFT 위에서 뒷바퀴를 교체하는 휠체어 사용자", position: "78% 50%" }}
+        image={{ src: "/images/photo/wheel-change-hq.png", alt: "MYLIFT 위에서 뒷바퀴를 교체하는 휠체어 사용자", position: "78% 50%" }}
         label="About us"
         title={
           <>
@@ -120,6 +120,7 @@ export default function AboutPage() {
               alt={`${ceo.name} ${ceo.role}`}
               width={600}
               height={800}
+              quality={90}
               className="aspect-[3/4] w-full max-w-xs object-cover lg:max-w-none"
             />
             <div className="py-8 lg:px-12">
@@ -139,7 +140,7 @@ export default function AboutPage() {
           <div className="grid gap-px border-t border-ink bg-line md:grid-cols-2">
             {members.map((m) => (
               <article key={m.name} className="grid grid-cols-[112px_1fr] gap-6 bg-white py-8 pr-4 sm:grid-cols-[160px_1fr]">
-                <Image src={m.photo} alt={`${m.name} ${m.role}`} width={600} height={800} className="aspect-[3/4] w-full object-cover" />
+                <Image src={m.photo} alt={`${m.name} ${m.role}`} width={600} height={800} quality={90} className="aspect-[3/4] w-full object-cover" />
                 <div>
                   <p className="mark">{m.role}</p>
                   <h3 className="display mt-2 text-3xl">{m.name}</h3>
@@ -194,6 +195,7 @@ export default function AboutPage() {
                     alt={`${c.year} ${c.title} ${c.org}`}
                     width={640}
                     height={900}
+                    quality={95}
                     className="aspect-[3/4] w-full object-cover object-top"
                   />
                 </div>
@@ -214,7 +216,7 @@ export default function AboutPage() {
         <ul className="grid grid-cols-2 lg:grid-cols-4">
           {activities.map((a) => (
             <li key={a.title} className="relative aspect-[4/3] overflow-hidden">
-              <Image src={a.image} alt={a.title} fill sizes="(min-width: 1024px) 25vw, 50vw" className="object-cover" />
+              <Image src={a.image} alt={a.title} fill sizes="(min-width: 1024px) 25vw, 50vw" quality={90} className="object-cover" />
               <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
               <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
                 <p className="text-sm font-bold leading-snug sm:text-base">{a.title}</p>

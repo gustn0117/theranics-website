@@ -9,7 +9,7 @@ export const team = [
   {
     role: "CEO / 제조 총괄",
     name: "이호천",
-    photo: "/images/team/lee-hocheon.jpg",
+    photo: "/images/team/lee-hocheon-hq.png",
     summary: "180여 개 제품디자인·설계·금형·제조 경력, 직접 제조 20여 종, 지식재산권 34건",
     bullets: [
       "서울과학기술대학교 제품설계금형공학과 졸업",
@@ -36,7 +36,7 @@ export const team = [
   {
     role: "CDO / 디자인 총괄",
     name: "엄재민",
-    photo: "/images/team/eom-jaemin.jpg",
+    photo: "/images/team/eom-jaemin-hq.png",
     summary: "제품 디자인·3D 렌더링·제품 설계·3D 모델링, ATC·전산응용기계제도기능사·건축제도기능사",
     bullets: [
       "중앙대학교 디자인공예학과 석사",
@@ -123,7 +123,7 @@ export const activities = [
   { image: "/images/activity/act-100.jpg", title: "경기도 사회적경제 네트워킹데이 발표", desc: "2023년 12월 · 수원시" },
   { image: "/images/activity/act-102.jpg", title: "한국지체장애인협회 미팅 (경기도의회)", desc: "2024년 1월 · 수원 4개구 시범사업 후 경기도 추진" },
   { image: "/images/activity/act-101.jpg", title: "의정부시 창업 오디션 초기팀", desc: "2024년 3월 선정 · 의정부시 사회적경제원" },
-  { image: "/images/activity/act-104.jpg", title: "재도전 마인드업 힐링캠프", desc: "2025년 10월 · 중소벤처기업진흥공단" },
+  { image: "/images/activity/act-104-hq.jpg", title: "재도전 마인드업 힐링캠프", desc: "2025년 10월 · 중소벤처기업진흥공단" },
   { image: "/images/activity/act-105.jpg", title: "경기 스타트업 아카데미 창업가 역량강화 교육", desc: "2025년 11월 · 경기도경제과학진흥원 데모데이 최종 2위" },
   { image: "/images/activity/act-103.jpg", title: "재창업 특화교육 및 컨설팅", desc: "2025년 11월 · 중소벤처기업진흥공단 데모데이 최종 10인" },
 ];

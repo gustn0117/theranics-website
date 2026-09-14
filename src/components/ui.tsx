@@ -108,6 +108,7 @@ export function PhotoHero({
           fill
           preload
           sizes="100vw"
+          quality={90}
           className="object-cover"
           style={{ objectPosition: image.position ?? "70% 50%" }}
         />
@@ -120,6 +121,7 @@ export function PhotoHero({
           fill
           preload
           sizes="100vw"
+          quality={90}
           className="object-cover"
           style={{ objectPosition: image.position ?? "70% 50%" }}
         />

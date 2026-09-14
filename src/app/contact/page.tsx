@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Placeholder } from "@/components/Placeholder";
+import Image from "next/image";
 import { ButtonLink, SectionHeading } from "@/components/ui";
 import { siteConfig } from "@/config/site";
 
@@ -73,15 +73,14 @@ export default function ContactPage() {
 
           <div>
             <SectionHeading label="오시는 길" title="의정부 더리브센텀스퀘어Ⅲ" />
-            <div className="relative mt-8 aspect-[4/3] w-full border border-ink sm:aspect-[16/10]">
-              <Placeholder label="약도 · 지도 영역" hint="지도를 불러오지 못하면 아래 지도 링크를 이용해 주세요" className="absolute inset-0" />
-              <iframe
-                title="(주)테라닉스 오시는 길 지도"
-                src={`https://www.google.com/maps?q=${mapQuery}&output=embed&hl=ko&z=16`}
-                className="absolute inset-0 h-full w-full"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                allowFullScreen
+            <div className="relative mt-8 aspect-[3/2] w-full overflow-hidden border border-ink bg-white">
+              <Image
+                src="/images/map/theranics-directions-v2.png"
+                alt="의정부 더리브센텀스퀘어Ⅲ 3동 1034호 테라닉스 오시는 길 약도"
+                fill
+                sizes="(min-width: 1024px) 58vw, 100vw"
+                quality={95}
+                className="object-cover"
               />
             </div>
             <div className="grid gap-px border border-t-0 border-ink bg-line sm:grid-cols-[1fr_auto]">

@@ -75,7 +75,7 @@
   <tr><td>6</td><td>두 번째 영상 영역 중앙 하단에 글씨 없는 빈 버튼, 향후 페이지 연결 가능</td><td class="ok">완료</td><td>빈 버튼 → 예비 페이지 /coming-soon. 연결 대상은 설정 파일 한 줄(<code>secondVideoButtonHref</code>)로 변경 (동작 검증)</td></tr>
   <tr><td>7</td><td>About us: IR PPT 1번 21p 소셜미션, 17~18p 주요연혁 참고</td><td class="ok">완료</td><td>소셜미션 4개 문단 원문 반영, 2022.06~2026.04 연혁 24건, 경영진 3인, 인증 7종, 대외활동 12건</td></tr>
   <tr><td>8</td><td>Products: MYLIFT 제품정보 기반 제품소개</td><td class="ok">완료</td><td>사업 배경, 아이디어·사용 5단계, 핵심 기능, 라인업 3종(가격·출시), 구조·사이즈, 리모컨, MYLIFT2, 경쟁 비교표, 지식재산</td></tr>
-  <tr><td>9</td><td>Contact us: 22p 회사정보·연락처·주소, 오시는 길(약도)</td><td class="ok">완료</td><td>회사정보 표, 이메일·전화 바로가기, Google 지도 삽입(키 불필요), 네이버·카카오·구글 지도 링크</td></tr>
+  <tr><td>9</td><td>Contact us: 22p 회사정보·연락처·주소, 오시는 길(약도)</td><td class="ok">완료</td><td>회사정보 표, 이메일·전화 바로가기, 자체 제작 약도 이미지, 네이버·카카오·구글 지도 링크</td></tr>
   <tr><td>10</td><td>세부 페이지 수·메뉴 구성은 견적서·화면구성안에 따름</td><td class="ok">완료</td><td>4개 메뉴 + 예비 페이지 1개 + 404 페이지</td></tr>
 </table>
 
@@ -120,7 +120,7 @@
   <tr><td>이미지</td><td>깨진 이미지 0건 (About 28장, Products 31장 포함)</td></tr>
   <tr><td>버튼·링크</td><td>첫 영상 버튼 → /products, 빈 버튼 → /coming-soon, 상단 메뉴 3종·로고·모바일 메뉴 이동 정상</td></tr>
   <tr><td>SEO</td><td>모든 페이지 title·description 존재, sitemap.xml·robots.txt 응답, JSON-LD 삽입</td></tr>
-  <tr><td>지도</td><td>Contact 페이지 Google 지도 iframe 로드 확인</td></tr>
+  <tr><td>약도</td><td>Contact 페이지 약도 이미지 표시 및 지도 링크 3종 확인</td></tr>
   <tr><td>미해결 요청</td><td>영상 파일 2건 404 (파일 미등록 상태로 정상. 등록 시 자동 해소)</td></tr>
   <tr><td>빌드 품질</td><td>TypeScript 타입 검사, ESLint, 프로덕션 빌드 오류 0건</td></tr>
 </table>
@@ -129,7 +129,7 @@
 <table>
   <tr><th style="width:22%">서비스</th><th style="width:30%">용도</th><th style="width:12%">비용</th><th>비고</th></tr>
   <tr><td>Pretendard (jsDelivr CDN)</td><td>웹 서체</td><td>무료</td><td>SIL Open Font License</td></tr>
-  <tr><td>Google Maps 삽입</td><td>Contact 약도</td><td>무료</td><td>API 키 불필요 방식(iframe embed). 네이버·카카오 지도는 링크로 제공</td></tr>
+  <tr><td>네이버·카카오·Google 지도</td><td>Contact 오시는 길 외부 링크</td><td>무료</td><td>약도는 자체 제작 이미지로 게시, 외부 지도는 링크만 사용</td></tr>
   <tr><td>GitHub</td><td>소스코드 저장·자동배포 트리거</td><td>무료</td><td>공개 저장소</td></tr>
   <tr><td>Cloudflare</td><td>DNS, HTTPS, 터널</td><td>무료 플랜</td><td>운영 도메인 연결 시 동일 방식 적용</td></tr>
   <tr><td>운영 서버 (Docker)</td><td>홈페이지 호스팅</td><td>계약상대자 부담</td><td>검수 완료 후 이관 방식은 협의 (발주자 서버·Vercel 등 이전 가능)</td></tr>
@@ -168,7 +168,7 @@
 <figure class="tall"><img src="../captures/02-about-mobile.jpg" alt="About 모바일" /><figcaption>About us (모바일)</figcaption></figure>
 <figure class="tall"><img src="../captures/03-products-pc.jpg" alt="Products PC" /><figcaption>Products (PC)</figcaption></figure>
 <figure class="tall"><img src="../captures/03-products-mobile.jpg" alt="Products 모바일" /><figcaption>Products (모바일)</figcaption></figure>
-<figure class="tall"><img src="../captures/04-contact-pc.jpg" alt="Contact PC" /><figcaption>Contact us (PC) — Google 지도 삽입</figcaption></figure>
+<figure class="tall"><img src="../captures/04-contact-pc.jpg" alt="Contact PC" /><figcaption>Contact us (PC)</figcaption></figure>
 <figure class="tall"><img src="../captures/04-contact-mobile.jpg" alt="Contact 모바일" /><figcaption>Contact us (모바일)</figcaption></figure>
 <figure class="tall"><img src="../captures/05-coming-soon-pc.jpg" alt="예비 페이지" /><figcaption>예비 페이지 (빈 버튼 연결 대상)</figcaption></figure>
 
