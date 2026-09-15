@@ -240,7 +240,7 @@ export default function AboutPage() {
           <Reveal as="ul" stagger className="mt-12 grid grid-cols-2 gap-px border border-line bg-line sm:grid-cols-4 lg:grid-cols-7">
             {certificates.map((c) => (
               <li key={c.title} className="bg-white p-4">
-                <div className="bg-paper p-3">
+                <div className="zoom-img bg-paper p-3">
                   <Image
                     src={c.image}
                     alt={`${c.year} ${c.title} ${c.org}`}
@@ -266,7 +266,7 @@ export default function AboutPage() {
         </div>
         <Reveal as="ul" stagger className="grid grid-cols-2 lg:grid-cols-4">
           {activities.map((a) => (
-            <li key={a.title} className="relative aspect-[4/3] overflow-hidden">
+            <li key={a.title} className="zoom-img relative aspect-[4/3]">
               <Image src={a.image} alt={a.title} fill sizes="(min-width: 1024px) 25vw, 50vw" quality={90} className="object-cover" />
               <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
               <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">

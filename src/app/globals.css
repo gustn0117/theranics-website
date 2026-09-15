@@ -181,17 +181,73 @@ body {
   transition-delay: 0.77s;
 }
 
-/* PC: 주요 구간에서 스크롤이 자연스럽게 멈추도록 (proximity: 강제 고정 아님) */
+/* PC: 구간마다 화면이 잡히는 강제 스냅. 헤더는 각 구간 상단 여백 위에 겹친다 */
 @media (min-width: 1024px) {
   html {
-    scroll-snap-type: y proximity;
+    scroll-snap-type: y mandatory;
   }
-  .snap-hero {
+  main > section {
     scroll-snap-align: start;
   }
-  .snap-section {
-    scroll-snap-align: start;
-    scroll-margin-top: 5rem;
+  footer {
+    scroll-snap-align: end;
+  }
+}
+
+/* 흐르는 텍스트 띠 */
+.marquee-track {
+  animation: marquee 28s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* 떠 있는 듯한 움직임 */
+.float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+/* 사진 타일 호버 확대 */
+.zoom-img {
+  overflow: hidden;
+}
+.zoom-img img {
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.zoom-img:hover img {
+  transform: scale(1.06);
+}
+
+/* 스크롤 유도 화살표 */
+.scroll-cue {
+  animation: scroll-cue 1.8s ease-in-out infinite;
+}
+@keyframes scroll-cue {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(8px);
+    opacity: 1;
   }
 }
 
@@ -211,6 +267,14 @@ body {
   .reveal-stagger > * {
     opacity: 1;
     transform: none;
+  }
+  .marquee-track,
+  .float-slow,
+  .scroll-cue {
+    animation: none;
+  }
+  html {
+    scroll-snap-type: none;
   }
 }
 

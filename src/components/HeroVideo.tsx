@@ -104,6 +104,12 @@ export function HeroVideo({ src, fallbackImage, label, title, description, butto
         <span className="h-px w-10 bg-white/50" />
         {index === 1 ? "01 / 02" : "02 / 02"}
       </div>
+      <div className="absolute bottom-8 left-5 z-10 hidden flex-col items-center gap-2 text-[11px] font-semibold text-white/70 sm:left-10 lg:flex">
+        <span>SCROLL</span>
+        <svg className="scroll-cue" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden>
+          <path d="M6 9l6 6 6-6" strokeLinecap="square" />
+        </svg>
+      </div>
       {status === "missing" && (
         <p className="absolute left-5 top-20 z-10 text-[11px] text-white/45 sm:left-10 sm:top-24">영상 준비 중 · 파일 등록 시 자동 재생</p>
       )}

@@ -4,6 +4,7 @@ import { ButtonLink, SectionHeading, StatRow } from "@/components/ui";
 import { siteConfig } from "@/config/site";
 import { Reveal } from "@/components/Reveal";
 import { Parallax } from "@/components/Parallax";
+import { Marquee } from "@/components/Marquee";
 
 const values = [
   {
@@ -103,7 +104,8 @@ export default function HomePage() {
 
       {/* 4. MYLIFT 하이라이트 */}
       <section className="snap-section bg-paper text-ink">
-        <div className="grid lg:min-h-[100svh] lg:grid-cols-[1fr_1.15fr]">
+        <Marquee items={["휠을 바꾸면 집에 들어가는 데 20초", "세계 최초 휠 교체용 전동 리프트 MYLIFT", "낙상 없는 귀가", "실내 청결", "교통약자 이동권", "취약계층 고용권"]} />
+        <div className="grid lg:min-h-[calc(100svh-3.75rem)] lg:grid-cols-[1fr_1.15fr]">
           <div className="container-x flex flex-col justify-center py-20 lg:max-w-none lg:pl-16 lg:pr-12 lg:py-28">
             <Reveal className="self-start">
               <Image src="/images/logo/mylift.png" alt="MYLIFT 마이리프트" width={1033} height={640} className="h-20 w-auto sm:h-24" />
@@ -141,7 +143,7 @@ export default function HomePage() {
               alt="MYLIFT 본체, 경사판, 리모컨"
               fill
               sizes="(min-width: 1024px) 55vw, 100vw"
-              className="object-contain p-8 lg:p-14"
+              className="float-slow object-contain p-8 lg:p-14"
             />
           </Reveal>
         </div>

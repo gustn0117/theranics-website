@@ -58,7 +58,7 @@ export default function ProductsPage() {
           <Reveal as="ul" stagger className="mt-14 grid gap-px bg-white/15 sm:grid-cols-2 lg:grid-cols-4">
             {problems.map((p) => (
               <li key={p.title} className="bg-ink">
-                <div className={cn("relative aspect-[4/3]", p.contain && "bg-sky-soft")}>
+                <div className={cn("zoom-img relative aspect-[4/3]", p.contain && "bg-sky-soft")}>
                   <Image src={p.image} alt={p.title} fill sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw" quality={90} className={p.contain ? "object-contain p-6" : "object-cover"} />
                 </div>
                 <div className="p-5">
@@ -100,7 +100,7 @@ export default function ProductsPage() {
             />
             <div className="grid grid-cols-3 gap-px bg-line">
               {["qr-1", "qr-2", "qr-3"].map((n, i) => (
-                <figure key={n} className="bg-white">
+                <figure key={n} className="zoom-img bg-white">
                   <Image
                     src={`/images/photo/${n}.jpg`}
                     alt=""
@@ -181,7 +181,7 @@ export default function ProductsPage() {
           <Reveal stagger className="mt-12 grid gap-px border border-ink bg-ink lg:grid-cols-3">
             {lineup.map((p) => (
               <article key={`${p.model}-${p.name}`} className="flex flex-col bg-white">
-                <div className={cn("relative aspect-[4/3]", p.accent)}>
+                <div className={cn("zoom-img relative aspect-[4/3]", p.accent)}>
                   <Image src={p.image} alt={`${p.model} ${p.name}`} fill sizes="(min-width: 1024px) 33vw, 100vw" className="object-contain p-8" />
                   {p.highlight && <span className="absolute left-0 top-0 bg-ink px-3 py-1.5 text-xs font-bold text-white">대표 모델</span>}
                 </div>
@@ -220,7 +220,7 @@ export default function ProductsPage() {
             <ul className="grid grid-cols-2 gap-px bg-line">
               {portableUses.map((u) => (
                 <li key={u.title} className="bg-white">
-                  <div className="relative aspect-[4/5]">
+                  <div className="zoom-img relative aspect-[4/5]">
                     <Image src={u.image} alt={u.title} fill sizes="(min-width: 1024px) 30vw, 50vw" quality={90} className="object-cover" />
                   </div>
                   <div className="p-4">
