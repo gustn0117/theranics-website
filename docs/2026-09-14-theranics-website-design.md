@@ -11,7 +11,7 @@
 ## 브랜드 컬러
 | 토큰 | 값 | 출처 |
 | --- | --- | --- |
-| lime | #99D420 | THERANICS / MYLIFT 로고 |
+| lime | #99D41E | THERANICS / MYLIFT 로고 |
 | lime-light | #CCE86E | MYLIFT 로고 보조색 |
 | ink | #231F20 | 로고 블랙 |
 | sky | #4A8FE0 | 제품 렌더 포인트 블루 |
