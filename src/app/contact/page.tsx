@@ -80,7 +80,7 @@ export default function ContactPage() {
             <SectionHeading label="오시는 길" title="의정부 더리브센텀스퀘어Ⅲ" />
             <Reveal className="relative mt-8 aspect-[3/2] w-full overflow-hidden border border-ink bg-white" delay={120}>
               <Image
-                src="/images/map/theranics-directions-v2.png"
+                src="/images/map/theranics-directions-v3.png"
                 alt="의정부 더리브센텀스퀘어Ⅲ 3동 1034호 테라닉스 오시는 길 약도"
                 fill
                 sizes="(min-width: 1024px) 58vw, 100vw"
