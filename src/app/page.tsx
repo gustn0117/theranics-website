@@ -4,21 +4,8 @@ import { ButtonLink, SectionHeading, StatRow } from "@/components/ui";
 import { siteConfig } from "@/config/site";
 import { Reveal } from "@/components/Reveal";
 import { Parallax } from "@/components/Parallax";
+import { coreValues } from "@/data/about";
 
-const values = [
-  {
-    title: "이동권",
-    body: "휠체어를 옮겨타지 않고 앉은 채 뒷바퀴만 교체합니다. 외출과 귀가의 두려움이 사라집니다.",
-  },
-  {
-    title: "고용권",
-    body: "취약계층의 고용을 도와 적극적인 경제활동과 자립을 지원하는 일자리 제공형 예비사회적기업입니다.",
-  },
-  {
-    title: "안전과 청결",
-    body: "낙상사고와 실내 오염, 호흡기 질환을 동시에 해결하는 유니버설 디자인 제품을 만듭니다.",
-  },
-];
 
 export default function HomePage() {
   return (
@@ -84,7 +71,7 @@ export default function HomePage() {
               도와 적극적인 경제활동을 지원합니다.
             </p>
             <Reveal as="ul" stagger className="mt-10 border-t border-ink">
-              {values.map((v) => (
+              {coreValues.map((v) => (
                 <li key={v.title} className="grid grid-cols-[7rem_1fr] gap-4 border-b border-ink/20 py-5">
                   <span className="display text-xl">{v.title}</span>
                   <span className="text-[15px] leading-[1.75] text-ink-soft">{v.body}</span>

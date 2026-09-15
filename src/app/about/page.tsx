@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { ButtonLink, PhotoHero, SectionHeading, StatRow } from "@/components/ui";
 import { Reveal } from "@/components/Reveal";
-import { activities, certificates, globalHow, globalSteps, history, marketNotes, marketStats, missionParagraphs, productFamily, team } from "@/data/about";
+import { activities, certificates, coreValues, globalHow, globalSteps, history, marketNotes, marketStats, missionParagraphs, productFamily, team } from "@/data/about";
 
 export const metadata: Metadata = {
   title: "About us · 회사소개",
@@ -65,6 +65,19 @@ export default function AboutPage() {
                 <strong className="font-extrabold">(주)테라닉스</strong>
                 {p.replace("(주)테라닉스", "")}
               </p>
+            ))}
+          </Reveal>
+        </div>
+        <div className="container-x pb-20 sm:pb-28">
+          <Reveal className="rule">
+            <h3 className="display text-2xl sm:text-3xl">테라닉스의 세 가지 약속</h3>
+          </Reveal>
+          <Reveal as="ul" stagger className="mt-8 border-t border-ink">
+            {coreValues.map((v) => (
+              <li key={v.title} className="grid gap-2 border-b border-ink/20 py-6 sm:grid-cols-[10rem_1fr] sm:gap-6">
+                <span className="display text-2xl">{v.title}</span>
+                <span className="text-[15px] leading-[1.8] text-ink-soft sm:text-base">{v.body}</span>
+              </li>
             ))}
           </Reveal>
         </div>
