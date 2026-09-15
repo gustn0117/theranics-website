@@ -93,6 +93,7 @@ export function PhotoHero({
   title,
   description,
   children,
+  footer,
   logo,
   tone = "light",
   minH = "lg:min-h-[88svh]",
@@ -100,8 +101,10 @@ export function PhotoHero({
   image: { src: string; alt: string; position?: string };
   label?: string;
   title: React.ReactNode;
-  description?: string;
+  description?: React.ReactNode;
   children?: React.ReactNode;
+  /** 버튼 아래에 놓이는 보조 정보 (수치 행 등) */
+  footer?: React.ReactNode;
   logo?: React.ReactNode;
   /** light: 밝은 사진 위 검정 글자 / dark: 어두운 오버레이 위 흰 글자 */
   tone?: "light" | "dark";
@@ -144,6 +147,7 @@ export function PhotoHero({
             </p>
           )}
           {children && <div className="mt-10 flex flex-wrap gap-3 animate-fade-up [animation-delay:400ms]">{children}</div>}
+          {footer && <div className="mt-8 animate-fade-up [animation-delay:520ms]">{footer}</div>}
         </div>
       </div>
     </section>

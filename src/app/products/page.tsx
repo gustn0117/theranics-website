@@ -22,34 +22,42 @@ export default function ProductsPage() {
       <PhotoHero
         minH="lg:min-h-[100svh]"
         image={{ src: "/images/photo/hero-doorway-hq.jpg", alt: "현관에서 MYLIFT 위에 올라 휠을 교체하는 휠체어 사용자", position: "72% 50%" }}
-        logo={<Image src="/images/logo/mylift.png" alt="MYLIFT 마이리프트" width={1033} height={640} className="mb-8 h-24 w-auto sm:h-28" preload />}
-        label="휠체어 전동 보조장치"
+        logo={<Image src="/images/logo/mylift-en.png" alt="MYLIFT" width={1021} height={497} className="mb-6 h-20 w-auto sm:h-24" preload />}
         title={
           <>
-            휠을 바꾸면, 집에{" "}
+            휠을 바꾸면,{" "}
             <br className="hidden lg:inline" />
-            들어가는 데 20초면 됩니다
+            집에 들어가는 데{" "}
+            <br className="hidden lg:inline" />
+            20초면 됩니다.
           </>
         }
-        description="휠체어 휠을 쉽게 교체하여 자택 출입 시 20초 만에 안전과 청결을 해결하는 세계 최초 휠 교체용 전동 리프트."
+        description={
+          <>
+            휠체어 휠을 쉽게 교체하여 자택 출입 시{" "}
+            <br className="hidden lg:inline" />
+            안전과 청결을 해결하는 세계 최초 휠 교체용 전동 리프트.
+          </>
+        }
+        footer={
+          <dl className="flex items-stretch gap-8 border-t border-ink/20 pt-6">
+            {[
+              ["20초", "휠 교체 시간"],
+              ["255kg", "최대 하중"],
+            ].map(([v, l], i) => (
+              <div key={l} className={i > 0 ? "border-l border-ink/20 pl-8" : ""}>
+                <dd className="display text-3xl sm:text-4xl">{v}</dd>
+                <dt className="mt-1 text-sm text-ink-soft">{l}</dt>
+              </div>
+            ))}
+          </dl>
+        }
       >
         <ButtonLink href="#lineup">라인업 보기</ButtonLink>
         <ButtonLink href="/contact" variant="outline">
           도입 문의
         </ButtonLink>
       </PhotoHero>
-      <div className="pointer-events-none relative z-10 hidden lg:block">
-        <div className="absolute -top-[22svh] right-[5%] flex gap-3 animate-fade-up [animation-delay:600ms]">
-          <div className="border border-ink bg-white/90 px-4 py-3 backdrop-blur">
-            <p className="display text-3xl">20초</p>
-            <p className="text-xs font-semibold text-ink-soft">앉은 채 휠 교체 · 실내 진입</p>
-          </div>
-          <div className="border border-ink bg-lime px-4 py-3">
-            <p className="display text-3xl">255kg</p>
-            <p className="text-xs font-semibold text-ink/70">2,500N 액추에이터 최대 하중</p>
-          </div>
-        </div>
-      </div>
 
       {/* 문제: 오염된 타일 사진 배경 + 사진 타일 4개 */}
       <section className="snap-section relative isolate flex overflow-hidden bg-ink text-white lg:min-h-[100svh] lg:items-center">
