@@ -2,6 +2,7 @@ import Image from "next/image";
 import { HeroVideo } from "@/components/HeroVideo";
 import { ButtonLink, SectionHeading, StatRow } from "@/components/ui";
 import { siteConfig } from "@/config/site";
+import { Reveal } from "@/components/Reveal";
 
 const values = [
   {
@@ -25,7 +26,7 @@ export default function HomePage() {
       <HeroVideo
         index={1}
         src="/videos/mobility.mp4"
-        placeholderLabel="영상 영역 1 · 이동권"
+        fallbackImage={{ src: "/images/photo/hero-doorway-hq.jpg", alt: "현관에서 MYLIFT 위에 올라 휠을 교체하는 휠체어 사용자", position: "65% 45%" }}
         label="이동권"
         title={
           <>
@@ -42,7 +43,7 @@ export default function HomePage() {
       <HeroVideo
         index={2}
         src="/videos/employment.mp4"
-        placeholderLabel="영상 영역 2 · 고용권"
+        fallbackImage={{ src: "/images/activity/act-104-hq.jpg", alt: "재도전 마인드업 힐링캠프 단체 사진", position: "50% 35%" }}
         label="고용권"
         title={
           <>
@@ -56,23 +57,20 @@ export default function HomePage() {
       />
 
       {/* 3. 기업 소개: 사진 배경 + 여백에 텍스트 */}
-      <section className="relative isolate overflow-hidden bg-paper">
-        <div className="relative aspect-[4/3] w-full sm:aspect-[16/9] lg:hidden">
+      <section className="relative isolate flex min-h-[92svh] items-end overflow-hidden bg-paper lg:items-center">
+        <div className="absolute inset-0 overflow-hidden">
           <Image
             src="/images/photo/wheel-change-hq.jpg"
             alt="MYLIFT 위에서 앉은 채 뒷바퀴를 교체하는 휠체어 사용자"
             fill
             sizes="100vw"
             quality={90}
-            className="object-cover object-[75%_50%]"
+            className="kenburns object-cover object-[75%_35%] lg:object-[75%_50%]"
           />
+          <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-white via-white/85 to-white/5 lg:bg-gradient-to-r lg:from-white/95 lg:via-white/40 lg:to-white/10" />
         </div>
-        <div className="absolute inset-0 hidden lg:block">
-          <Image src="/images/photo/wheel-change-hq.jpg" alt="" fill sizes="100vw" quality={90} className="object-cover object-[75%_50%]" />
-          <div aria-hidden className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/40 to-white/10" />
-        </div>
-        <div className="container-x relative py-16 sm:py-20 lg:py-40">
-          <div className="max-w-xl">
+        <div className="container-x relative pb-16 pt-40 sm:pb-20 lg:py-40">
+          <Reveal className="max-w-xl">
             <h2 className="display text-4xl sm:text-5xl lg:text-6xl">
               국민의 건강·행복·
               <br />
@@ -96,23 +94,18 @@ export default function HomePage() {
                 문의하기
               </ButtonLink>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       {/* 4. MYLIFT 하이라이트 */}
-      <section className="bg-ink text-white">
+      <section className="bg-paper text-ink">
         <div className="grid lg:grid-cols-[1fr_1.15fr]">
           <div className="container-x flex flex-col justify-center py-20 lg:max-w-none lg:pl-16 lg:pr-12 lg:py-28">
-            <Image
-              src="/images/logo/mylift-white.png"
-              alt="MYLIFT 마이리프트"
-              width={1033}
-              height={640}
-              className="h-20 w-auto self-start sm:h-24"
-            />
+            <Reveal className="self-start">
+              <Image src="/images/logo/mylift.png" alt="MYLIFT 마이리프트" width={1033} height={640} className="h-20 w-auto sm:h-24" />
+            </Reveal>
             <SectionHeading
-              light
               className="mt-10"
               label="제품"
               title={
@@ -124,9 +117,8 @@ export default function HomePage() {
               }
               description="시저형 리프트가 뒷바퀴만 살짝 들어올리면 퀵릴리즈 휠을 원터치로 분리해 실내용 휠로 교체합니다. 낙상 위험과 실내 오염을 한 번에 해결하는 세계 최초 휠 교체용 전동 리프트입니다."
             />
-            <div className="mt-10 max-w-lg">
+            <Reveal className="mt-10 max-w-lg" delay={120}>
               <StatRow
-                light
                 cols={2}
                 items={[
                   { value: "20초", label: "휠 교체 시간" },
@@ -135,12 +127,12 @@ export default function HomePage() {
                   { value: "2026.10", label: "시제품 완성" },
                 ]}
               />
-            </div>
-            <div className="mt-10">
-              <ButtonLink href="/products">제품 자세히 보기</ButtonLink>
-            </div>
+            </Reveal>
+            <Reveal className="mt-10" delay={200}>
+              <ButtonLink href="/products" variant="dark">제품 자세히 보기</ButtonLink>
+            </Reveal>
           </div>
-          <div className="relative min-h-[420px] lg:min-h-0">
+          <Reveal className="relative min-h-[420px] lg:min-h-0" delay={150}>
             <Image
               src="/images/product/mylift-hero.png"
               alt="MYLIFT 본체, 경사판, 리모컨"
@@ -148,13 +140,13 @@ export default function HomePage() {
               sizes="(min-width: 1024px) 55vw, 100vw"
               className="object-contain p-8 lg:p-14"
             />
-          </div>
+          </Reveal>
         </div>
       </section>
 
       {/* 5. 문의 CTA */}
       <section className="bg-lime">
-        <div className="container-x grid gap-8 py-16 sm:py-20 lg:grid-cols-[1fr_auto] lg:items-end">
+        <Reveal className="container-x grid gap-8 py-16 sm:py-20 lg:grid-cols-[1fr_auto] lg:items-end">
           <div>
             <h2 className="display text-3xl sm:text-5xl">
               MYLIFT 도입·협력·시범사업,
@@ -174,7 +166,7 @@ export default function HomePage() {
               {siteConfig.contact.email}
             </a>
           </div>
-        </div>
+        </Reveal>
       </section>
     </>
   );

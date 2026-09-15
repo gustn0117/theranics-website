@@ -4,6 +4,7 @@ import { Placeholder } from "@/components/Placeholder";
 import { ButtonLink, PhotoHero, SectionHeading } from "@/components/ui";
 import { comparison, customerValues, features, ipSummary, lineup, mylift2Features, overseas, portableUses, problems, usageSteps } from "@/data/products";
 import { cn } from "@/lib/cn";
+import { Reveal } from "@/components/Reveal";
 
 export const metadata: Metadata = {
   title: "Products · MYLIFT 마이리프트",
@@ -49,7 +50,7 @@ export default function ProductsPage() {
             title="바퀴에 묻은 오염물에서 시작되는 사회적 비용"
             description="휠체어 사용자들은 귀가 시 바닥생활과 집안 오염이 싫어서 2개의 휠체어를 사용합니다. 옮겨타는 순간이 곧 낙상 발생점입니다."
           />
-          <ul className="mt-14 grid gap-px bg-white/15 sm:grid-cols-2 lg:grid-cols-4">
+          <Reveal as="ul" className="mt-14 grid gap-px bg-white/15 sm:grid-cols-2 lg:grid-cols-4" delay={100}>
             {problems.map((p) => (
               <li key={p.title} className="bg-ink">
                 <div className={cn("relative aspect-[4/3]", p.contain && "bg-sky-soft")}>
@@ -61,7 +62,7 @@ export default function ProductsPage() {
                 </div>
               </li>
             ))}
-          </ul>
+          </Reveal>
           <p className="mt-10 border-l-4 border-lime pl-5 text-lg font-bold sm:text-xl">
             낙상사고 + 호흡기 질환 + 휠체어 중복수급 = 건강보험·민간보험으로 확산되는 사회적 비용
           </p>
@@ -172,7 +173,7 @@ export default function ProductsPage() {
             title="소비자에게 폭넓은 선택권"
             description="기능, 옵션, 가격을 선택할 수 있습니다. 건강보험공단 급여제품 등록 시 자기부담금 9만원 또는 무료."
           />
-          <div className="mt-12 grid gap-px border border-ink bg-ink lg:grid-cols-3">
+          <Reveal className="mt-12 grid gap-px border border-ink bg-ink lg:grid-cols-3" delay={100}>
             {lineup.map((p) => (
               <article key={`${p.model}-${p.name}`} className="flex flex-col bg-white">
                 <div className={cn("relative aspect-[4/3]", p.accent)}>
@@ -201,7 +202,7 @@ export default function ProductsPage() {
                 </div>
               </article>
             ))}
-          </div>
+          </Reveal>
           <p className="mt-5 text-sm text-ink-soft">금융할부 · 장기렌탈 가능. 낙상사고, 호흡기 질환, 휠체어 중복구입 방지로 정부와 보험사 비용을 절약합니다.</p>
 
           <div className="mt-16 grid gap-10 lg:grid-cols-[5fr_7fr] lg:items-center">
@@ -232,7 +233,7 @@ export default function ProductsPage() {
       <section className="bg-lime-soft">
         <div className="container-x py-20 sm:py-28">
           <SectionHeading title="마이리프트가 바꾸는 여섯 가지" description="휠체어 사용자, 가족, 그리고 사회가 함께 얻는 가치입니다." />
-          <ol className="mt-12 grid gap-px border border-ink bg-ink sm:grid-cols-2 lg:grid-cols-3">
+          <Reveal as="ol" className="mt-12 grid gap-px border border-ink bg-ink sm:grid-cols-2 lg:grid-cols-3" delay={100}>
             {customerValues.map((v, i) => (
               <li key={v.title} className="bg-lime-soft p-6">
                 <span className="display text-3xl text-lime-deep">{String(i + 1).padStart(2, "0")}</span>
@@ -240,7 +241,7 @@ export default function ProductsPage() {
                 <p className="mt-2 text-sm leading-[1.75] text-ink-soft">{v.desc}</p>
               </li>
             ))}
-          </ol>
+          </Reveal>
         </div>
       </section>
 

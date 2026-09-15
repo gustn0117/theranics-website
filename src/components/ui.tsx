@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/cn";
+import { Reveal } from "@/components/Reveal";
+import { CountUp } from "@/components/CountUp";
 
 export function SectionHeading({
   title,
@@ -17,7 +19,7 @@ export function SectionHeading({
   size?: "md" | "lg";
 }) {
   return (
-    <div className={cn("max-w-3xl", className)}>
+    <Reveal className={cn("max-w-3xl", className)}>
       <h2
         className={cn(
           "display mt-4",
@@ -32,7 +34,7 @@ export function SectionHeading({
           {description}
         </p>
       )}
-    </div>
+    </Reveal>
   );
 }
 
@@ -99,9 +101,9 @@ export function PhotoHero({
 }) {
   const dark = tone === "dark";
   return (
-    <section className={cn("relative isolate flex flex-col overflow-hidden lg:items-center", minH, dark ? "bg-ink text-white" : "bg-paper text-ink")}>
-      {/* 모바일·태블릿: 사진을 위에 블록으로, 텍스트는 아래 */}
-      <div className="relative mt-16 aspect-[4/3] w-full sm:mt-20 sm:aspect-[16/9] lg:hidden">
+    <section className={cn("relative isolate flex min-h-[92svh] items-end overflow-hidden lg:items-center", minH, dark ? "bg-ink text-white" : "bg-paper text-ink")}>
+      {/* 사진을 배경 전체에 깔고, 모바일은 하단·데스크톱은 왼쪽 여백에 텍스트 */}
+      <div className="absolute inset-0 overflow-hidden">
         <Image
           src={image.src}
           alt={image.alt}
@@ -109,40 +111,29 @@ export function PhotoHero({
           preload
           sizes="100vw"
           quality={90}
-          className="object-cover"
-          style={{ objectPosition: image.position ?? "70% 50%" }}
-        />
-      </div>
-      {/* 데스크톱: 사진을 배경 전체에 깔고 왼쪽 여백에 텍스트 */}
-      <div className="absolute inset-0 hidden lg:block">
-        <Image
-          src={image.src}
-          alt=""
-          fill
-          preload
-          sizes="100vw"
-          quality={90}
-          className="object-cover"
+          className="kenburns object-cover"
           style={{ objectPosition: image.position ?? "70% 50%" }}
         />
         <div
           aria-hidden
           className={cn(
             "absolute inset-0",
-            dark ? "bg-gradient-to-r from-black/80 via-black/40 to-transparent" : "bg-gradient-to-r from-white/90 via-white/30 to-transparent",
+            dark
+              ? "bg-gradient-to-t from-black/85 via-black/45 to-black/10 lg:bg-gradient-to-r lg:from-black/80 lg:via-black/40 lg:to-transparent"
+              : "bg-gradient-to-t from-white via-white/85 to-white/5 lg:bg-gradient-to-r lg:from-white/90 lg:via-white/30 lg:to-transparent",
           )}
         />
       </div>
-      <div className="container-x relative py-14 sm:py-16 lg:py-40">
+      <div className="container-x relative pb-16 pt-40 sm:pb-20 lg:py-40">
         <div className="max-w-2xl">
-          {logo}
-          <h1 className="display text-[2.5rem] sm:text-6xl lg:text-7xl">{title}</h1>
+          {logo && <div className="animate-fade-up">{logo}</div>}
+          <h1 className="display text-[2.5rem] sm:text-6xl lg:text-7xl animate-fade-up [animation-delay:120ms]">{title}</h1>
           {description && (
-            <p className={cn("mt-7 max-w-xl text-lg leading-[1.8] sm:text-xl", dark ? "text-white/85" : "text-ink-soft")}>
+            <p className={cn("mt-7 max-w-xl text-lg leading-[1.8] sm:text-xl animate-fade-up [animation-delay:260ms]", dark ? "text-white/85" : "text-ink-soft")}>
               {description}
             </p>
           )}
-          {children && <div className="mt-10 flex flex-wrap gap-3">{children}</div>}
+          {children && <div className="mt-10 flex flex-wrap gap-3 animate-fade-up [animation-delay:400ms]">{children}</div>}
         </div>
       </div>
     </section>
@@ -175,7 +166,9 @@ export function StatRow({
             light ? "border-white/20" : "border-line",
           )}
         >
-          <dd className={cn("display text-3xl sm:text-5xl", light ? "text-lime" : "text-ink")}>{s.value}</dd>
+          <dd className={cn("display text-3xl sm:text-5xl", light ? "text-lime" : "text-ink")}>
+            <CountUp value={s.value} />
+          </dd>
           <dt className={cn("mt-2 text-sm font-semibold", light ? "text-white/70" : "text-ink-soft")}>{s.label}</dt>
         </div>
       ))}

@@ -1,14 +1,15 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { Placeholder } from "@/components/Placeholder";
 import { cn } from "@/lib/cn";
 
 type HeroVideoProps = {
-  /** public/ 기준 영상 경로. 파일이 없으면 빗금 플레이스홀더가 보인다. */
+  /** public/ 기준 영상 경로. 파일이 없으면 fallbackImage 가 슬로우 줌으로 재생된다. */
   src: string;
-  placeholderLabel: string;
+  /** 영상 파일이 준비되기 전까지 보여줄 사진 */
+  fallbackImage: { src: string; alt: string; position?: string };
   label: string;
   title: React.ReactNode;
   description?: string;
@@ -17,7 +18,7 @@ type HeroVideoProps = {
   index: number;
 };
 
-export function HeroVideo({ src, placeholderLabel, label, title, description, button, index }: HeroVideoProps) {
+export function HeroVideo({ src, fallbackImage, label, title, description, button, index }: HeroVideoProps) {
   const [status, setStatus] = useState<"loading" | "ready" | "missing">("loading");
   const isEmptyButton = !button.label;
 
@@ -26,20 +27,24 @@ export function HeroVideo({ src, placeholderLabel, label, title, description, bu
       className="relative isolate flex h-[100svh] min-h-[600px] w-full items-end overflow-hidden bg-ink text-white"
       aria-labelledby={`hero-${index}-title`}
     >
-      <Placeholder
-        dark
-        label={placeholderLabel}
-        hint={`public${src} 파일을 넣으면 자동 재생됩니다`}
-        className={cn(
-          "absolute inset-0 -z-20 transition-opacity duration-700",
-          status === "ready" ? "opacity-0" : "opacity-100",
-        )}
-      />
+      {/* 영상 준비 전: 사진 슬로우 줌 */}
+      <div className={cn("absolute inset-0 -z-20 overflow-hidden transition-opacity duration-1000", status === "ready" ? "opacity-0" : "opacity-100")}>
+        <Image
+          src={fallbackImage.src}
+          alt={fallbackImage.alt}
+          fill
+          preload={index === 1}
+          sizes="100vw"
+          quality={90}
+          className="kenburns object-cover"
+          style={{ objectPosition: fallbackImage.position ?? "60% 40%" }}
+        />
+      </div>
 
       {status !== "missing" && (
         <video
           className={cn(
-            "absolute inset-0 -z-10 h-full w-full object-cover transition-opacity duration-700",
+            "absolute inset-0 -z-10 h-full w-full object-cover transition-opacity duration-1000",
             status === "ready" ? "opacity-100" : "opacity-0",
           )}
           autoPlay
@@ -54,22 +59,22 @@ export function HeroVideo({ src, placeholderLabel, label, title, description, bu
         </video>
       )}
 
-      <div aria-hidden className="absolute inset-0 -z-[5] bg-gradient-to-t from-black/80 via-black/25 to-black/35" />
+      <div aria-hidden className="absolute inset-0 -z-[5] bg-gradient-to-t from-black/85 via-black/35 to-black/30" />
 
       <div className="container-x relative z-10 w-full pb-32 pt-32 sm:pb-36">
-        <div className="max-w-3xl border-l-4 border-lime pl-6 sm:pl-8 animate-fade-up">
-          <span className="text-sm font-semibold text-white/75">{label}</span>
-          <h1 id={`hero-${index}-title`} className="display mt-4 text-[2.4rem] sm:text-6xl lg:text-7xl">
+        <div className="max-w-3xl border-l-4 border-lime pl-6 sm:pl-8">
+          <span className="block text-sm font-semibold text-white/75 animate-fade-up">{label}</span>
+          <h1 id={`hero-${index}-title`} className="display mt-4 text-[2.4rem] sm:text-6xl lg:text-7xl animate-fade-up [animation-delay:140ms]">
             {title}
           </h1>
           {description && (
-            <p className="mt-6 max-w-2xl text-base leading-[1.8] text-white/85 sm:text-lg">{description}</p>
+            <p className="mt-6 max-w-2xl text-base leading-[1.8] text-white/85 sm:text-lg animate-fade-up [animation-delay:280ms]">{description}</p>
           )}
         </div>
       </div>
 
       {/* 하단 중앙 버튼 */}
-      <div className="absolute inset-x-0 bottom-8 z-10 flex justify-center sm:bottom-10">
+      <div className="absolute inset-x-0 bottom-8 z-10 flex justify-center sm:bottom-10 animate-fade-up [animation-delay:420ms]">
         <Link
           href={button.href}
           aria-label={button.ariaLabel}
@@ -96,6 +101,9 @@ export function HeroVideo({ src, placeholderLabel, label, title, description, bu
         <span className="h-px w-10 bg-white/50" />
         {index === 1 ? "01 / 02" : "02 / 02"}
       </div>
+      {status === "missing" && (
+        <p className="absolute left-5 top-20 z-10 text-[11px] text-white/45 sm:left-10 sm:top-24">영상 준비 중 · 파일 등록 시 자동 재생</p>
+      )}
     </section>
   );
 }

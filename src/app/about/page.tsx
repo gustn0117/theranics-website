@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { ButtonLink, PhotoHero, SectionHeading, StatRow } from "@/components/ui";
+import { Reveal } from "@/components/Reveal";
 import { activities, certificates, globalHow, globalSteps, history, marketNotes, marketStats, missionParagraphs, productFamily, team } from "@/data/about";
 
 export const metadata: Metadata = {
@@ -61,14 +62,14 @@ export default function AboutPage() {
               ))}
             </ul>
           </div>
-          <div className="prose-ko border-l-4 border-lime pl-6 text-[17px] leading-[1.95] text-ink sm:pl-10 sm:text-xl">
+          <Reveal className="prose-ko border-l-4 border-lime pl-6 text-[17px] leading-[1.95] text-ink sm:pl-10 sm:text-xl" delay={150}>
             {missionParagraphs.map((p) => (
               <p key={p}>
                 <strong className="font-extrabold">(주)테라닉스</strong>
                 {p.replace("(주)테라닉스", "")}
               </p>
             ))}
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -236,7 +237,7 @@ export default function AboutPage() {
       <section id="awards" className="bg-paper">
         <div className="container-x py-20 sm:py-28">
           <SectionHeading label="인증 및 수상" title="정부와 지자체가 검증한 사회적 기업" />
-          <ul className="mt-12 grid grid-cols-2 gap-px border border-line bg-line sm:grid-cols-4 lg:grid-cols-7">
+          <Reveal as="ul" className="mt-12 grid grid-cols-2 gap-px border border-line bg-line sm:grid-cols-4 lg:grid-cols-7" delay={100}>
             {certificates.map((c) => (
               <li key={c.title} className="bg-white p-4">
                 <div className="bg-paper p-3">
@@ -254,7 +255,7 @@ export default function AboutPage() {
                 <p className="mt-1 text-xs text-ink-soft">{c.org}</p>
               </li>
             ))}
-          </ul>
+          </Reveal>
         </div>
       </section>
 
