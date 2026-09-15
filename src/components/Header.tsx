@@ -10,22 +10,23 @@ import { cn } from "@/lib/cn";
 export function Header() {
   const pathname = usePathname();
   const isHome = pathname === "/";
-  const [scrolled, setScrolled] = useState(false);
-  const [hidden, setHidden] = useState(false);
+  const [overVideo, setOverVideo] = useState(isHome);
   const [open, setOpen] = useState(false);
 
+  // 메인의 영상 구간 2개(각 화면 높이) 위에서는 투명, 그 아래부터 흰 배경
   useEffect(() => {
-    let lastY = window.scrollY;
     const onScroll = () => {
-      const y = window.scrollY;
-      setScrolled(y > 24);
-      setHidden(y > lastY && y > 160);
-      lastY = y;
+      const limit = window.innerHeight * 2 - 120;
+      setOverVideo(isHome && window.scrollY < limit);
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, [isHome]);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -34,14 +35,13 @@ export function Header() {
     };
   }, [open]);
 
-  const solid = !isHome || scrolled || open;
+  const solid = !overVideo || open;
 
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-[transform,background-color] duration-300",
-        solid ? "border-b border-line bg-white/95 backdrop-blur-md" : "bg-white/90 backdrop-blur-md",
-        hidden && !open && "-translate-y-full",
+        "fixed inset-x-0 top-0 z-50 transition-colors duration-500",
+        solid ? "border-b border-line bg-white/95 backdrop-blur-md" : "bg-gradient-to-b from-black/45 to-transparent",
       )}
     >
       <div className="container-x flex h-16 items-center justify-between sm:h-20">
@@ -51,7 +51,7 @@ export function Header() {
             alt=""
             width={424}
             height={382}
-            className="h-8 w-auto sm:h-9"
+            className={cn("h-8 w-auto transition sm:h-9", !solid && "brightness-0 invert")}
             preload
           />
           <Image
@@ -59,7 +59,7 @@ export function Header() {
             alt="THERANICS"
             width={1587}
             height={170}
-            className="h-4 w-auto sm:h-[18px]"
+            className={cn("h-4 w-auto transition sm:h-[18px]", !solid && "brightness-0 invert")}
             preload
           />
         </Link>
@@ -73,7 +73,7 @@ export function Header() {
                 href={item.href}
                 className={cn(
                   "relative px-5 py-2 text-[15px] font-semibold transition-colors",
-                  "text-ink hover:text-lime-deep",
+                  solid ? "text-ink hover:text-lime-deep" : "text-white/90 hover:text-white",
                 )}
               >
                 {item.label}
@@ -85,7 +85,7 @@ export function Header() {
             href="/products"
             className={cn(
               "ml-4 inline-flex h-10 items-center px-5 text-sm font-bold transition-colors",
-              "bg-ink text-white hover:bg-lime hover:text-ink",
+              solid ? "bg-ink text-white hover:bg-lime hover:text-ink" : "bg-lime text-ink hover:bg-white",
             )}
           >
             MYLIFT
@@ -94,7 +94,7 @@ export function Header() {
 
         <button
           type="button"
-          className="flex h-10 w-10 items-center justify-center text-ink md:hidden"
+          className={cn("flex h-10 w-10 items-center justify-center md:hidden", solid ? "text-ink" : "text-white")}
           aria-expanded={open}
           aria-controls="mobile-menu"
           aria-label={open ? "메뉴 닫기" : "메뉴 열기"}
