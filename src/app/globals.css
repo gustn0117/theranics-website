@@ -194,22 +194,6 @@ body {
   }
 }
 
-/* 흐르는 텍스트 띠 */
-.marquee-track {
-  animation: marquee 28s linear infinite;
-}
-.marquee:hover .marquee-track {
-  animation-play-state: paused;
-}
-@keyframes marquee {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-  to {
-    transform: translate3d(-50%, 0, 0);
-  }
-}
-
 /* 떠 있는 듯한 움직임 */
 .float-slow {
   animation: float-slow 6s ease-in-out infinite;
@@ -304,7 +288,6 @@ body {
     opacity: 1;
     transform: none;
   }
-  .marquee-track,
   .float-slow,
   .scroll-cue {
     animation: none;
