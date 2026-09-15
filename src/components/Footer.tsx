@@ -6,6 +6,13 @@ export function Footer() {
   const { contact } = siteConfig;
   return (
     <footer className="border-t-4 border-ink bg-paper">
+      <div className="container-x pt-14 sm:pt-20">
+        <p className="display border-b border-ink/20 pb-10 text-[2.6rem] leading-[1.05] sm:pb-14 sm:text-6xl lg:text-7xl">
+          Do things
+          <br />
+          for other people!
+        </p>
+      </div>
       <div className="container-x py-14 sm:py-20">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_0.8fr_1fr]">
           <div>

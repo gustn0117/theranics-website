@@ -6,6 +6,7 @@ import { comparison, customerValues, features, ipSummary, lineup, mylift2Feature
 import { cn } from "@/lib/cn";
 import { Reveal } from "@/components/Reveal";
 import { Parallax } from "@/components/Parallax";
+import { PositioningChart } from "@/components/PositioningChart";
 
 export const metadata: Metadata = {
   title: "Products · MYLIFT 마이리프트",
@@ -37,6 +38,18 @@ export default function ProductsPage() {
           도입 문의
         </ButtonLink>
       </PhotoHero>
+      <div className="pointer-events-none relative z-10 hidden lg:block">
+        <div className="absolute -top-[22svh] right-[5%] flex gap-3 animate-fade-up [animation-delay:600ms]">
+          <div className="border border-ink bg-white/90 px-4 py-3 backdrop-blur">
+            <p className="display text-3xl">20초</p>
+            <p className="text-xs font-semibold text-ink-soft">앉은 채 휠 교체 · 실내 진입</p>
+          </div>
+          <div className="border border-ink bg-lime px-4 py-3">
+            <p className="display text-3xl">255kg</p>
+            <p className="text-xs font-semibold text-ink/70">2,500N 액추에이터 최대 하중</p>
+          </div>
+        </div>
+      </div>
 
       {/* 문제: 오염된 타일 사진 배경 + 사진 타일 4개 */}
       <section className="snap-section relative isolate flex overflow-hidden bg-ink text-white lg:min-h-[100svh] lg:items-center">
@@ -248,48 +261,49 @@ export default function ProductsPage() {
         </div>
       </section>
 
-      {/* 구조 및 사이즈 */}
-      <section className="bg-paper">
+      {/* 구조 및 사이즈: 스펙 시트 */}
+      <section className="snap-section dots bg-paper">
         <div className="container-x py-20 sm:py-28">
-          <SectionHeading label="구조 및 사이즈" title="접으면 500×600, 펼치면 700×1,100" />
-          <div className="mt-12 grid gap-10 lg:grid-cols-[7fr_5fr]">
-            <div className="grid grid-cols-2 gap-px bg-line">
+          <SectionHeading label="구조 및 사이즈" title={<>접으면 500×600,<br className="hidden lg:inline" /> 펼치면 700×1,100</>} />
+          <Reveal stagger className="mt-12 grid gap-px border border-ink bg-ink sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              { src: "/images/product/view-66.png", w: 1920, h: 1173, t: "Rail & Slope Folded", n: "500", u: "× 600 mm" },
+              { src: "/images/product/view-67.png", w: 886, h: 886, t: "Rail & Slope Unfold", n: "700", u: "× 1,100 mm" },
+              { src: "/images/product/view-63.png", w: 1920, h: 1018, t: "Lift Up", n: "470", u: "mm (400)" },
+              { src: "/images/product/view-64.png", w: 1920, h: 1174, t: "Lift Down", n: "100", u: "mm (70)" },
+            ].map((f) => (
+              <figure key={f.t} className="zoom-img flex flex-col bg-white p-5">
+                <Image src={f.src} alt={`${f.t} ${f.n} ${f.u}`} width={f.w} height={f.h} className="mx-auto h-40 w-auto object-contain sm:h-48" />
+                <figcaption className="mt-5 border-t border-ink pt-4">
+                  <span className="block text-xs font-bold text-ink-soft">{f.t}</span>
+                  <span className="display mt-1 block text-4xl">
+                    {f.n}
+                    <span className="ml-1 text-base font-bold text-ink-soft">{f.u}</span>
+                  </span>
+                </figcaption>
+              </figure>
+            ))}
+          </Reveal>
+          <div className="mt-10 grid gap-8 lg:grid-cols-[7fr_5fr]">
+            <Reveal as="ul" stagger className="border-t border-ink">
               {[
-                { src: "/images/product/view-66.png", w: 1920, h: 1173, t: "Rail & Slope Folded", d: "W500 × L600mm" },
-                { src: "/images/product/view-67.png", w: 886, h: 886, t: "Rail & Slope Unfold", d: "W700 × L1,100mm" },
-                { src: "/images/product/view-63.png", w: 1920, h: 1018, t: "Lift Up", d: "H470 (400) mm" },
-                { src: "/images/product/view-64.png", w: 1920, h: 1174, t: "Lift Down", d: "H100 (70) mm" },
-              ].map((f) => (
-                <figure key={f.t} className="bg-white p-5">
-                  <Image src={f.src} alt={`${f.t} ${f.d}`} width={f.w} height={f.h} className="mx-auto h-44 w-auto object-contain sm:h-56" />
-                  <figcaption className="mt-4 border-t border-line pt-3">
-                    <span className="block text-sm font-bold">{f.t}</span>
-                    <span className="text-xs text-ink-soft">{f.d}</span>
-                  </figcaption>
-                </figure>
+                "레일끼리 간격은 사용자의 휠체어 사이즈에 맞춰 자유롭게 늘이고 줄일 수 있습니다.",
+                "펼쳤을 때 700×1,100mm, 접었을 때 500×600mm로 박스 부피를 줄여 적재, 납품, 설치, A/S 수거, 수출 시 용이합니다.",
+                "레일은 탈부착식입니다. 발 받침대가 지면에서 130mm 이상인 사용자는 레일을 빼고 써서 현관 공간을 더 확보할 수 있습니다.",
+                "본체 높이는 120mm로 낮아 1인 가구 4~8py 현관의 50%, 20~30py 아파트 현관의 25%만 차지합니다. 통로에 설치해도 무방합니다.",
+              ].map((t) => (
+                <li key={t} className="border-b border-line py-4 text-[15px] leading-[1.75] text-ink-soft">
+                  {t}
+                </li>
               ))}
-            </div>
-            <div>
-              <ul className="border-t border-ink">
-                {[
-                  "레일끼리 간격은 사용자의 휠체어 사이즈에 맞춰 자유롭게 늘이고 줄일 수 있습니다.",
-                  "펼쳤을 때 700×1,100mm, 접었을 때 500×600mm로 박스 부피를 줄여 적재, 납품, 설치, A/S 수거, 수출 시 용이합니다.",
-                  "레일은 탈부착식입니다. 발 받침대가 지면에서 130mm 이상인 사용자는 레일을 빼고 써서 현관 공간을 더 확보할 수 있습니다.",
-                  "본체 높이는 120mm로 낮아 1인 가구 4~8py 현관의 50%, 20~30py 아파트 현관의 25%만 차지합니다. 통로에 설치해도 무방합니다.",
-                ].map((t) => (
-                  <li key={t} className="border-b border-line py-4 text-[15px] leading-[1.75] text-ink-soft">
-                    {t}
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-6 flex items-center gap-5 bg-sky-soft p-5">
-                <Image src="/images/product/view-115.png" alt="현관 설치 평면도" width={849} height={1183} className="h-28 w-auto" />
-                <p className="text-sm leading-[1.7] text-ink-soft">
-                  <strong className="block text-base text-ink">현관 공간이 협소하지 않을까?</strong>
-                  4py 원룸 · 8~12py 임대아파트 기준 50%, 20~30py 구축아파트 기준 25% 차지. 본체만 사용해도 무방합니다.
-                </p>
-              </div>
-            </div>
+            </Reveal>
+            <Reveal className="flex items-center gap-5 border border-ink bg-white p-5" delay={150}>
+              <Image src="/images/product/view-115.png" alt="현관 설치 평면도" width={849} height={1183} className="h-32 w-auto" />
+              <p className="text-sm leading-[1.7] text-ink-soft">
+                <strong className="display block text-2xl text-ink">현관 공간이 협소하지 않을까?</strong>
+                <span className="mt-2 block">4py 원룸 · 8~12py 임대아파트 기준 50%, 20~30py 구축아파트 기준 25% 차지. 본체만 사용해도 무방합니다.</span>
+              </p>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -383,7 +397,10 @@ export default function ProductsPage() {
             title={<>안전과 청결을 동시에 만족하는<br className="hidden lg:inline" /> 유일한 포지셔닝</>}
             description="직접 경쟁사인 휠크린은 수입 중지, 휠스터킴은 단종되었습니다. 마이리프트는 낙상(안전)과 오염(청결)을 동시에 해결합니다."
           />
-          <div className="mt-12 overflow-x-auto border border-ink">
+          <div className="mt-12">
+            <PositioningChart />
+          </div>
+          <div className="mt-8 overflow-x-auto border border-ink">
             <table className="w-full min-w-[840px] border-collapse text-sm">
               <thead>
                 <tr className="bg-ink text-white">

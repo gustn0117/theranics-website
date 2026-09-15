@@ -35,7 +35,7 @@ export function CountUp({ value, duration = 1400 }: { value: string; duration?: 
         };
         raf = requestAnimationFrame(tick);
       },
-      { threshold: 0.4 },
+      { threshold: 0.1, rootMargin: "0px 0px -5% 0px" },
     );
     io.observe(el);
     return () => {

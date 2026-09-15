@@ -20,10 +20,10 @@ export function SectionHeading({
   size?: "sm" | "md" | "lg";
 }) {
   return (
-    <Reveal className={cn("max-w-3xl", className)}>
+    <Reveal className={cn("rule max-w-3xl", className)}>
       <h2
         className={cn(
-          "display mt-4",
+          "display",
           size === "lg" ? "text-4xl sm:text-5xl lg:text-6xl" : size === "sm" ? "text-2xl sm:text-3xl lg:text-4xl" : "text-3xl sm:text-4xl lg:text-5xl",
           light ? "text-white" : "text-ink",
         )}
@@ -59,20 +59,27 @@ export function ButtonLink({
     white: "bg-white text-ink hover:bg-lime",
   }[variant];
   const cls = cn(
-    "inline-flex h-13 items-center justify-center gap-3 px-7 text-[15px] font-bold transition-colors",
+    "btn-arrow inline-flex h-13 items-center justify-center px-7 text-[15px] font-bold transition-colors",
     styles,
     className,
+  );
+  const arrow = (
+    <svg className="btn-arrow-icon shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden>
+      <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="square" />
+    </svg>
   );
   if (external) {
     return (
       <a href={href} target="_blank" rel="noopener noreferrer" className={cls}>
         {children}
+        {arrow}
       </a>
     );
   }
   return (
     <Link href={href} className={cls}>
       {children}
+      {arrow}
     </Link>
   );
 }

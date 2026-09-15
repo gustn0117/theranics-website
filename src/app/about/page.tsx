@@ -71,7 +71,7 @@ export default function AboutPage() {
       </section>
 
       {/* 회사 개요 */}
-      <section id="company" className="snap-section bg-paper">
+      <section id="company" className="snap-section dots bg-paper">
         <div className="container-x py-20 sm:py-28">
           <SectionHeading
             label="회사 개요"
@@ -231,7 +231,7 @@ export default function AboutPage() {
       </section>
 
       {/* 인증 및 수상 */}
-      <section id="awards" className="snap-section bg-paper">
+      <section id="awards" className="snap-section dots bg-paper">
         <div className="container-x py-20 sm:py-28">
           <SectionHeading label="인증 및 수상" title="정부와 지자체가 검증한 사회적 기업" />
           <Reveal as="ul" stagger className="mt-12 grid grid-cols-2 gap-px border border-line bg-line sm:grid-cols-4 lg:grid-cols-7">

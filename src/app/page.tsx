@@ -103,7 +103,7 @@ export default function HomePage() {
       </section>
 
       {/* 4. MYLIFT 하이라이트 */}
-      <section className="snap-section bg-paper text-ink">
+      <section className="snap-section dots bg-paper text-ink">
         <Marquee items={["휠을 바꾸면 집에 들어가는 데 20초", "세계 최초 휠 교체용 전동 리프트 MYLIFT", "낙상 없는 귀가", "실내 청결", "교통약자 이동권", "취약계층 고용권"]} />
         <div className="grid lg:min-h-[calc(100svh-3.75rem)] lg:grid-cols-[1fr_1.15fr]">
           <div className="container-x flex flex-col justify-center py-20 lg:max-w-none lg:pl-16 lg:pr-12 lg:py-28">
@@ -150,10 +150,13 @@ export default function HomePage() {
       </section>
 
       {/* 5. 문의 CTA */}
-      <section className="snap-section bg-lime">
-        <Reveal className="container-x grid gap-8 py-16 sm:py-20 lg:grid-cols-[1fr_auto] lg:items-end">
+      <section className="snap-section relative overflow-hidden bg-lime">
+        <span aria-hidden className="display pointer-events-none absolute -bottom-12 -left-2 select-none text-[11rem] leading-none text-ink/[0.06] lg:text-[18rem]">
+          20초
+        </span>
+        <Reveal className="container-x relative grid gap-8 py-20 sm:py-28 lg:grid-cols-[1fr_auto] lg:items-end">
           <div>
-            <h2 className="display text-3xl sm:text-5xl">
+            <h2 className="display text-3xl sm:text-5xl lg:text-6xl">
               MYLIFT 도입·협력·시범사업,
               <br className="hidden lg:inline" />
               지금 이야기해 주세요

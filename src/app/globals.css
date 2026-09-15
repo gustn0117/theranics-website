@@ -235,6 +235,42 @@ body {
   transform: scale(1.06);
 }
 
+/* 페이퍼 배경 도트 텍스처 */
+.dots {
+  background-image: radial-gradient(rgba(35, 31, 32, 0.09) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* 버튼 호버: 화살표가 미끄러져 들어옴 */
+.btn-arrow {
+  position: relative;
+  overflow: hidden;
+}
+.btn-arrow .btn-arrow-icon {
+  width: 0;
+  opacity: 0;
+  margin-left: 0;
+  transition:
+    width 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.25s,
+    margin 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.btn-arrow:hover .btn-arrow-icon {
+  width: 1.1rem;
+  opacity: 1;
+  margin-left: 0.25rem;
+}
+
+/* 제목 위 짧은 라임 룰 */
+.rule::before {
+  content: "";
+  display: block;
+  width: 2.5rem;
+  height: 3px;
+  background: var(--color-lime);
+  margin-bottom: 1.25rem;
+}
+
 /* 스크롤 유도 화살표 */
 .scroll-cue {
   animation: scroll-cue 1.8s ease-in-out infinite;
