@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { ButtonLink, SectionHeading } from "@/components/ui";
+import { ButtonLink, PhotoHero, SectionHeading } from "@/components/ui";
+import { Reveal } from "@/components/Reveal";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
@@ -14,26 +15,30 @@ export default function ContactPage() {
   const mapQuery = encodeURIComponent("경기도 의정부시 배꽃길 63");
   return (
     <>
-      <section className="bg-lime pt-32 pb-16 sm:pt-44 sm:pb-24">
-        <div className="container-x grid gap-10 lg:grid-cols-[7fr_5fr] lg:items-end">
-          <div>
-            <h1 className="display text-5xl sm:text-6xl lg:text-7xl">
-              함께 만드는
-              <br />
-              안전한 이동
-            </h1>
-          </div>
-          <p className="max-w-md text-lg leading-[1.8] text-ink/80">
-            MYLIFT 도입, 시범사업, 협력 및 제안은 언제든 연락 주세요. 방문 설치와 친절한 설명으로 응대합니다.
-          </p>
-        </div>
-      </section>
+      <PhotoHero
+        tone="dark"
+        minH="lg:min-h-[100svh]"
+        image={{ src: "/images/photo/hero-doorway-hq.jpg", alt: "현관에서 MYLIFT 위에 올라 휠을 교체하는 휠체어 사용자", position: "70% 50%" }}
+        title={
+          <>
+            함께 만드는
+            <br />
+            안전한 이동
+          </>
+        }
+        description="MYLIFT 도입, 시범사업, 협력 및 제안은 언제든 연락 주세요. 방문 설치와 친절한 설명으로 응대합니다."
+      >
+        <ButtonLink href={`mailto:${c.email}?subject=${encodeURIComponent("[홈페이지 문의] MYLIFT")}`}>이메일 문의</ButtonLink>
+        <ButtonLink href={`tel:${c.tel}`} variant="white">
+          {c.tel}
+        </ButtonLink>
+      </PhotoHero>
 
-      <section className="bg-white">
-        <div className="container-x grid gap-14 py-20 sm:py-28 lg:grid-cols-[5fr_7fr]">
+      <section className="snap-section bg-white">
+        <div className="container-x grid gap-14 py-20 sm:py-28 lg:min-h-[100svh] lg:grid-cols-[5fr_7fr] lg:items-center">
           <div>
             <SectionHeading label="회사 정보" title="연락처" />
-            <dl className="mt-8 border-t border-ink">
+            <Reveal as="dl" stagger className="mt-8 border-t border-ink">
               {[
                 ["회사명", `${siteConfig.name} (${siteConfig.nameEn})`],
                 ["대표이사", "이호천"],
@@ -62,7 +67,7 @@ export default function ContactPage() {
                   </dd>
                 </div>
               ))}
-            </dl>
+            </Reveal>
             <div className="mt-8 flex flex-wrap gap-3">
               <ButtonLink href={`mailto:${c.email}?subject=${encodeURIComponent("[홈페이지 문의] MYLIFT")}`}>이메일 문의</ButtonLink>
               <ButtonLink href={`tel:${c.tel}`} variant="outline">
@@ -73,7 +78,7 @@ export default function ContactPage() {
 
           <div>
             <SectionHeading label="오시는 길" title="의정부 더리브센텀스퀘어Ⅲ" />
-            <div className="relative mt-8 aspect-[3/2] w-full overflow-hidden border border-ink bg-white">
+            <Reveal className="relative mt-8 aspect-[3/2] w-full overflow-hidden border border-ink bg-white" delay={120}>
               <Image
                 src="/images/map/theranics-directions-v2.png"
                 alt="의정부 더리브센텀스퀘어Ⅲ 3동 1034호 테라닉스 오시는 길 약도"
@@ -82,8 +87,8 @@ export default function ContactPage() {
                 quality={95}
                 className="object-cover"
               />
-            </div>
-            <div className="grid gap-px border border-t-0 border-ink bg-line sm:grid-cols-[1fr_auto]">
+            </Reveal>
+            <Reveal className="grid gap-px border border-t-0 border-ink bg-line sm:grid-cols-[1fr_auto]" delay={200}>
               <div className="bg-white p-5">
                 <p className="font-bold">{c.address}</p>
                 <p className="text-sm text-ink-soft">{c.addressDetail}</p>
@@ -100,7 +105,7 @@ export default function ContactPage() {
                   Google Maps
                 </a>
               </div>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>

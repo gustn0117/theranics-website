@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { cn } from "@/lib/cn";
+import { Parallax } from "@/components/Parallax";
 
 type HeroVideoProps = {
   /** public/ 기준 영상 경로. 파일이 없으면 fallbackImage 가 슬로우 줌으로 재생된다. */
@@ -24,21 +25,23 @@ export function HeroVideo({ src, fallbackImage, label, title, description, butto
 
   return (
     <section
-      className="relative isolate flex h-[100svh] min-h-[600px] w-full items-end overflow-hidden bg-ink text-white"
+      className="snap-hero relative isolate flex h-[100svh] min-h-[600px] w-full items-end overflow-hidden bg-ink text-white"
       aria-labelledby={`hero-${index}-title`}
     >
       {/* 영상 준비 전: 사진 슬로우 줌 */}
       <div className={cn("absolute inset-0 -z-20 overflow-hidden transition-opacity duration-1000", status === "ready" ? "opacity-0" : "opacity-100")}>
-        <Image
-          src={fallbackImage.src}
-          alt={fallbackImage.alt}
-          fill
-          preload={index === 1}
-          sizes="100vw"
-          quality={90}
-          className="kenburns object-cover"
-          style={{ objectPosition: fallbackImage.position ?? "60% 40%" }}
-        />
+        <Parallax>
+          <Image
+            src={fallbackImage.src}
+            alt={fallbackImage.alt}
+            fill
+            preload={index === 1}
+            sizes="100vw"
+            quality={90}
+            className="kenburns object-cover"
+            style={{ objectPosition: fallbackImage.position ?? "60% 40%" }}
+          />
+        </Parallax>
       </div>
 
       {status !== "missing" && (

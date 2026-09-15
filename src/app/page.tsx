@@ -3,6 +3,7 @@ import { HeroVideo } from "@/components/HeroVideo";
 import { ButtonLink, SectionHeading, StatRow } from "@/components/ui";
 import { siteConfig } from "@/config/site";
 import { Reveal } from "@/components/Reveal";
+import { Parallax } from "@/components/Parallax";
 
 const values = [
   {
@@ -57,16 +58,18 @@ export default function HomePage() {
       />
 
       {/* 3. 기업 소개: 사진 배경 + 여백에 텍스트 */}
-      <section className="relative isolate flex min-h-[92svh] items-end overflow-hidden bg-paper lg:items-center">
+      <section className="snap-hero relative isolate flex min-h-[100svh] items-end overflow-hidden bg-paper lg:items-center">
         <div className="absolute inset-0 overflow-hidden">
-          <Image
-            src="/images/photo/wheel-change-hq.jpg"
-            alt="MYLIFT 위에서 앉은 채 뒷바퀴를 교체하는 휠체어 사용자"
-            fill
-            sizes="100vw"
-            quality={90}
-            className="kenburns object-cover object-[75%_35%] lg:object-[75%_50%]"
-          />
+          <Parallax>
+            <Image
+              src="/images/photo/wheel-change-hq.jpg"
+              alt="MYLIFT 위에서 앉은 채 뒷바퀴를 교체하는 휠체어 사용자"
+              fill
+              sizes="100vw"
+              quality={90}
+              className="kenburns object-cover object-[75%_35%] lg:object-[75%_50%]"
+            />
+          </Parallax>
           <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-white via-white/85 to-white/5 lg:bg-gradient-to-r lg:from-white/95 lg:via-white/40 lg:to-white/10" />
         </div>
         <div className="container-x relative pb-16 pt-40 sm:pb-20 lg:py-40">
@@ -80,14 +83,14 @@ export default function HomePage() {
               예비사회적기업 (주)테라닉스는 교통약자의 이동을 도와 안전한 사회참여를 지원하고, 취약계층의 고용을
               도와 적극적인 경제활동을 지원합니다.
             </p>
-            <ul className="mt-10 border-t border-ink">
+            <Reveal as="ul" stagger className="mt-10 border-t border-ink">
               {values.map((v) => (
                 <li key={v.title} className="grid grid-cols-[7rem_1fr] gap-4 border-b border-ink/20 py-5">
                   <span className="display text-xl">{v.title}</span>
                   <span className="text-[15px] leading-[1.75] text-ink-soft">{v.body}</span>
                 </li>
               ))}
-            </ul>
+            </Reveal>
             <div className="mt-10 flex flex-wrap gap-3">
               <ButtonLink href="/about">회사소개 보기</ButtonLink>
               <ButtonLink href="/contact" variant="outline">
@@ -99,8 +102,8 @@ export default function HomePage() {
       </section>
 
       {/* 4. MYLIFT 하이라이트 */}
-      <section className="bg-paper text-ink">
-        <div className="grid lg:grid-cols-[1fr_1.15fr]">
+      <section className="snap-section bg-paper text-ink">
+        <div className="grid lg:min-h-[100svh] lg:grid-cols-[1fr_1.15fr]">
           <div className="container-x flex flex-col justify-center py-20 lg:max-w-none lg:pl-16 lg:pr-12 lg:py-28">
             <Reveal className="self-start">
               <Image src="/images/logo/mylift.png" alt="MYLIFT 마이리프트" width={1033} height={640} className="h-20 w-auto sm:h-24" />
@@ -145,7 +148,7 @@ export default function HomePage() {
       </section>
 
       {/* 5. 문의 CTA */}
-      <section className="bg-lime">
+      <section className="snap-section bg-lime">
         <Reveal className="container-x grid gap-8 py-16 sm:py-20 lg:grid-cols-[1fr_auto] lg:items-end">
           <div>
             <h2 className="display text-3xl sm:text-5xl">

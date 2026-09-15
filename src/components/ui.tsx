@@ -3,6 +3,7 @@ import Link from "next/link";
 import { cn } from "@/lib/cn";
 import { Reveal } from "@/components/Reveal";
 import { CountUp } from "@/components/CountUp";
+import { Parallax } from "@/components/Parallax";
 
 export function SectionHeading({
   title,
@@ -101,19 +102,21 @@ export function PhotoHero({
 }) {
   const dark = tone === "dark";
   return (
-    <section className={cn("relative isolate flex min-h-[92svh] items-end overflow-hidden lg:items-center", minH, dark ? "bg-ink text-white" : "bg-paper text-ink")}>
+    <section className={cn("snap-hero relative isolate flex min-h-[92svh] items-end overflow-hidden lg:items-center", minH, dark ? "bg-ink text-white" : "bg-paper text-ink")}>
       {/* 사진을 배경 전체에 깔고, 모바일은 하단·데스크톱은 왼쪽 여백에 텍스트 */}
       <div className="absolute inset-0 overflow-hidden">
-        <Image
-          src={image.src}
-          alt={image.alt}
-          fill
-          preload
-          sizes="100vw"
-          quality={90}
-          className="kenburns object-cover"
-          style={{ objectPosition: image.position ?? "70% 50%" }}
-        />
+        <Parallax>
+          <Image
+            src={image.src}
+            alt={image.alt}
+            fill
+            preload
+            sizes="100vw"
+            quality={90}
+            className="kenburns object-cover"
+            style={{ objectPosition: image.position ?? "70% 50%" }}
+          />
+        </Parallax>
         <div
           aria-hidden
           className={cn(

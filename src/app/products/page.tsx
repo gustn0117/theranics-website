@@ -5,6 +5,7 @@ import { ButtonLink, PhotoHero, SectionHeading } from "@/components/ui";
 import { comparison, customerValues, features, ipSummary, lineup, mylift2Features, overseas, portableUses, problems, usageSteps } from "@/data/products";
 import { cn } from "@/lib/cn";
 import { Reveal } from "@/components/Reveal";
+import { Parallax } from "@/components/Parallax";
 
 export const metadata: Metadata = {
   title: "Products · MYLIFT 마이리프트",
@@ -40,9 +41,13 @@ export default function ProductsPage() {
       </PhotoHero>
 
       {/* 문제: 오염된 타일 사진 배경 + 사진 타일 4개 */}
-      <section className="relative isolate overflow-hidden bg-ink text-white">
-        <Image src="/images/photo/tile-dirty-hq.jpg" alt="" fill sizes="100vw" quality={90} className="object-cover opacity-40" />
-        <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-ink/60 via-ink/80 to-ink" />
+      <section className="snap-section relative isolate flex overflow-hidden bg-ink text-white lg:min-h-[100svh] lg:items-center">
+        <div className="absolute inset-0 overflow-hidden">
+          <Parallax>
+            <Image src="/images/photo/tile-dirty-hq.jpg" alt="" fill sizes="100vw" quality={90} className="object-cover opacity-40" />
+          </Parallax>
+          <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-ink/60 via-ink/80 to-ink" />
+        </div>
         <div className="container-x relative py-20 sm:py-28">
           <SectionHeading
             light
@@ -50,7 +55,7 @@ export default function ProductsPage() {
             title="바퀴에 묻은 오염물에서 시작되는 사회적 비용"
             description="휠체어 사용자들은 귀가 시 바닥생활과 집안 오염이 싫어서 2개의 휠체어를 사용합니다. 옮겨타는 순간이 곧 낙상 발생점입니다."
           />
-          <Reveal as="ul" className="mt-14 grid gap-px bg-white/15 sm:grid-cols-2 lg:grid-cols-4" delay={100}>
+          <Reveal as="ul" stagger className="mt-14 grid gap-px bg-white/15 sm:grid-cols-2 lg:grid-cols-4">
             {problems.map((p) => (
               <li key={p.title} className="bg-ink">
                 <div className={cn("relative aspect-[4/3]", p.contain && "bg-sky-soft")}>
@@ -72,20 +77,20 @@ export default function ProductsPage() {
               <h3 className="display text-2xl sm:text-3xl">해외에서도 같은 문제</h3>
               <p className="mt-4 text-[15px] leading-[1.8] text-white/75">{overseas.intro}</p>
             </div>
-            <ul className="grid grid-cols-2 gap-px bg-white/15">
+            <Reveal as="ul" stagger className="grid grid-cols-2 gap-px bg-white/15">
               {overseas.cases.map((c, i) => (
                 <li key={c} className="bg-ink p-5">
                   <span className="display text-2xl text-lime">0{i + 1}</span>
                   <p className="mt-2 font-bold">{c}</p>
                 </li>
               ))}
-            </ul>
+            </Reveal>
           </div>
         </div>
       </section>
 
       {/* 아이디어 & 사용법 */}
-      <section className="bg-white">
+      <section className="snap-section bg-white">
         <div className="container-x py-20 sm:py-28">
           <div className="grid gap-10 lg:grid-cols-[5fr_7fr] lg:items-end">
             <SectionHeading
@@ -125,7 +130,7 @@ export default function ProductsPage() {
           </div>
         </div>
         <div className="container-x">
-          <ol className="grid divide-y divide-line sm:grid-cols-5 sm:divide-x sm:divide-y-0">
+          <Reveal as="ol" stagger className="grid divide-y divide-line sm:grid-cols-5 sm:divide-x sm:divide-y-0">
             {usageSteps.map((s) => (
               <li key={s.no} className="py-6 sm:px-5 sm:py-8 first:sm:pl-0">
                 <span className="display text-3xl text-lime-deep">{s.no}</span>
@@ -133,14 +138,14 @@ export default function ProductsPage() {
                 <p className="mt-1 text-sm leading-relaxed text-ink-soft">{s.desc}</p>
               </li>
             ))}
-          </ol>
+          </Reveal>
         </div>
       </section>
 
       {/* 핵심 기능 */}
-      <section className="bg-paper">
-        <div className="grid lg:grid-cols-2">
-          <div className="relative min-h-[360px] lg:min-h-0">
+      <section className="snap-section bg-paper">
+        <div className="grid lg:min-h-[100svh] lg:grid-cols-2">
+          <Reveal className="relative min-h-[360px] lg:min-h-0">
             <Image
               src="/images/product/lift-up-ramps.png"
               alt="리프트 업 상태의 MYLIFT 본체와 경사판, 휴대용 충전지"
@@ -148,10 +153,10 @@ export default function ProductsPage() {
               sizes="(min-width: 1024px) 50vw, 100vw"
               className="object-contain p-8 lg:p-16"
             />
-          </div>
-          <div className="container-x py-20 lg:max-w-none lg:py-28 lg:pl-0">
+          </Reveal>
+          <div className="container-x flex flex-col justify-center py-20 lg:max-w-none lg:py-28 lg:pl-0">
             <SectionHeading label="핵심 역량" title="2,500N 액추에이터로 255kg까지 들어올리는 시저형 리프트" />
-            <dl className="mt-10 grid gap-px border border-line bg-line sm:grid-cols-2">
+            <Reveal as="dl" stagger className="mt-10 grid gap-px border border-line bg-line sm:grid-cols-2">
               {features.map((f) => (
                 <div key={f.title} className="bg-white p-6">
                   <dt className="text-xs font-bold text-sky">{f.label}</dt>
@@ -160,20 +165,20 @@ export default function ProductsPage() {
                   <dd className="mt-1 text-sm leading-[1.7] text-ink-soft">{f.desc}</dd>
                 </div>
               ))}
-            </dl>
+            </Reveal>
           </div>
         </div>
       </section>
 
       {/* 라인업 */}
-      <section id="lineup" className="scroll-mt-20 bg-white">
+      <section id="lineup" className="snap-section scroll-mt-20 bg-white">
         <div className="container-x py-20 sm:py-28">
           <SectionHeading
             label="라인업"
             title="소비자에게 폭넓은 선택권"
             description="기능, 옵션, 가격을 선택할 수 있습니다. 건강보험공단 급여제품 등록 시 자기부담금 9만원 또는 무료."
           />
-          <Reveal className="mt-12 grid gap-px border border-ink bg-ink lg:grid-cols-3" delay={100}>
+          <Reveal stagger className="mt-12 grid gap-px border border-ink bg-ink lg:grid-cols-3">
             {lineup.map((p) => (
               <article key={`${p.model}-${p.name}`} className="flex flex-col bg-white">
                 <div className={cn("relative aspect-[4/3]", p.accent)}>
@@ -230,10 +235,10 @@ export default function ProductsPage() {
       </section>
 
       {/* 고객가치 제안 */}
-      <section className="bg-lime-soft">
+      <section className="snap-section bg-lime-soft">
         <div className="container-x py-20 sm:py-28">
           <SectionHeading title="마이리프트가 바꾸는 여섯 가지" description="휠체어 사용자, 가족, 그리고 사회가 함께 얻는 가치입니다." />
-          <Reveal as="ol" className="mt-12 grid gap-px border border-ink bg-ink sm:grid-cols-2 lg:grid-cols-3" delay={100}>
+          <Reveal as="ol" stagger className="mt-12 grid gap-px border border-ink bg-ink sm:grid-cols-2 lg:grid-cols-3">
             {customerValues.map((v, i) => (
               <li key={v.title} className="bg-lime-soft p-6">
                 <span className="display text-3xl text-lime-deep">{String(i + 1).padStart(2, "0")}</span>
@@ -291,40 +296,41 @@ export default function ProductsPage() {
         </div>
       </section>
 
-      {/* 리모컨 */}
-      <section className="bg-white">
-        <div className="container-x grid gap-12 py-20 sm:py-28 lg:grid-cols-2 lg:items-center">
+      {/* 리모컨: 화면 가득 다크 구간 */}
+      <section className="snap-section relative isolate overflow-hidden bg-ink text-white">
+        <div className="container-x grid gap-12 py-20 sm:py-28 lg:min-h-[100svh] lg:grid-cols-[5fr_7fr] lg:items-center">
           <div>
             <SectionHeading
+              light
               label="리모컨"
               title="버튼 넷, 그중 하나면 충분합니다"
               description="셋팅 버튼으로 원하는 높이를 저장하면 이후에는 POWER 버튼만으로 작동합니다. POWER를 누르면 전원 ON과 동시에 UP, 한 번 더 누르면 DOWN 후 전원 OFF."
             />
-            <dl className="mt-10 grid grid-cols-2 gap-px border border-line bg-line">
+            <Reveal as="dl" stagger className="mt-10 grid grid-cols-2 gap-px border border-white/20 bg-white/20">
               {[
                 ["POWER", "전원 온/오프"],
                 ["UP", "휠체어를 들어올림"],
                 ["DOWN", "휠체어를 들어내림"],
                 ["SETTING", "원하는 높이 저장"],
               ].map(([k, v]) => (
-                <div key={k} className="bg-white p-5">
-                  <dt className="display text-2xl">{k}</dt>
-                  <dd className="mt-1 text-sm text-ink-soft">{v}</dd>
+                <div key={k} className="bg-ink p-5">
+                  <dt className="display text-2xl text-lime">{k}</dt>
+                  <dd className="mt-1 text-sm text-white/70">{v}</dd>
                 </div>
               ))}
-            </dl>
-            <p className="mt-5 text-sm text-ink-soft">현관 거울이나 신발장에 붙이는 홀더에 꽂은 채로 버튼만 눌러 사용. 100×50×12mm.</p>
+            </Reveal>
+            <p className="mt-5 text-sm text-white/60">현관 거울이나 신발장에 붙이는 홀더에 꽂은 채로 버튼만 눌러 사용. 100×50×12mm.</p>
           </div>
-          <div className="flex items-end justify-center gap-3 bg-paper px-6 pt-12 sm:gap-8">
-            <Image src="/images/product/remote-yellow.png" alt="기본형 리모컨 옐로우" width={384} height={757} className="h-44 w-auto sm:h-72" />
-            <Image src="/images/product/remote-blue-large.png" alt="기본형 리모컨 블루" width={562} height={1111} className="h-60 w-auto sm:h-96" />
-            <Image src="/images/product/remote-green.png" alt="기본형 리모컨 그린" width={383} height={760} className="h-44 w-auto sm:h-72" />
-          </div>
+          <Reveal stagger className="flex items-end justify-center gap-3 overflow-hidden sm:gap-6 lg:justify-end">
+            <Image src="/images/product/remote-yellow.png" alt="기본형 리모컨 옐로우" width={384} height={757} className="h-44 w-auto sm:h-72 lg:h-[42vh]" />
+            <Image src="/images/product/remote-blue-large.png" alt="기본형 리모컨 블루" width={562} height={1111} className="h-60 w-auto sm:h-96 lg:h-[58vh]" />
+            <Image src="/images/product/remote-green.png" alt="기본형 리모컨 그린" width={383} height={760} className="h-44 w-auto sm:h-72 lg:h-[42vh]" />
+          </Reveal>
         </div>
       </section>
 
       {/* MYLIFT 2 */}
-      <section className="bg-sky-soft">
+      <section className="snap-section bg-sky-soft">
         <div className="container-x py-20 sm:py-28">
           <div className="grid gap-12 lg:grid-cols-[5fr_7fr] lg:items-center">
             <div>
@@ -341,7 +347,7 @@ export default function ProductsPage() {
               <Image src="/images/product/app-phone.png" alt="MYLIFT 연동 앱 화면" width={336} height={750} className="h-52 w-auto sm:h-80" />
             </div>
           </div>
-          <div className="mt-14 grid gap-px border-t border-ink bg-line md:grid-cols-3">
+          <Reveal stagger className="mt-14 grid gap-px border-t border-ink bg-line md:grid-cols-3">
             {mylift2Features.map((f) => (
               <div key={f.title} className="bg-sky-soft py-6 md:pr-8">
                 <h3 className="text-lg font-extrabold">{f.title}</h3>
@@ -355,7 +361,7 @@ export default function ProductsPage() {
                 </ul>
               </div>
             ))}
-          </div>
+          </Reveal>
           <dl className="mt-8 grid gap-px border border-ink/15 bg-ink/15 text-sm sm:grid-cols-3">
             {[
               ["소모품 구독", "세척 소모품(롤브러시·헤파필터) 정기 배송"],
@@ -372,7 +378,7 @@ export default function ProductsPage() {
       </section>
 
       {/* 비교 */}
-      <section className="bg-white">
+      <section className="snap-section bg-white">
         <div className="container-x py-20 sm:py-28">
           <SectionHeading
             label="경쟁 비교"
@@ -409,7 +415,7 @@ export default function ProductsPage() {
       </section>
 
       {/* IP */}
-      <section className="bg-lime">
+      <section className="snap-section bg-lime">
         <div className="container-x grid gap-12 py-20 sm:py-28 lg:grid-cols-[5fr_7fr]">
           <div>
             <SectionHeading label="지식재산" title="특허·디자인·상표와 PCT 해외출원으로 세운 다층 진입장벽" />
@@ -419,7 +425,7 @@ export default function ProductsPage() {
               연관 IP 14건 (마이프렌드 11건 · 마이스포츠 3건): 특허등록 3건 / 특허출원 1건, 상표등록 5건 / 상표출원 2건, 디자인등록 3건
             </p>
           </div>
-          <ul className="grid gap-px border border-ink/30 bg-ink/30 sm:grid-cols-2">
+          <Reveal as="ul" stagger className="grid gap-px border border-ink/30 bg-ink/30 sm:grid-cols-2">
             {ipSummary.map((ip) => (
               <li key={ip.title} className="bg-lime p-6">
                 <p className="display text-4xl">{ip.count}</p>
@@ -427,7 +433,7 @@ export default function ProductsPage() {
                 <p className="mt-1 text-sm text-ink/75">{ip.desc}</p>
               </li>
             ))}
-          </ul>
+          </Reveal>
         </div>
       </section>
 

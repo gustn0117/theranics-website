@@ -37,7 +37,7 @@ export default function AboutPage() {
       />
 
       {/* 소셜 미션 */}
-      <section id="mission" className="bg-white">
+      <section id="mission" className="snap-section bg-white">
         <div className="container-x grid gap-14 py-20 sm:py-28 lg:grid-cols-[5fr_7fr]">
           <div>
             <SectionHeading
@@ -74,7 +74,7 @@ export default function AboutPage() {
       </section>
 
       {/* 회사 개요 */}
-      <section id="company" className="bg-paper">
+      <section id="company" className="snap-section bg-paper">
         <div className="container-x py-20 sm:py-28">
           <SectionHeading
             label="회사 개요"
@@ -91,7 +91,7 @@ export default function AboutPage() {
               ]}
             />
           </div>
-          <dl className="mt-10 grid gap-px bg-line md:grid-cols-3">
+          <Reveal as="dl" stagger className="mt-10 grid gap-px bg-line md:grid-cols-3">
             {[
               ["예비사회적기업", "고용노동부 · 일자리 제공형 (2023.12)"],
               ["소셜벤처기업", "중소벤처기업부 · 기술보증기금 판별 (2024.05)"],
@@ -102,12 +102,12 @@ export default function AboutPage() {
                 <dd className="mt-2 text-sm text-ink-soft">{d}</dd>
               </div>
             ))}
-          </dl>
+          </Reveal>
         </div>
       </section>
 
       {/* 시장과 확장 */}
-      <section id="market" className="bg-white">
+      <section id="market" className="snap-section bg-white">
         <div className="container-x py-20 sm:py-28">
           <SectionHeading
             title="고령화와 함께 커지는 시장, 국가가 이미 지불하는 수요"
@@ -125,7 +125,7 @@ export default function AboutPage() {
           <div className="mt-20 grid gap-12 lg:grid-cols-[7fr_5fr]">
             <div>
               <h3 className="display text-2xl sm:text-3xl">마이리프트 단품을 넘어 유니버설 제조기업으로</h3>
-              <ul className="mt-8 border-t border-ink">
+              <Reveal as="ul" stagger className="mt-8 border-t border-ink">
                 {productFamily.map((f) => (
                   <li key={f.en} className="grid grid-cols-[8.5rem_1fr] gap-4 border-b border-line py-4 sm:grid-cols-[10rem_1fr]">
                     <div>
@@ -135,11 +135,11 @@ export default function AboutPage() {
                     <p className="text-[15px] leading-[1.7] text-ink-soft">{f.desc}</p>
                   </li>
                 ))}
-              </ul>
+              </Reveal>
             </div>
             <div>
               <h3 className="display text-2xl sm:text-3xl">신발을 벗는 문화권부터 순차 진출</h3>
-              <ol className="mt-8 border-t border-ink">
+              <Reveal as="ol" stagger className="mt-8 border-t border-ink">
                 {globalSteps.map((g, i) => (
                   <li key={g.step} className="grid grid-cols-[3rem_1fr] gap-3 border-b border-line py-4">
                     <span className="display text-2xl text-lime-deep">{i === 0 ? "—" : String(i).padStart(2, "0")}</span>
@@ -149,7 +149,7 @@ export default function AboutPage() {
                     </div>
                   </li>
                 ))}
-              </ol>
+              </Reveal>
               <p className="mt-4 text-sm text-ink-soft">진출 방식: {globalHow}</p>
             </div>
           </div>
@@ -157,7 +157,7 @@ export default function AboutPage() {
       </section>
 
       {/* 경영진 */}
-      <section id="team" className="bg-paper">
+      <section id="team" className="snap-section bg-paper">
         <div className="container-x py-20 sm:py-28">
           <SectionHeading
             label="경영진"
@@ -188,7 +188,7 @@ export default function AboutPage() {
             </div>
           </article>
 
-          <div className="grid gap-px border-t border-ink bg-line md:grid-cols-2">
+          <Reveal stagger className="grid gap-px border-t border-ink bg-line md:grid-cols-2">
             {members.map((m) => (
               <article key={m.name} className="grid grid-cols-[112px_1fr] gap-6 bg-white py-8 pr-4 sm:grid-cols-[160px_1fr]">
                 <Image src={m.photo} alt={`${m.name} ${m.role}`} width={600} height={800} quality={90} className="aspect-[3/4] w-full object-cover" />
@@ -204,12 +204,12 @@ export default function AboutPage() {
                 </div>
               </article>
             ))}
-          </div>
+          </Reveal>
         </div>
       </section>
 
       {/* 주요 연혁 */}
-      <section id="history" className="bg-white">
+      <section id="history" className="snap-section bg-white">
         <div className="container-x py-20 sm:py-28">
           <SectionHeading label="주요 연혁" title="회사가 걸어온 길" description="2022년 사업의 만남에서 2026년 마이리프트 시제품 완성까지." />
           <div className="mt-14 border-t border-ink">
@@ -234,10 +234,10 @@ export default function AboutPage() {
       </section>
 
       {/* 인증 및 수상 */}
-      <section id="awards" className="bg-paper">
+      <section id="awards" className="snap-section bg-paper">
         <div className="container-x py-20 sm:py-28">
           <SectionHeading label="인증 및 수상" title="정부와 지자체가 검증한 사회적 기업" />
-          <Reveal as="ul" className="mt-12 grid grid-cols-2 gap-px border border-line bg-line sm:grid-cols-4 lg:grid-cols-7" delay={100}>
+          <Reveal as="ul" stagger className="mt-12 grid grid-cols-2 gap-px border border-line bg-line sm:grid-cols-4 lg:grid-cols-7">
             {certificates.map((c) => (
               <li key={c.title} className="bg-white p-4">
                 <div className="bg-paper p-3">
@@ -260,11 +260,11 @@ export default function AboutPage() {
       </section>
 
       {/* 대외 활동: 간격 없는 사진 타일 */}
-      <section id="activities" className="bg-ink text-white">
+      <section id="activities" className="snap-section bg-ink text-white">
         <div className="container-x py-20 sm:py-28">
           <SectionHeading light label="대외 활동" title="현장에서 시작한 문제, 현장과 함께 푸는 해법" description="장애인 협회, 지자체, 의회와 소통하며 제품의 출발점을 찾았습니다." />
         </div>
-        <ul className="grid grid-cols-2 lg:grid-cols-4">
+        <Reveal as="ul" stagger className="grid grid-cols-2 lg:grid-cols-4">
           {activities.map((a) => (
             <li key={a.title} className="relative aspect-[4/3] overflow-hidden">
               <Image src={a.image} alt={a.title} fill sizes="(min-width: 1024px) 25vw, 50vw" quality={90} className="object-cover" />
@@ -275,7 +275,7 @@ export default function AboutPage() {
               </div>
             </li>
           ))}
-        </ul>
+        </Reveal>
         <div className="container-x flex flex-wrap gap-3 py-14">
           <ButtonLink href="/products">MYLIFT 제품소개</ButtonLink>
           <ButtonLink href="/contact" variant="white">
