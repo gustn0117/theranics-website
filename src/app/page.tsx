@@ -59,7 +59,7 @@ export default function HomePage() {
       <section className="relative isolate overflow-hidden bg-paper">
         <div className="relative aspect-[4/3] w-full sm:aspect-[16/9] lg:hidden">
           <Image
-            src="/images/photo/wheel-change-hq.png"
+            src="/images/photo/wheel-change-hq.jpg"
             alt="MYLIFT 위에서 앉은 채 뒷바퀴를 교체하는 휠체어 사용자"
             fill
             sizes="100vw"
@@ -68,7 +68,7 @@ export default function HomePage() {
           />
         </div>
         <div className="absolute inset-0 hidden lg:block">
-          <Image src="/images/photo/wheel-change-hq.png" alt="" fill sizes="100vw" quality={90} className="object-cover object-[75%_50%]" />
+          <Image src="/images/photo/wheel-change-hq.jpg" alt="" fill sizes="100vw" quality={90} className="object-cover object-[75%_50%]" />
           <div aria-hidden className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/40 to-white/10" />
         </div>
         <div className="container-x relative py-16 sm:py-20 lg:py-40">

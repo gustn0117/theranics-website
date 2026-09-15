@@ -9,7 +9,7 @@ export const team = [
   {
     role: "CEO / 제조 총괄",
     name: "이호천",
-    photo: "/images/team/lee-hocheon-hq.png",
+    photo: "/images/team/lee-hocheon-hq.jpg",
     summary: "180여 개 제품디자인·설계·금형·제조 경력, 직접 제조 20여 종, 지식재산권 34건",
     bullets: [
       "서울과학기술대학교 제품설계금형공학과 졸업",
@@ -36,7 +36,7 @@ export const team = [
   {
     role: "CDO / 디자인 총괄",
     name: "엄재민",
-    photo: "/images/team/eom-jaemin-hq.png",
+    photo: "/images/team/eom-jaemin-hq.jpg",
     summary: "제품 디자인·3D 렌더링·제품 설계·3D 모델링, ATC·전산응용기계제도기능사·건축제도기능사",
     bullets: [
       "중앙대학교 디자인공예학과 석사",

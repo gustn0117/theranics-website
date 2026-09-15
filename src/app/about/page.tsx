@@ -21,7 +21,7 @@ export default function AboutPage() {
   return (
     <>
       <PhotoHero
-        image={{ src: "/images/photo/wheel-change-hq.png", alt: "MYLIFT 위에서 뒷바퀴를 교체하는 휠체어 사용자", position: "78% 50%" }}
+        image={{ src: "/images/photo/wheel-change-hq.jpg", alt: "MYLIFT 위에서 뒷바퀴를 교체하는 휠체어 사용자", position: "78% 50%" }}
         label="About us"
         title={
           <>

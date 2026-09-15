@@ -18,7 +18,7 @@ export default function ProductsPage() {
       {/* Hero: 사진 배경, 왼쪽 여백에 텍스트 */}
       <PhotoHero
         minH="lg:min-h-[100svh]"
-        image={{ src: "/images/photo/hero-doorway-hq.png", alt: "현관에서 MYLIFT 위에 올라 휠을 교체하는 휠체어 사용자", position: "72% 50%" }}
+        image={{ src: "/images/photo/hero-doorway-hq.jpg", alt: "현관에서 MYLIFT 위에 올라 휠을 교체하는 휠체어 사용자", position: "72% 50%" }}
         logo={<Image src="/images/logo/mylift.png" alt="MYLIFT 마이리프트" width={1033} height={640} className="mb-8 h-24 w-auto sm:h-28" preload />}
         label="휠체어 전동 보조장치"
         title={
@@ -40,7 +40,7 @@ export default function ProductsPage() {
 
       {/* 문제: 오염된 타일 사진 배경 + 사진 타일 4개 */}
       <section className="relative isolate overflow-hidden bg-ink text-white">
-        <Image src="/images/photo/tile-dirty-hq.png" alt="" fill sizes="100vw" quality={90} className="object-cover opacity-40" />
+        <Image src="/images/photo/tile-dirty-hq.jpg" alt="" fill sizes="100vw" quality={90} className="object-cover opacity-40" />
         <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-ink/60 via-ink/80 to-ink" />
         <div className="container-x relative py-20 sm:py-28">
           <SectionHeading
