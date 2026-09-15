@@ -17,9 +17,11 @@ type HeroVideoProps = {
   /** 하단 중앙 버튼. label을 비우면 글씨가 없는 빈 버튼이 된다. */
   button: { href: string; label?: string; ariaLabel: string };
   index: number;
+  /** 메인 전체 구간 수 (우측 하단 표기용) */
+  total?: number;
 };
 
-export function HeroVideo({ src, fallbackImage, label, title, description, button, index }: HeroVideoProps) {
+export function HeroVideo({ src, fallbackImage, label, title, description, button, index, total = 2 }: HeroVideoProps) {
   const [status, setStatus] = useState<"loading" | "ready" | "missing">("loading");
   const isEmptyButton = !button.label;
 
@@ -102,7 +104,7 @@ export function HeroVideo({ src, fallbackImage, label, title, description, butto
 
       <div className="absolute bottom-10 right-8 z-10 hidden items-center gap-3 text-xs font-semibold text-white/70 lg:flex">
         <span className="h-px w-10 bg-white/50" />
-        {index === 1 ? "01 / 02" : "02 / 02"}
+        {String(index).padStart(2, "0")} / {String(total).padStart(2, "0")}
       </div>
       <div className="absolute bottom-8 left-5 z-10 hidden flex-col items-center gap-2 text-[11px] font-semibold text-white/70 sm:left-10 lg:flex">
         <span>SCROLL</span>

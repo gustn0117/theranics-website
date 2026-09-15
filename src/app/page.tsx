@@ -1,9 +1,8 @@
 import Image from "next/image";
 import { HeroVideo } from "@/components/HeroVideo";
-import { ButtonLink, SectionHeading, StatRow } from "@/components/ui";
+import { HeroPanel, StatRow } from "@/components/ui";
 import { siteConfig } from "@/config/site";
 import { Reveal } from "@/components/Reveal";
-import { Parallax } from "@/components/Parallax";
 import { coreValues } from "@/data/about";
 
 
@@ -25,6 +24,7 @@ export default function HomePage() {
         }
         description="휠체어 휠을 쉽게 교체하여 자택 출입 시 20초 만에 안전과 청결을 해결하는 전동 리프트, MYLIFT."
         button={{ href: "/products", label: "MYLIFT 제품소개", ariaLabel: "MYLIFT 제품소개 페이지로 이동" }}
+        total={5}
       />
 
       {/* 2. 고용권 영상 영역 (글씨 없는 빈 버튼) */}
@@ -42,127 +42,104 @@ export default function HomePage() {
         }
         description="취약계층의 고용을 도와 적극적인 경제활동을 지원하는 것, (주)테라닉스의 소셜미션입니다."
         button={{ href: siteConfig.secondVideoButtonHref, ariaLabel: "다음 페이지로 이동" }}
+        total={5}
       />
 
-      {/* 3. 기업 소개: 사진 배경 + 여백에 텍스트 */}
-      <section className="snap-hero relative isolate flex min-h-[100svh] items-end overflow-hidden bg-paper lg:items-center">
-        <div className="absolute inset-0 overflow-hidden">
-          <Parallax>
-            <Image
-              src="/images/photo/wheel-change-hq.jpg"
-              alt="MYLIFT 위에서 앉은 채 뒷바퀴를 교체하는 휠체어 사용자"
-              fill
-              sizes="100vw"
-              quality={90}
-              className="kenburns object-cover object-[75%_35%] lg:object-[75%_50%]"
-            />
-          </Parallax>
-          <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-white via-white/85 to-white/5 lg:bg-gradient-to-r lg:from-white/95 lg:via-white/40 lg:to-white/10" />
-        </div>
-        <div className="container-x relative pb-16 pt-40 sm:pb-20 lg:py-40">
-          <Reveal className="max-w-xl">
-            <h2 className="display text-4xl sm:text-5xl lg:text-6xl">
-              국민의 건강과 행복,{" "}
-              <br className="hidden lg:inline" />
-              안전을 지킵니다
-            </h2>
-            <p className="mt-6 text-lg leading-[1.8] text-ink-soft">
-              예비사회적기업 (주)테라닉스는 교통약자의 이동을 도와 안전한 사회참여를 지원하고, 취약계층의 고용을
-              도와 적극적인 경제활동을 지원합니다.
-            </p>
-            <Reveal as="ul" stagger className="mt-10 border-t border-ink">
-              {coreValues.map((v) => (
-                <li key={v.title} className="grid grid-cols-[7rem_1fr] gap-4 border-b border-ink/20 py-5">
-                  <span className="display text-xl">{v.title}</span>
-                  <span className="text-[15px] leading-[1.75] text-ink-soft">{v.body}</span>
-                </li>
-              ))}
-            </Reveal>
-            <div className="mt-10 flex flex-wrap gap-3">
-              <ButtonLink href="/about">회사소개 보기</ButtonLink>
-              <ButtonLink href="/contact" variant="outline">
-                문의하기
-              </ButtonLink>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      {/* 3. 기업 소개: 히어로와 같은 문법 */}
+      <HeroPanel
+        index={3}
+        image={{ src: "/images/photo/wheel-change-hq.jpg", alt: "MYLIFT 위에서 앉은 채 뒷바퀴를 교체하는 휠체어 사용자", position: "70% 40%" }}
+        label="테라닉스"
+        title={
+          <>
+            국민의 건강과 행복,{" "}
+            <br className="hidden lg:inline" />
+            안전을 지킵니다
+          </>
+        }
+        description="예비사회적기업 (주)테라닉스는 교통약자의 이동을 도와 안전한 사회참여를 지원하고, 취약계층의 고용을 도와 적극적인 경제활동을 지원합니다."
+        button={{ href: "/about", label: "회사소개 보기" }}
+      >
+        <Reveal as="ul" stagger className="mt-8 grid gap-px border-t border-white/25 sm:grid-cols-3 sm:border-t-0 sm:bg-white/20">
+          {coreValues.map((v) => (
+            <li key={v.title} className="border-b border-white/25 py-4 sm:border-b-0 sm:bg-black/35 sm:p-5 sm:backdrop-blur-sm">
+              <p className="display text-xl text-lime">{v.title}</p>
+              <p className="mt-1.5 text-sm leading-[1.7] text-white/80">{v.body}</p>
+            </li>
+          ))}
+        </Reveal>
+      </HeroPanel>
 
       {/* 4. MYLIFT 하이라이트 */}
-      <section className="snap-section dots overflow-hidden bg-paper text-ink">
-        <div className="container-x grid items-center gap-10 py-20 lg:min-h-[100svh] lg:grid-cols-[5fr_7fr] lg:gap-12 lg:py-28">
-          <div>
-            <Reveal className="self-start">
-              <Image src="/images/logo/mylift.png" alt="MYLIFT 마이리프트" width={1033} height={640} className="h-32 w-auto sm:h-40 lg:h-48" />
-            </Reveal>
-            <SectionHeading
-              className="mt-10"
-              label="제품"
-              title={
-                <>
-                  옮겨타지 않고, 앉은 채로{" "}
-                  <br className="hidden lg:inline" />
-                  20초 만에 실내 진입
-                </>
-              }
-              description="시저형 리프트가 뒷바퀴만 살짝 들어올리면 퀵릴리즈 휠을 원터치로 분리해 실내용 휠로 교체합니다. 낙상 위험과 실내 오염을 한 번에 해결하는 세계 최초 휠 교체용 전동 리프트입니다."
-            />
-            <Reveal className="mt-10 max-w-lg" delay={120}>
-              <StatRow
-                cols={2}
-                items={[
-                  { value: "20초", label: "휠 교체 시간" },
-                  { value: "255kg", label: "최대 하중" },
-                  { value: "10건", label: "마이리프트 지식재산" },
-                  { value: "2026.10", label: "시제품 완성" },
-                ]}
-              />
-            </Reveal>
-            <Reveal className="mt-10" delay={200}>
-              <ButtonLink href="/products" variant="dark">제품 자세히 보기</ButtonLink>
-            </Reveal>
+      <HeroPanel
+        index={4}
+        label="제품"
+        title={
+          <>
+            옮겨타지 않고, 앉은 채로{" "}
+            <br className="hidden lg:inline" />
+            20초 만에 실내 진입
+          </>
+        }
+        description="시저형 리프트가 뒷바퀴만 살짝 들어올리면 퀵릴리즈 휠을 원터치로 분리해 실내용 휠로 교체합니다. 세계 최초 휠 교체용 전동 리프트입니다."
+        button={{ href: "/products", label: "제품 자세히 보기" }}
+        logo={
+          <div className="mb-6 inline-block bg-white px-5 py-3">
+            <Image src="/images/logo/mylift-en.png" alt="MYLIFT" width={1021} height={497} className="h-12 w-auto sm:h-16" />
           </div>
-          <Reveal className="mx-auto w-full lg:-mr-[12%] lg:w-[128%] lg:max-w-none xl:-mr-[18%] xl:w-[135%]" delay={150}>
+        }
+        aside={
+          <Reveal className="pointer-events-none absolute inset-x-0 top-10 h-[52svh] opacity-30 lg:inset-y-0 lg:left-auto lg:right-0 lg:h-full lg:w-[58%] lg:opacity-100" delay={150}>
             <Image
               src="/images/product/mylift-hero.png"
               alt="MYLIFT 본체, 경사판, 리모컨"
-              width={1920}
-              height={1262}
-              sizes="(min-width: 1024px) 70vw, 100vw"
+              fill
+              sizes="(min-width: 1024px) 58vw, 100vw"
               quality={90}
-              className="float-slow h-auto w-full"
+              className="float-slow object-contain object-center p-4 lg:object-[80%_45%] lg:p-10"
             />
           </Reveal>
-        </div>
-      </section>
-
-      {/* 5. 문의 CTA */}
-      <section className="snap-section relative overflow-hidden bg-lime">
-        <span aria-hidden className="display pointer-events-none absolute -bottom-12 -left-2 select-none text-[11rem] leading-none text-ink/[0.06] lg:text-[18rem]">
-          20초
-        </span>
-        <Reveal className="container-x relative grid gap-8 py-20 sm:py-28 lg:grid-cols-[1fr_auto] lg:items-end">
-          <div>
-            <h2 className="display text-3xl sm:text-5xl lg:text-6xl">
-              MYLIFT 도입·협력·시범사업,{" "}
-              <br className="hidden lg:inline" />
-              지금 이야기해 주세요
-            </h2>
-            <p className="mt-4 text-lg text-ink/75">장애인 협회, 지자체, 유통·제조 파트너와 함께 안전한 이동을 만듭니다.</p>
-          </div>
-          <div className="flex flex-wrap gap-3">
-            <ButtonLink href="/contact" variant="dark">
-              문의하기
-            </ButtonLink>
-            <a
-              href={`mailto:${siteConfig.contact.email}`}
-              className="inline-flex h-13 items-center border border-ink px-7 text-[15px] font-bold hover:bg-ink hover:text-white"
-            >
-              {siteConfig.contact.email}
-            </a>
-          </div>
+        }
+      >
+        <Reveal className="mt-8 max-w-md" delay={120}>
+          <StatRow
+            light
+            cols={2}
+            items={[
+              { value: "20초", label: "휠 교체 시간" },
+              { value: "255kg", label: "최대 하중" },
+              { value: "10건", label: "지식재산" },
+              { value: "2026.10", label: "시제품 완성" },
+            ]}
+          />
         </Reveal>
-      </section>
+      </HeroPanel>
+
+      {/* 5. 문의 */}
+      <HeroPanel
+        index={5}
+        image={{ src: "/images/activity/act-104-hq.jpg", alt: "재도전 마인드업 힐링캠프 단체 사진", position: "50% 30%" }}
+        label="문의"
+        title={
+          <>
+            MYLIFT 도입·협력·시범사업,{" "}
+            <br className="hidden lg:inline" />
+            지금 이야기해 주세요
+          </>
+        }
+        description="장애인 협회, 지자체, 유통·제조 파트너와 함께 안전한 이동을 만듭니다."
+        button={{ href: "/contact", label: "문의하기" }}
+      >
+        <Reveal className="mt-8 flex flex-wrap gap-x-8 gap-y-3 text-sm text-white/80" delay={120}>
+          <a href={`mailto:${siteConfig.contact.email}`} className="border-b border-white/40 pb-0.5 font-bold text-white hover:border-lime hover:text-lime">
+            {siteConfig.contact.email}
+          </a>
+          <a href={`tel:${siteConfig.contact.tel}`} className="border-b border-white/40 pb-0.5 font-bold text-white hover:border-lime hover:text-lime">
+            {siteConfig.contact.tel}
+          </a>
+          <span>{siteConfig.contact.address}</span>
+        </Reveal>
+      </HeroPanel>
     </>
   );
 }

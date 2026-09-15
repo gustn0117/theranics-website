@@ -189,3 +189,75 @@ export function StatRow({
     </dl>
   );
 }
+
+
+/**
+ * 메인 영상 구간(HeroVideo)과 같은 문법의 화면 가득 패널.
+ * 어두운 배경(사진 또는 잉크) + 라임 세로 바 옆 흰 텍스트 + 하단 중앙 버튼 + 우측 하단 구간 번호.
+ */
+export function HeroPanel({
+  index,
+  total = 5,
+  image,
+  label,
+  title,
+  description,
+  button,
+  logo,
+  aside,
+  children,
+}: {
+  index: number;
+  total?: number;
+  image?: { src: string; alt: string; position?: string };
+  label: string;
+  title: React.ReactNode;
+  description?: string;
+  button: { href: string; label: string };
+  logo?: React.ReactNode;
+  /** 배경 위에 얹는 별도 요소 (제품 렌더 등) */
+  aside?: React.ReactNode;
+  children?: React.ReactNode;
+}) {
+  return (
+    <section className="snap-hero relative isolate flex min-h-[100svh] w-full items-end overflow-hidden bg-ink text-white">
+      {image && (
+        <div className="absolute inset-0 -z-20 overflow-hidden">
+          <Parallax>
+            <Image src={image.src} alt={image.alt} fill sizes="100vw" quality={90} className="kenburns object-cover" style={{ objectPosition: image.position ?? "60% 40%" }} />
+          </Parallax>
+        </div>
+      )}
+      {!image && (
+        <div aria-hidden className="absolute inset-0 -z-20 bg-[radial-gradient(ellipse_at_75%_45%,rgba(153,212,30,0.18),transparent_55%)]" />
+      )}
+      <div aria-hidden className="absolute inset-0 -z-[5] bg-gradient-to-t from-black/85 via-black/45 to-black/35" />
+      {aside}
+
+      <div className="container-x relative z-10 w-full pb-32 pt-28 sm:pb-36 lg:pt-32">
+        <div className="max-w-3xl border-l-4 border-lime pl-6 sm:pl-8">
+          {logo && <Reveal>{logo}</Reveal>}
+          <Reveal>
+            <span className="block text-sm font-semibold text-white/75">{label}</span>
+            <h2 className="display mt-4 text-[2rem] sm:text-5xl lg:text-6xl">{title}</h2>
+            {description && <p className="mt-6 max-w-2xl text-base leading-[1.8] text-white/85 sm:text-lg">{description}</p>}
+          </Reveal>
+          {children}
+        </div>
+      </div>
+
+      <div className="absolute inset-x-0 bottom-8 z-10 flex justify-center sm:bottom-10">
+        <Link href={button.href} className="inline-flex h-14 items-center gap-4 bg-lime px-8 text-base font-bold text-ink transition-colors hover:bg-white">
+          <span>{button.label}</span>
+          <svg aria-hidden width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+            <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="square" />
+          </svg>
+        </Link>
+      </div>
+      <div className="absolute bottom-10 right-8 z-10 hidden items-center gap-3 text-xs font-semibold text-white/70 lg:flex">
+        <span className="h-px w-10 bg-white/50" />
+        {String(index).padStart(2, "0")} / {String(total).padStart(2, "0")}
+      </div>
+    </section>
+  );
+}
