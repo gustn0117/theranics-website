@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { ButtonLink, PhotoHero, SectionHeading } from "@/components/ui";
+import { ButtonLink, SectionHeading } from "@/components/ui";
 import { Reveal } from "@/components/Reveal";
 import { siteConfig } from "@/config/site";
 
@@ -15,27 +15,8 @@ export default function ContactPage() {
   const mapQuery = encodeURIComponent("경기도 의정부시 배꽃길 63");
   return (
     <>
-      <PhotoHero
-        tone="dark"
-        minH="lg:min-h-[100svh]"
-        image={{ src: "/images/photo/hero-doorway-hq.jpg", alt: "현관에서 MYLIFT 위에 올라 휠을 교체하는 휠체어 사용자", position: "70% 50%" }}
-        title={
-          <>
-            함께 만드는{" "}
-            <br className="hidden lg:inline" />
-            안전한 이동
-          </>
-        }
-        description="MYLIFT 도입, 시범사업, 협력 및 제안은 언제든 연락 주세요. 방문 설치와 친절한 설명으로 응대합니다."
-      >
-        <ButtonLink href={`mailto:${c.email}?subject=${encodeURIComponent("[홈페이지 문의] MYLIFT")}`}>이메일 문의</ButtonLink>
-        <ButtonLink href={`tel:${c.tel}`} variant="white">
-          {c.tel}
-        </ButtonLink>
-      </PhotoHero>
-
       <section className="snap-section bg-white">
-        <div className="container-x grid gap-14 py-20 sm:py-28 lg:min-h-[100svh] lg:grid-cols-[5fr_7fr] lg:items-center">
+        <div className="container-x grid gap-14 pt-28 pb-20 sm:pt-32 sm:pb-28 lg:min-h-[100svh] lg:grid-cols-[5fr_7fr] lg:items-center lg:pt-24">
           <div>
             <SectionHeading label="회사 정보" title="연락처" />
             <Reveal as="dl" stagger className="mt-8 border-t border-ink">
