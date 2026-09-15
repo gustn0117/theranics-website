@@ -21,7 +21,7 @@ export default function ContactPage() {
         image={{ src: "/images/photo/hero-doorway-hq.jpg", alt: "현관에서 MYLIFT 위에 올라 휠을 교체하는 휠체어 사용자", position: "70% 50%" }}
         title={
           <>
-            함께 만드는
+            함께 만드는{" "}
             <br className="hidden lg:inline" />
             안전한 이동
           </>

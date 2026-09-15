@@ -26,7 +26,7 @@ export default function AboutPage() {
         label="About us"
         title={
           <>
-            국민 모두에게 보다
+            국민 모두에게 보다{" "}
             <br className="hidden lg:inline" />
             안전하고 풍요로운 삶을
           </>
@@ -43,7 +43,7 @@ export default function AboutPage() {
               label="소셜 미션"
               title={
                 <>
-                  교통약자의 이동과
+                  교통약자의 이동과{" "}
                   <br className="hidden lg:inline" />
                   취약계층의 고용을 돕습니다
                 </>

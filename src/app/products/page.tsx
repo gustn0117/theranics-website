@@ -26,7 +26,7 @@ export default function ProductsPage() {
         label="휠체어 전동 보조장치"
         title={
           <>
-            휠을 바꾸면, 집에
+            휠을 바꾸면, 집에{" "}
             <br className="hidden lg:inline" />
             들어가는 데 20초면 됩니다
           </>

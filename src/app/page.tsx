@@ -31,7 +31,7 @@ export default function HomePage() {
         label="이동권"
         title={
           <>
-            누구나 두려움 없이
+            누구나 두려움 없이{" "}
             <br className="hidden lg:inline" />
             나서고, 돌아오는 일상
           </>
@@ -48,7 +48,7 @@ export default function HomePage() {
         label="고용권"
         title={
           <>
-            사회적 약자가
+            사회적 약자가{" "}
             <br className="hidden lg:inline" />
             함께 성장하는 일터
           </>
@@ -75,7 +75,7 @@ export default function HomePage() {
         <div className="container-x relative pb-16 pt-40 sm:pb-20 lg:py-40">
           <Reveal className="max-w-xl">
             <h2 className="display text-4xl sm:text-5xl lg:text-6xl">
-              국민의 건강과 행복,
+              국민의 건강과 행복,{" "}
               <br className="hidden lg:inline" />
               안전을 지킵니다
             </h2>
@@ -102,18 +102,18 @@ export default function HomePage() {
       </section>
 
       {/* 4. MYLIFT 하이라이트 */}
-      <section className="snap-section dots bg-paper text-ink">
-        <div className="container-x grid items-center gap-10 py-20 lg:min-h-[100svh] lg:grid-cols-[6fr_6fr] lg:gap-16 lg:py-28">
+      <section className="snap-section dots overflow-hidden bg-paper text-ink">
+        <div className="container-x grid items-center gap-10 py-20 lg:min-h-[100svh] lg:grid-cols-[5fr_7fr] lg:gap-12 lg:py-28">
           <div>
             <Reveal className="self-start">
-              <Image src="/images/logo/mylift.png" alt="MYLIFT 마이리프트" width={1033} height={640} className="h-20 w-auto sm:h-24" />
+              <Image src="/images/logo/mylift.png" alt="MYLIFT 마이리프트" width={1033} height={640} className="h-32 w-auto sm:h-40 lg:h-48" />
             </Reveal>
             <SectionHeading
               className="mt-10"
               label="제품"
               title={
                 <>
-                  옮겨타지 않고, 앉은 채로
+                  옮겨타지 않고, 앉은 채로{" "}
                   <br className="hidden lg:inline" />
                   20초 만에 실내 진입
                 </>
@@ -135,13 +135,14 @@ export default function HomePage() {
               <ButtonLink href="/products" variant="dark">제품 자세히 보기</ButtonLink>
             </Reveal>
           </div>
-          <Reveal className="mx-auto w-full max-w-[640px] lg:max-w-none" delay={150}>
+          <Reveal className="mx-auto w-full lg:-mr-[12%] lg:w-[128%] lg:max-w-none xl:-mr-[18%] xl:w-[135%]" delay={150}>
             <Image
               src="/images/product/mylift-hero.png"
               alt="MYLIFT 본체, 경사판, 리모컨"
               width={1920}
               height={1262}
-              sizes="(min-width: 1024px) 45vw, 100vw"
+              sizes="(min-width: 1024px) 70vw, 100vw"
+              quality={90}
               className="float-slow h-auto w-full"
             />
           </Reveal>
@@ -156,7 +157,7 @@ export default function HomePage() {
         <Reveal className="container-x relative grid gap-8 py-20 sm:py-28 lg:grid-cols-[1fr_auto] lg:items-end">
           <div>
             <h2 className="display text-3xl sm:text-5xl lg:text-6xl">
-              MYLIFT 도입·협력·시범사업,
+              MYLIFT 도입·협력·시범사업,{" "}
               <br className="hidden lg:inline" />
               지금 이야기해 주세요
             </h2>
