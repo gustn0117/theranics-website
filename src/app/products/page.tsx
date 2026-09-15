@@ -25,11 +25,9 @@ export default function ProductsPage() {
         label="휠체어 전동 보조장치"
         title={
           <>
-            휠을 바꾸면,
-            <br />
-            집에 들어가는 데
-            <br />
-            20초면 됩니다
+            휠을 바꾸면, 집에
+            <br className="hidden lg:inline" />
+            들어가는 데 20초면 됩니다
           </>
         }
         description="휠체어 휠을 쉽게 교체하여 자택 출입 시 20초 만에 안전과 청결을 해결하는 세계 최초 휠 교체용 전동 리프트."
@@ -52,7 +50,7 @@ export default function ProductsPage() {
           <SectionHeading
             light
             label="사업 배경"
-            title="바퀴에 묻은 오염물에서 시작되는 사회적 비용"
+            title={<>바퀴에 묻은 오염물에서<br className="hidden lg:inline" /> 시작되는 사회적 비용</>}
             description="휠체어 사용자들은 귀가 시 바닥생활과 집안 오염이 싫어서 2개의 휠체어를 사용합니다. 옮겨타는 순간이 곧 낙상 발생점입니다."
           />
           <Reveal as="ul" stagger className="mt-14 grid gap-px bg-white/15 sm:grid-cols-2 lg:grid-cols-4">
@@ -155,7 +153,7 @@ export default function ProductsPage() {
             />
           </Reveal>
           <div className="container-x flex flex-col justify-center py-20 lg:max-w-none lg:py-28 lg:pl-0">
-            <SectionHeading label="핵심 역량" title="2,500N 액추에이터로 255kg까지 들어올리는 시저형 리프트" />
+            <SectionHeading size="sm" label="핵심 역량" title={<>2,500N 액추에이터로 255kg까지<br className="hidden lg:inline" /> 들어올리는 시저형 리프트</>} />
             <Reveal as="dl" stagger className="mt-10 grid gap-px border border-line bg-line sm:grid-cols-2">
               {features.map((f) => (
                 <div key={f.title} className="bg-white p-6">
@@ -303,7 +301,7 @@ export default function ProductsPage() {
             <SectionHeading
               light
               label="리모컨"
-              title="버튼 넷, 그중 하나면 충분합니다"
+              title={<>버튼 넷,<br className="hidden lg:inline" /> 그중 하나면 충분합니다</>}
               description="셋팅 버튼으로 원하는 높이를 저장하면 이후에는 POWER 버튼만으로 작동합니다. POWER를 누르면 전원 ON과 동시에 UP, 한 번 더 누르면 DOWN 후 전원 OFF."
             />
             <Reveal as="dl" stagger className="mt-10 grid grid-cols-2 gap-px border border-white/20 bg-white/20">
@@ -382,7 +380,7 @@ export default function ProductsPage() {
         <div className="container-x py-20 sm:py-28">
           <SectionHeading
             label="경쟁 비교"
-            title="안전과 청결을 동시에 만족하는 유일한 포지셔닝"
+            title={<>안전과 청결을 동시에 만족하는<br className="hidden lg:inline" /> 유일한 포지셔닝</>}
             description="직접 경쟁사인 휠크린은 수입 중지, 휠스터킴은 단종되었습니다. 마이리프트는 낙상(안전)과 오염(청결)을 동시에 해결합니다."
           />
           <div className="mt-12 overflow-x-auto border border-ink">
@@ -418,7 +416,7 @@ export default function ProductsPage() {
       <section className="snap-section bg-lime">
         <div className="container-x grid gap-12 py-20 sm:py-28 lg:grid-cols-[5fr_7fr]">
           <div>
-            <SectionHeading label="지식재산" title="특허·디자인·상표와 PCT 해외출원으로 세운 다층 진입장벽" />
+            <SectionHeading size="sm" label="지식재산" title={<>특허·디자인·상표와 PCT로<br className="hidden lg:inline" /> 세운 다층 진입장벽</>} />
             <p className="display mt-10 text-7xl sm:text-8xl">10건</p>
             <p className="mt-3 text-sm font-semibold text-ink/75">마이리프트 IP: 특허출원 3건 · PCT출원 1건 · 디자인출원 2건 · 국내 상표출원 2건 · 해외 상표출원 2건</p>
             <p className="mt-5 border-t border-ink/30 pt-4 text-sm text-ink/75">

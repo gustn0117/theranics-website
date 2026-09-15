@@ -67,7 +67,7 @@ export function HeroVideo({ src, fallbackImage, label, title, description, butto
       <div className="container-x relative z-10 w-full pb-32 pt-32 sm:pb-36">
         <div className="max-w-3xl border-l-4 border-lime pl-6 sm:pl-8">
           <span className="block text-sm font-semibold text-white/75 animate-fade-up">{label}</span>
-          <h1 id={`hero-${index}-title`} className="display mt-4 text-[2.4rem] sm:text-6xl lg:text-7xl animate-fade-up [animation-delay:140ms]">
+          <h1 id={`hero-${index}-title`} className="display mt-4 text-[2rem] sm:text-5xl lg:text-6xl xl:text-7xl animate-fade-up [animation-delay:140ms]">
             {title}
           </h1>
           {description && (

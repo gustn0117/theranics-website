@@ -33,7 +33,7 @@ export default function HomePage() {
         title={
           <>
             누구나 두려움 없이
-            <br />
+            <br className="hidden lg:inline" />
             나서고, 돌아오는 일상
           </>
         }
@@ -50,7 +50,7 @@ export default function HomePage() {
         title={
           <>
             사회적 약자가
-            <br />
+            <br className="hidden lg:inline" />
             함께 성장하는 일터
           </>
         }
@@ -76,9 +76,9 @@ export default function HomePage() {
         <div className="container-x relative pb-16 pt-40 sm:pb-20 lg:py-40">
           <Reveal className="max-w-xl">
             <h2 className="display text-4xl sm:text-5xl lg:text-6xl">
-              국민의 건강·행복·
-              <br />
-              안전지킴이
+              국민의 건강과 행복,
+              <br className="hidden lg:inline" />
+              안전을 지킵니다
             </h2>
             <p className="mt-6 text-lg leading-[1.8] text-ink-soft">
               예비사회적기업 (주)테라닉스는 교통약자의 이동을 도와 안전한 사회참여를 지원하고, 취약계층의 고용을
@@ -116,7 +116,7 @@ export default function HomePage() {
               title={
                 <>
                   옮겨타지 않고, 앉은 채로
-                  <br />
+                  <br className="hidden lg:inline" />
                   20초 만에 실내 진입
                 </>
               }
@@ -155,7 +155,7 @@ export default function HomePage() {
           <div>
             <h2 className="display text-3xl sm:text-5xl">
               MYLIFT 도입·협력·시범사업,
-              <br />
+              <br className="hidden lg:inline" />
               지금 이야기해 주세요
             </h2>
             <p className="mt-4 text-lg text-ink/75">장애인 협회, 지자체, 유통·제조 파트너와 함께 안전한 이동을 만듭니다.</p>

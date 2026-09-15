@@ -17,14 +17,14 @@ export function SectionHeading({
   description?: React.ReactNode;
   className?: string;
   light?: boolean;
-  size?: "md" | "lg";
+  size?: "sm" | "md" | "lg";
 }) {
   return (
     <Reveal className={cn("max-w-3xl", className)}>
       <h2
         className={cn(
           "display mt-4",
-          size === "lg" ? "text-4xl sm:text-5xl lg:text-6xl" : "text-3xl sm:text-4xl lg:text-5xl",
+          size === "lg" ? "text-4xl sm:text-5xl lg:text-6xl" : size === "sm" ? "text-2xl sm:text-3xl lg:text-4xl" : "text-3xl sm:text-4xl lg:text-5xl",
           light ? "text-white" : "text-ink",
         )}
       >
@@ -128,9 +128,9 @@ export function PhotoHero({
         />
       </div>
       <div className="container-x relative pb-16 pt-40 sm:pb-20 lg:py-40">
-        <div className="max-w-2xl">
+        <div className="max-w-3xl">
           {logo && <div className="animate-fade-up">{logo}</div>}
-          <h1 className="display text-[2.5rem] sm:text-6xl lg:text-7xl animate-fade-up [animation-delay:120ms]">{title}</h1>
+          <h1 className="display text-[2rem] sm:text-5xl lg:text-6xl xl:text-[4.25rem] animate-fade-up [animation-delay:120ms]">{title}</h1>
           {description && (
             <p className={cn("mt-7 max-w-xl text-lg leading-[1.8] sm:text-xl animate-fade-up [animation-delay:260ms]", dark ? "text-white/85" : "text-ink-soft")}>
               {description}

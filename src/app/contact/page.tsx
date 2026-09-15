@@ -22,7 +22,7 @@ export default function ContactPage() {
         title={
           <>
             함께 만드는
-            <br />
+            <br className="hidden lg:inline" />
             안전한 이동
           </>
         }

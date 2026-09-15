@@ -26,11 +26,9 @@ export default function AboutPage() {
         label="About us"
         title={
           <>
-            국민 모두에게
-            <br />
-            보다 안전하고
-            <br />
-            풍요로운 삶을
+            국민 모두에게 보다
+            <br className="hidden lg:inline" />
+            안전하고 풍요로운 삶을
           </>
         }
         description="예비사회적기업 (주)테라닉스가 ESG와 함께 합니다. 사회적 약자의 안전구현을 위한 제품과 서비스를 개발하고 제공합니다."
@@ -41,14 +39,13 @@ export default function AboutPage() {
         <div className="container-x grid gap-14 py-20 sm:py-28 lg:grid-cols-[5fr_7fr]">
           <div>
             <SectionHeading
+              size="sm"
               label="소셜 미션"
               title={
                 <>
                   교통약자의 이동과
-                  <br />
-                  취약계층의 고용을
-                  <br />
-                  돕습니다
+                  <br className="hidden lg:inline" />
+                  취약계층의 고용을 돕습니다
                 </>
               }
             />
@@ -78,7 +75,7 @@ export default function AboutPage() {
         <div className="container-x py-20 sm:py-28">
           <SectionHeading
             label="회사 개요"
-            title="제품 200여 개와 지식재산 34건을 만든 제조 전문 기업"
+            title={<>제품 200여 개와 지식재산 34건을 만든<br className="hidden lg:inline" /> 제조 전문 기업</>}
             description="2023년 8월 경기도 의정부시 지식산업센터에서 법인을 설립했습니다. 장애인 이동·돌봄 플랫폼 ‘마이프렌드’에서 출발해 세계 최초 휠 교체용 전동 리프트 ‘마이리프트’ 제조로 피보팅했습니다."
           />
           <div className="mt-12">
@@ -110,7 +107,7 @@ export default function AboutPage() {
       <section id="market" className="snap-section bg-white">
         <div className="container-x py-20 sm:py-28">
           <SectionHeading
-            title="고령화와 함께 커지는 시장, 국가가 이미 지불하는 수요"
+            title={<>고령화와 함께 커지는 시장,<br className="hidden lg:inline" /> 국가가 이미 지불하는 수요</>}
             description="협회 회원 기반의 조직화된 수요와 건강보험공단 급여 제도 위에서 마이리프트를 시작합니다."
           />
           <div className="mt-12">
@@ -262,7 +259,7 @@ export default function AboutPage() {
       {/* 대외 활동: 간격 없는 사진 타일 */}
       <section id="activities" className="snap-section bg-ink text-white">
         <div className="container-x py-20 sm:py-28">
-          <SectionHeading light label="대외 활동" title="현장에서 시작한 문제, 현장과 함께 푸는 해법" description="장애인 협회, 지자체, 의회와 소통하며 제품의 출발점을 찾았습니다." />
+          <SectionHeading light label="대외 활동" title={<>현장에서 시작한 문제,<br className="hidden lg:inline" /> 현장과 함께 푸는 해법</>} description="장애인 협회, 지자체, 의회와 소통하며 제품의 출발점을 찾았습니다." />
         </div>
         <Reveal as="ul" stagger className="grid grid-cols-2 lg:grid-cols-4">
           {activities.map((a) => (

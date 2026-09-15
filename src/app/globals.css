@@ -279,6 +279,7 @@ body {
 }
 
 .display {
+  text-wrap: balance;
   font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 1.08;
