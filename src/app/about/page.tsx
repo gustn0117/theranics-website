@@ -3,6 +3,7 @@ import Image from "next/image";
 import { ButtonLink, PhotoHero, SectionHeading, StatRow } from "@/components/ui";
 import { Reveal } from "@/components/Reveal";
 import { PhotoSlider } from "@/components/PhotoSlider";
+import { CertGallery } from "@/components/CertGallery";
 import {
   activities,
   certificates,
@@ -279,18 +280,7 @@ export default function AboutPage() {
       <section id="awards" className="screen bg-paper">
         <div className="container-x py-16 lg:py-12">
           <SectionHeading size="sm" title="정부와 지자체가 검증한 사회적 기업" />
-          <Reveal as="ul" stagger className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-7 lg:gap-3">
-            {certificates.map((c) => (
-              <li key={c.title}>
-                <div className="zoom-img border border-line bg-white p-2 lg:p-3">
-                  <Image src={c.image} alt={`${c.year} ${c.title} ${c.org}`} width={640} height={900} className="aspect-[3/4] w-full object-cover object-top" />
-                </div>
-                <p className="mt-3 text-xs font-bold text-lime-deep">{c.year}</p>
-                <p className="mt-0.5 text-sm font-bold leading-snug">{c.title}</p>
-                <p className="mt-0.5 text-xs text-ink-soft">{c.org}</p>
-              </li>
-            ))}
-          </Reveal>
+          <CertGallery items={certificates} />
         </div>
       </section>
 
