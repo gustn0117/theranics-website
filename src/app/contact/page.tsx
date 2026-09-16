@@ -16,7 +16,7 @@ export default function ContactPage() {
   return (
     <>
       <section className="screen bg-white">
-        <div className="container-x grid gap-14 pt-28 pb-20 sm:pt-32 sm:pb-28 lg:grid-cols-[5fr_7fr] lg:items-center lg:py-12">
+        <div className="container-x grid gap-14 pt-32 pb-20 sm:pt-36 sm:pb-28 lg:grid-cols-[5fr_7fr] lg:items-center lg:py-12">
           <div>
             <SectionHeading label="회사 정보" title="연락처" />
             <Reveal as="dl" stagger className="mt-8 border-t border-ink">

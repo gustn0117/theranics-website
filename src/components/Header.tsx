@@ -50,7 +50,7 @@ export function Header() {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-colors duration-500",
+        "fixed inset-x-0 top-0 z-50 pt-2 transition-colors duration-500 sm:pt-3",
         !overVideo || open
           ? "border-b border-line bg-white/95 backdrop-blur-md"
           : showLightSlide

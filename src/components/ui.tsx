@@ -248,7 +248,7 @@ export function HeroPanel({
       {!light && <div aria-hidden className="absolute inset-0 -z-[5] bg-gradient-to-t from-black/85 via-black/45 to-black/35" />}
       {aside}
 
-      <div className="container-x relative z-10 w-full pb-24 pt-16 sm:pb-28 sm:pt-20">
+      <div className="container-x relative z-10 w-full pb-24 pt-[4.5rem] sm:pb-28 sm:pt-[5.75rem]">
         <div className="max-w-3xl border-l-4 border-lime pl-5 sm:pl-8">
           {logo && <Reveal>{logo}</Reveal>}
           <Reveal>
