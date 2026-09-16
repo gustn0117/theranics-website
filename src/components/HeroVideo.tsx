@@ -71,7 +71,7 @@ export function HeroVideo({ src, fallbackImage, label, title, description, butto
             {title}
           </h1>
           {description && (
-            <p className="mt-6 max-w-2xl text-base leading-[1.8] text-white/85 sm:text-lg animate-fade-up [animation-delay:280ms]">{description}</p>
+            <p className="mt-6 max-w-2xl text-base leading-[1.8] text-white/85 sm:text-lg xl:max-w-none xl:whitespace-nowrap animate-fade-up [animation-delay:280ms]">{description}</p>
           )}
         </div>
       </div>

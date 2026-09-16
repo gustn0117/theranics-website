@@ -96,9 +96,9 @@ export function MainSlider({ slides, labels }: { slides: React.ReactNode[]; labe
         type="button"
         onClick={() => go(active - 1)}
         aria-label="이전 화면"
-        className="group absolute bottom-8 left-4 z-20 flex h-12 w-12 items-center justify-center border border-white/50 bg-black/30 text-white backdrop-blur-sm transition-colors hover:border-lime hover:bg-lime hover:text-ink sm:bottom-10 sm:left-8 lg:bottom-auto lg:left-6 lg:top-1/2 lg:h-14 lg:w-14 lg:-translate-y-1/2"
+        className="absolute bottom-7 left-3 z-20 p-3 text-white/80 drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] transition hover:text-lime sm:bottom-9 sm:left-6 lg:bottom-auto lg:left-4 lg:top-1/2 lg:-translate-y-1/2"
       >
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden>
+        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
           <path d="M15 5l-7 7 7 7" strokeLinecap="square" />
         </svg>
       </button>
@@ -106,9 +106,9 @@ export function MainSlider({ slides, labels }: { slides: React.ReactNode[]; labe
         type="button"
         onClick={() => go(active + 1)}
         aria-label="다음 화면"
-        className="group absolute bottom-8 right-4 z-20 flex h-12 w-12 items-center justify-center border border-white/50 bg-black/30 text-white backdrop-blur-sm transition-colors hover:border-lime hover:bg-lime hover:text-ink sm:bottom-10 sm:right-8 lg:bottom-auto lg:right-6 lg:top-1/2 lg:h-14 lg:w-14 lg:-translate-y-1/2"
+        className="absolute bottom-7 right-3 z-20 p-3 text-white/80 drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] transition hover:text-lime sm:bottom-9 sm:right-6 lg:bottom-auto lg:right-4 lg:top-1/2 lg:-translate-y-1/2"
       >
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden>
+        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
           <path d="M9 5l7 7-7 7" strokeLinecap="square" />
         </svg>
       </button>

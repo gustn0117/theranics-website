@@ -4,7 +4,6 @@ import { MainSlider } from "@/components/MainSlider";
 import { HeroPanel } from "@/components/ui";
 import { siteConfig } from "@/config/site";
 import { Reveal } from "@/components/Reveal";
-import { coreValues } from "@/data/about";
 
 
 export default function HomePage() {
@@ -23,7 +22,7 @@ export default function HomePage() {
             나서고, 돌아오는 일상
           </>
         }
-        description="휠체어 휠을 쉽게 교체하여 자택 출입 시 20초 만에 안전과 청결을 해결하는 전동 리프트, MYLIFT."
+        description="휠체어 휠을 쉽게 교체해 자택 출입 시 20초 만에 안전과 청결을 해결하는 전동 리프트, MYLIFT"
         button={{ href: "/products", label: "MYLIFT 제품소개", ariaLabel: "MYLIFT 제품소개 페이지로 이동" }}
       />,
       // 2. 고용권 영상 영역 (글씨 없는 빈 버튼)
@@ -43,30 +42,22 @@ export default function HomePage() {
         description="취약계층의 고용을 도와 적극적인 경제활동을 지원하는 것, (주)테라닉스의 소셜미션입니다."
         button={{ href: siteConfig.secondVideoButtonHref, ariaLabel: "다음 페이지로 이동" }}
       />,
-      // 3. 기업 소개: 히어로와 같은 문법
+      // 3. 안전과 청결
       <HeroPanel
         key="s3"
         image={{ src: "/images/photo/wheel-change-hq.jpg", alt: "MYLIFT 위에서 앉은 채 뒷바퀴를 교체하는 휠체어 사용자", position: "70% 40%" }}
-        label="테라닉스"
+        label="안전과 청결"
         title={
           <>
-            국민의 건강과 행복,{" "}
+            낙상 없는 귀가,{" "}
             <br className="hidden lg:inline" />
-            안전을 지킵니다
+            오염 없는 실내
           </>
         }
-        description="예비사회적기업 (주)테라닉스는 교통약자의 이동을 도와 안전한 사회참여를 지원하고, 취약계층의 고용을 도와 적극적인 경제활동을 지원합니다."
+        description="옮겨타지 않고 앉은 채 휠만 바꿔 낙상사고와 실내 오염, 호흡기 질환을 한 번에 해결합니다."
         button={{ href: "/about", label: "회사소개 보기" }}
-      >
-        <Reveal as="ul" stagger className="mt-6 flex flex-wrap gap-2 sm:mt-8 sm:grid sm:grid-cols-3 sm:gap-px sm:bg-white/20">
-          {coreValues.map((v) => (
-            <li key={v.title} className="border border-white/40 px-3 py-1.5 sm:border-0 sm:bg-black/35 sm:p-5 sm:backdrop-blur-sm">
-              <p className="display text-base text-lime sm:text-xl">{v.title}</p>
-              <p className="mt-1.5 hidden text-sm leading-[1.7] text-white/80 sm:block">{v.body}</p>
-            </li>
-          ))}
-        </Reveal>
-      </HeroPanel>,
+      />,
+
       // 4. MYLIFT 하이라이트
       <HeroPanel
         key="s4"
@@ -78,13 +69,8 @@ export default function HomePage() {
             20초 만에 실내 진입
           </>
         }
-        description="시저형 리프트가 뒷바퀴만 살짝 들어올리면 퀵릴리즈 휠을 원터치로 분리해 실내용 휠로 교체합니다. 세계 최초 휠 교체용 전동 리프트입니다."
+        description="뒷바퀴만 살짝 들어올려 퀵릴리즈 휠을 원터치로 교체하는 세계 최초 휠 교체용 전동 리프트"
         button={{ href: "/products", label: "제품 자세히 보기" }}
-        logo={
-          <div className="mb-5 inline-block bg-white px-4 py-2.5">
-            <Image src="/images/logo/mylift-en.png" alt="MYLIFT" width={1021} height={497} className="h-10 w-auto sm:h-12" />
-          </div>
-        }
         aside={
           <Reveal className="pointer-events-none absolute inset-x-[10%] top-6 h-[40svh] opacity-25 lg:inset-y-0 lg:inset-x-auto lg:right-0 lg:h-full lg:w-[58%] lg:opacity-100" delay={150}>
             <Image

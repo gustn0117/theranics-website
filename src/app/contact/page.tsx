@@ -15,8 +15,8 @@ export default function ContactPage() {
   const mapQuery = encodeURIComponent("경기도 의정부시 배꽃길 63");
   return (
     <>
-      <section className="snap-section bg-white">
-        <div className="container-x grid gap-14 pt-28 pb-20 sm:pt-32 sm:pb-28 lg:min-h-[100svh] lg:grid-cols-[5fr_7fr] lg:items-center lg:pt-24">
+      <section className="screen bg-white">
+        <div className="container-x grid gap-14 pt-28 pb-20 sm:pt-32 sm:pb-28 lg:grid-cols-[5fr_7fr] lg:items-center lg:py-12">
           <div>
             <SectionHeading label="회사 정보" title="연락처" />
             <Reveal as="dl" stagger className="mt-8 border-t border-ink">

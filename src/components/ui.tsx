@@ -59,12 +59,12 @@ export function ButtonLink({
     white: "bg-white text-ink hover:bg-lime",
   }[variant];
   const cls = cn(
-    "btn-arrow inline-flex h-13 items-center justify-center px-7 text-[15px] font-bold transition-colors",
+    "btn-arrow inline-flex h-13 shrink-0 items-center justify-center whitespace-nowrap px-7 text-[15px] font-bold transition-colors",
     styles,
     className,
   );
   const arrow = (
-    <svg className="btn-arrow-icon shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden>
+    <svg className="btn-arrow-icon shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden>
       <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="square" />
     </svg>
   );
@@ -112,7 +112,7 @@ export function PhotoHero({
 }) {
   const dark = tone === "dark";
   return (
-    <section className={cn("snap-hero relative isolate flex min-h-[92svh] items-end overflow-hidden lg:items-center", minH, dark ? "bg-ink text-white" : "bg-paper text-ink")}>
+    <section className={cn("relative isolate flex min-h-[92svh] items-end overflow-hidden lg:items-center", minH, dark ? "bg-ink text-white" : "bg-paper text-ink")}>
       {/* 사진을 배경 전체에 깔고, 모바일은 하단·데스크톱은 왼쪽 여백에 텍스트 */}
       <div className="absolute inset-0 overflow-hidden">
         <Parallax>
@@ -236,7 +236,7 @@ export function HeroPanel({
           <Reveal>
             <span className="block text-sm font-semibold text-white/75">{label}</span>
             <h2 className="display mt-3 text-[1.75rem] sm:mt-4 sm:text-5xl lg:text-6xl">{title}</h2>
-            {description && <p className="mt-4 max-w-2xl text-[15px] leading-[1.75] text-white/85 sm:mt-6 sm:text-lg">{description}</p>}
+            {description && <p className="mt-4 max-w-2xl text-[15px] leading-[1.75] text-white/85 sm:mt-6 sm:text-lg xl:max-w-none xl:whitespace-nowrap">{description}</p>}
           </Reveal>
           {children}
         </div>
