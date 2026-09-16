@@ -61,6 +61,7 @@ export default function HomePage() {
       // 4. MYLIFT 하이라이트
       <HeroPanel
         key="s4"
+        tone="light"
         label="제품"
         title={
           <>
@@ -72,19 +73,19 @@ export default function HomePage() {
         description="뒷바퀴만 살짝 들어올려 퀵릴리즈 휠을 원터치로 교체하는 세계 최초 휠 교체용 전동 리프트"
         button={{ href: "/products", label: "제품 자세히 보기" }}
         aside={
-          <Reveal className="pointer-events-none absolute inset-x-[10%] top-6 h-[40svh] opacity-25 lg:inset-y-0 lg:inset-x-auto lg:right-0 lg:h-full lg:w-[58%] lg:opacity-100" delay={150}>
+          <Reveal className="pointer-events-none absolute inset-x-[10%] top-6 h-[40svh] opacity-20 lg:inset-y-0 lg:inset-x-auto lg:right-0 lg:h-full lg:w-[58%] lg:opacity-100" delay={150}>
             <Image
               src="/images/product/mylift-hero.png"
               alt="MYLIFT 본체, 경사판, 리모컨"
               fill
               sizes="(min-width: 1024px) 58vw, 100vw"
               quality={90}
-              className="float-slow object-contain object-center p-4 lg:object-[80%_45%] lg:p-10"
+              className="float-slow object-contain object-center p-4 lg:object-[78%_45%] lg:p-10"
             />
           </Reveal>
         }
       >
-        <Reveal as="dl" stagger className="mt-8 flex max-w-2xl flex-wrap gap-x-8 gap-y-4 border-t border-white/25 pt-6" delay={120}>
+        <Reveal as="dl" stagger className="mt-8 flex max-w-2xl flex-wrap gap-x-8 gap-y-4 border-t border-ink/20 pt-6" delay={120}>
           {[
             ["20초", "휠 교체 시간"],
             ["255kg", "최대 하중"],
@@ -92,8 +93,8 @@ export default function HomePage() {
             ["2026.10", "시제품 완성"],
           ].map(([v, l]) => (
             <div key={l}>
-              <dd className="display text-2xl text-lime sm:text-3xl">{v}</dd>
-              <dt className="mt-1 text-xs font-semibold text-white/70 sm:text-sm">{l}</dt>
+              <dd className="display text-2xl text-lime-deep sm:text-3xl">{v}</dd>
+              <dt className="mt-1 text-xs font-semibold text-ink-soft sm:text-sm">{l}</dt>
             </div>
           ))}
         </Reveal>
@@ -124,5 +125,11 @@ export default function HomePage() {
         </Reveal>
       </HeroPanel>,
   ];
-  return <MainSlider slides={slides} labels={["이동권", "고용권", "테라닉스", "제품", "문의"]} />;
+  return (
+    <MainSlider
+      slides={slides}
+      labels={["이동권", "고용권", "안전과 청결", "제품", "문의"]}
+      tones={["dark", "dark", "dark", "light", "dark"]}
+    />
+  );
 }

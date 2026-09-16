@@ -9,7 +9,7 @@ const DURATION = 900;
  * 메인 페이지 슬라이드. 스크롤 대신 좌우 버튼·키보드·휠·스와이프로 화면을 넘기고,
  * 나가는 화면은 페이드 아웃, 들어오는 화면은 페이드 인 된다.
  */
-export function MainSlider({ slides, labels }: { slides: React.ReactNode[]; labels: string[] }) {
+export function MainSlider({ slides, labels, tones }: { slides: React.ReactNode[]; labels: string[]; tones?: ("dark" | "light")[] }) {
   const [active, setActive] = useState(0);
   const [leaving, setLeaving] = useState<number | null>(null);
   const busy = useRef(false);
@@ -30,6 +30,16 @@ export function MainSlider({ slides, labels }: { slides: React.ReactNode[]; labe
     },
     [active, total],
   );
+
+  // 현재 슬라이드 배경 톤을 헤더에 전달 (흰 배경에서는 메뉴 글자를 검정으로)
+  useEffect(() => {
+    const tone = tones?.[active] ?? "dark";
+    document.documentElement.dataset.slideTone = tone;
+    window.dispatchEvent(new CustomEvent("slide-tone", { detail: tone }));
+    return () => {
+      delete document.documentElement.dataset.slideTone;
+    };
+  }, [active, tones]);
 
   // 키보드 / 휠 / 스와이프
   useEffect(() => {

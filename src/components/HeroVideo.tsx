@@ -25,7 +25,7 @@ export function HeroVideo({ src, fallbackImage, label, title, description, butto
 
   return (
     <section
-      className="relative isolate flex min-h-[100svh] w-full items-end overflow-hidden bg-ink text-white"
+      className="relative isolate flex min-h-[100svh] w-full items-center overflow-hidden bg-ink text-white"
       aria-labelledby={`hero-${index}-title`}
     >
       {/* 영상 준비 전: 사진 슬로우 줌 */}
@@ -64,7 +64,7 @@ export function HeroVideo({ src, fallbackImage, label, title, description, butto
 
       <div aria-hidden className="absolute inset-0 -z-[5] bg-gradient-to-t from-black/85 via-black/35 to-black/30" />
 
-      <div className="container-x relative z-10 w-full pb-32 pt-32 sm:pb-36">
+      <div className="container-x relative z-10 w-full pb-24 pt-16 sm:pb-28 sm:pt-20">
         <div className="max-w-3xl border-l-4 border-lime pl-6 sm:pl-8">
           <span className="block text-sm font-semibold text-white/75 animate-fade-up">{label}</span>
           <h1 id={`hero-${index}-title`} className="display mt-4 text-[2rem] sm:text-5xl lg:text-6xl xl:text-7xl animate-fade-up [animation-delay:140ms]">

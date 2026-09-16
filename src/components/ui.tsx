@@ -204,6 +204,7 @@ export function HeroPanel({
   logo,
   aside,
   children,
+  tone = "dark",
 }: {
   image?: { src: string; alt: string; position?: string };
   label: string;
@@ -214,9 +215,18 @@ export function HeroPanel({
   /** 배경 위에 얹는 별도 요소 (제품 렌더 등) */
   aside?: React.ReactNode;
   children?: React.ReactNode;
+  /** dark: 어두운 배경 흰 글자 / light: 흰 배경 검은 글자 */
+  tone?: "dark" | "light";
 }) {
+  const light = tone === "light";
   return (
-    <section className="relative isolate flex min-h-[100svh] w-full items-end overflow-hidden bg-ink text-white">
+    // 상단 헤더(모바일 4rem, PC 5rem)와 하단 버튼 영역을 패딩으로 비워 두고 그 사이에서 중앙 정렬한다
+    <section
+      className={cn(
+        "relative isolate flex min-h-[100svh] w-full items-center overflow-hidden",
+        light ? "bg-white text-ink" : "bg-ink text-white",
+      )}
+    >
       {image && (
         <div className="absolute inset-0 -z-20 overflow-hidden">
           <Parallax>
@@ -225,25 +235,48 @@ export function HeroPanel({
         </div>
       )}
       {!image && (
-        <div aria-hidden className="absolute inset-0 -z-20 bg-[radial-gradient(ellipse_at_75%_45%,rgba(153,212,30,0.18),transparent_55%)]" />
+        <div
+          aria-hidden
+          className={cn(
+            "absolute inset-0 -z-20",
+            light
+              ? "bg-[radial-gradient(ellipse_at_75%_45%,rgba(153,212,30,0.14),transparent_60%)]"
+              : "bg-[radial-gradient(ellipse_at_75%_45%,rgba(153,212,30,0.18),transparent_55%)]",
+          )}
+        />
       )}
-      <div aria-hidden className="absolute inset-0 -z-[5] bg-gradient-to-t from-black/85 via-black/45 to-black/35" />
+      {!light && <div aria-hidden className="absolute inset-0 -z-[5] bg-gradient-to-t from-black/85 via-black/45 to-black/35" />}
       {aside}
 
-      <div className="container-x relative z-10 w-full pb-28 pt-24 sm:pb-36 sm:pt-28 lg:pt-32">
+      <div className="container-x relative z-10 w-full pb-24 pt-16 sm:pb-28 sm:pt-20">
         <div className="max-w-3xl border-l-4 border-lime pl-5 sm:pl-8">
           {logo && <Reveal>{logo}</Reveal>}
           <Reveal>
-            <span className="block text-sm font-semibold text-white/75">{label}</span>
+            <span className={cn("block text-sm font-semibold", light ? "text-ink-soft" : "text-white/75")}>{label}</span>
             <h2 className="display mt-3 text-[1.75rem] sm:mt-4 sm:text-5xl lg:text-6xl">{title}</h2>
-            {description && <p className="mt-4 max-w-2xl text-[15px] leading-[1.75] text-white/85 sm:mt-6 sm:text-lg xl:max-w-none xl:whitespace-nowrap">{description}</p>}
+            {description && (
+              <p
+                className={cn(
+                  "mt-4 max-w-2xl text-[15px] leading-[1.75] sm:mt-6 sm:text-lg xl:max-w-none xl:whitespace-nowrap",
+                  light ? "text-ink-soft" : "text-white/85",
+                )}
+              >
+                {description}
+              </p>
+            )}
           </Reveal>
           {children}
         </div>
       </div>
 
       <div className="absolute inset-x-0 bottom-8 z-10 flex justify-center sm:bottom-10">
-        <Link href={button.href} className="inline-flex h-14 items-center gap-4 bg-lime px-8 text-base font-bold text-ink transition-colors hover:bg-white">
+        <Link
+          href={button.href}
+          className={cn(
+            "inline-flex h-14 items-center gap-4 bg-lime px-8 text-base font-bold text-ink transition-colors",
+            light ? "hover:bg-ink hover:text-white" : "hover:bg-white",
+          )}
+        >
           <span>{button.label}</span>
           <svg aria-hidden width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
             <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="square" />

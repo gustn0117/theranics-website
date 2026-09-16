@@ -11,7 +11,17 @@ export function Header() {
   const pathname = usePathname();
   const isHome = pathname === "/";
   const [overVideo, setOverVideo] = useState(isHome);
+  const [lightSlide, setLightSlide] = useState(false);
   const [open, setOpen] = useState(false);
+
+  // 메인 슬라이드가 흰 배경일 때는 메뉴 글자를 검정으로
+  useEffect(() => {
+    const onTone = (e: Event) => setLightSlide((e as CustomEvent<string>).detail === "light");
+    window.addEventListener("slide-tone", onTone);
+    return () => window.removeEventListener("slide-tone", onTone);
+  }, []);
+
+  const showLightSlide = isHome && lightSlide;
 
   // 메인의 영상 구간 2개(각 화면 높이) 위에서는 투명, 그 아래부터 흰 배경
   useEffect(() => {
@@ -35,13 +45,17 @@ export function Header() {
     };
   }, [open]);
 
-  const solid = !overVideo || open;
+  const solid = !overVideo || open || showLightSlide;
 
   return (
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-colors duration-500",
-        solid ? "border-b border-line bg-white/95 backdrop-blur-md" : "bg-gradient-to-b from-black/45 to-transparent",
+        !overVideo || open
+          ? "border-b border-line bg-white/95 backdrop-blur-md"
+          : showLightSlide
+            ? "bg-transparent"
+            : "bg-gradient-to-b from-black/45 to-transparent",
       )}
     >
       <div className="container-x flex h-16 items-center justify-between sm:h-20">
