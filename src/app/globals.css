@@ -267,6 +267,30 @@ body {
   }
 }
 
+/* 메인 슬라이드 전환 */
+.slide-in {
+  animation: slide-in 0.9s ease both;
+}
+.slide-out {
+  animation: slide-out 0.9s ease both;
+}
+@keyframes slide-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes slide-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
 /* 스크롤 유도 화살표 */
 .scroll-cue {
   animation: scroll-cue 1.8s ease-in-out infinite;
@@ -302,7 +326,9 @@ body {
   }
   .float-slow,
   .scroll-cue,
-  .pc-pulse {
+  .pc-pulse,
+  .slide-in,
+  .slide-out {
     animation: none;
   }
   html {

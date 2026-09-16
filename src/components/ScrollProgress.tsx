@@ -1,10 +1,12 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 
 /** 화면 맨 위에 스크롤 진행률을 라임색 선으로 표시한다. */
 export function ScrollProgress() {
   const ref = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
@@ -27,5 +29,6 @@ export function ScrollProgress() {
       window.removeEventListener("resize", onScroll);
     };
   }, []);
+  if (pathname === "/") return null;
   return <div ref={ref} aria-hidden className="fixed inset-x-0 top-0 z-[60] h-[3px] origin-left scale-x-0 bg-lime" />;
 }

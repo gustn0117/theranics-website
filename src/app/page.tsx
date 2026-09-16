@@ -1,16 +1,17 @@
 import Image from "next/image";
 import { HeroVideo } from "@/components/HeroVideo";
-import { HeroPanel, StatRow } from "@/components/ui";
+import { MainSlider } from "@/components/MainSlider";
+import { HeroPanel } from "@/components/ui";
 import { siteConfig } from "@/config/site";
 import { Reveal } from "@/components/Reveal";
 import { coreValues } from "@/data/about";
 
 
 export default function HomePage() {
-  return (
-    <>
-      {/* 1. 이동권 영상 영역 */}
+  const slides = [
+      // 1. 이동권 영상 영역
       <HeroVideo
+        key="s1"
         index={1}
         src="/videos/mobility.mp4"
         fallbackImage={{ src: "/images/photo/hero-doorway-hq.jpg", alt: "현관에서 MYLIFT 위에 올라 휠을 교체하는 휠체어 사용자", position: "65% 45%" }}
@@ -24,11 +25,10 @@ export default function HomePage() {
         }
         description="휠체어 휠을 쉽게 교체하여 자택 출입 시 20초 만에 안전과 청결을 해결하는 전동 리프트, MYLIFT."
         button={{ href: "/products", label: "MYLIFT 제품소개", ariaLabel: "MYLIFT 제품소개 페이지로 이동" }}
-        total={5}
-      />
-
-      {/* 2. 고용권 영상 영역 (글씨 없는 빈 버튼) */}
+      />,
+      // 2. 고용권 영상 영역 (글씨 없는 빈 버튼)
       <HeroVideo
+        key="s2"
         index={2}
         src="/videos/employment.mp4"
         fallbackImage={{ src: "/images/activity/act-104-hq.jpg", alt: "재도전 마인드업 힐링캠프 단체 사진", position: "50% 35%" }}
@@ -42,12 +42,10 @@ export default function HomePage() {
         }
         description="취약계층의 고용을 도와 적극적인 경제활동을 지원하는 것, (주)테라닉스의 소셜미션입니다."
         button={{ href: siteConfig.secondVideoButtonHref, ariaLabel: "다음 페이지로 이동" }}
-        total={5}
-      />
-
-      {/* 3. 기업 소개: 히어로와 같은 문법 */}
+      />,
+      // 3. 기업 소개: 히어로와 같은 문법
       <HeroPanel
-        index={3}
+        key="s3"
         image={{ src: "/images/photo/wheel-change-hq.jpg", alt: "MYLIFT 위에서 앉은 채 뒷바퀴를 교체하는 휠체어 사용자", position: "70% 40%" }}
         label="테라닉스"
         title={
@@ -60,19 +58,18 @@ export default function HomePage() {
         description="예비사회적기업 (주)테라닉스는 교통약자의 이동을 도와 안전한 사회참여를 지원하고, 취약계층의 고용을 도와 적극적인 경제활동을 지원합니다."
         button={{ href: "/about", label: "회사소개 보기" }}
       >
-        <Reveal as="ul" stagger className="mt-8 grid gap-px border-t border-white/25 sm:grid-cols-3 sm:border-t-0 sm:bg-white/20">
+        <Reveal as="ul" stagger className="mt-6 flex flex-wrap gap-2 sm:mt-8 sm:grid sm:grid-cols-3 sm:gap-px sm:bg-white/20">
           {coreValues.map((v) => (
-            <li key={v.title} className="border-b border-white/25 py-4 sm:border-b-0 sm:bg-black/35 sm:p-5 sm:backdrop-blur-sm">
-              <p className="display text-xl text-lime">{v.title}</p>
-              <p className="mt-1.5 text-sm leading-[1.7] text-white/80">{v.body}</p>
+            <li key={v.title} className="border border-white/40 px-3 py-1.5 sm:border-0 sm:bg-black/35 sm:p-5 sm:backdrop-blur-sm">
+              <p className="display text-base text-lime sm:text-xl">{v.title}</p>
+              <p className="mt-1.5 hidden text-sm leading-[1.7] text-white/80 sm:block">{v.body}</p>
             </li>
           ))}
         </Reveal>
-      </HeroPanel>
-
-      {/* 4. MYLIFT 하이라이트 */}
+      </HeroPanel>,
+      // 4. MYLIFT 하이라이트
       <HeroPanel
-        index={4}
+        key="s4"
         label="제품"
         title={
           <>
@@ -84,12 +81,12 @@ export default function HomePage() {
         description="시저형 리프트가 뒷바퀴만 살짝 들어올리면 퀵릴리즈 휠을 원터치로 분리해 실내용 휠로 교체합니다. 세계 최초 휠 교체용 전동 리프트입니다."
         button={{ href: "/products", label: "제품 자세히 보기" }}
         logo={
-          <div className="mb-6 inline-block bg-white px-5 py-3">
-            <Image src="/images/logo/mylift-en.png" alt="MYLIFT" width={1021} height={497} className="h-12 w-auto sm:h-16" />
+          <div className="mb-5 inline-block bg-white px-4 py-2.5">
+            <Image src="/images/logo/mylift-en.png" alt="MYLIFT" width={1021} height={497} className="h-10 w-auto sm:h-12" />
           </div>
         }
         aside={
-          <Reveal className="pointer-events-none absolute inset-x-0 top-10 h-[52svh] opacity-30 lg:inset-y-0 lg:left-auto lg:right-0 lg:h-full lg:w-[58%] lg:opacity-100" delay={150}>
+          <Reveal className="pointer-events-none absolute inset-x-[10%] top-6 h-[40svh] opacity-25 lg:inset-y-0 lg:inset-x-auto lg:right-0 lg:h-full lg:w-[58%] lg:opacity-100" delay={150}>
             <Image
               src="/images/product/mylift-hero.png"
               alt="MYLIFT 본체, 경사판, 리모컨"
@@ -101,23 +98,23 @@ export default function HomePage() {
           </Reveal>
         }
       >
-        <Reveal className="mt-8 max-w-md" delay={120}>
-          <StatRow
-            light
-            cols={2}
-            items={[
-              { value: "20초", label: "휠 교체 시간" },
-              { value: "255kg", label: "최대 하중" },
-              { value: "10건", label: "지식재산" },
-              { value: "2026.10", label: "시제품 완성" },
-            ]}
-          />
+        <Reveal as="dl" stagger className="mt-8 flex max-w-2xl flex-wrap gap-x-8 gap-y-4 border-t border-white/25 pt-6" delay={120}>
+          {[
+            ["20초", "휠 교체 시간"],
+            ["255kg", "최대 하중"],
+            ["10건", "지식재산"],
+            ["2026.10", "시제품 완성"],
+          ].map(([v, l]) => (
+            <div key={l}>
+              <dd className="display text-2xl text-lime sm:text-3xl">{v}</dd>
+              <dt className="mt-1 text-xs font-semibold text-white/70 sm:text-sm">{l}</dt>
+            </div>
+          ))}
         </Reveal>
-      </HeroPanel>
-
-      {/* 5. 문의 */}
+      </HeroPanel>,
+      // 5. 문의
       <HeroPanel
-        index={5}
+        key="s5"
         image={{ src: "/images/activity/act-104-hq.jpg", alt: "재도전 마인드업 힐링캠프 단체 사진", position: "50% 30%" }}
         label="문의"
         title={
@@ -139,7 +136,7 @@ export default function HomePage() {
           </a>
           <span>{siteConfig.contact.address}</span>
         </Reveal>
-      </HeroPanel>
-    </>
-  );
+      </HeroPanel>,
+  ];
+  return <MainSlider slides={slides} labels={["이동권", "고용권", "테라닉스", "제품", "문의"]} />;
 }

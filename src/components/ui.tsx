@@ -196,8 +196,6 @@ export function StatRow({
  * 어두운 배경(사진 또는 잉크) + 라임 세로 바 옆 흰 텍스트 + 하단 중앙 버튼 + 우측 하단 구간 번호.
  */
 export function HeroPanel({
-  index,
-  total = 5,
   image,
   label,
   title,
@@ -207,8 +205,6 @@ export function HeroPanel({
   aside,
   children,
 }: {
-  index: number;
-  total?: number;
   image?: { src: string; alt: string; position?: string };
   label: string;
   title: React.ReactNode;
@@ -220,7 +216,7 @@ export function HeroPanel({
   children?: React.ReactNode;
 }) {
   return (
-    <section className="snap-hero relative isolate flex min-h-[100svh] w-full items-end overflow-hidden bg-ink text-white">
+    <section className="relative isolate flex min-h-[100svh] w-full items-end overflow-hidden bg-ink text-white">
       {image && (
         <div className="absolute inset-0 -z-20 overflow-hidden">
           <Parallax>
@@ -234,13 +230,13 @@ export function HeroPanel({
       <div aria-hidden className="absolute inset-0 -z-[5] bg-gradient-to-t from-black/85 via-black/45 to-black/35" />
       {aside}
 
-      <div className="container-x relative z-10 w-full pb-32 pt-28 sm:pb-36 lg:pt-32">
-        <div className="max-w-3xl border-l-4 border-lime pl-6 sm:pl-8">
+      <div className="container-x relative z-10 w-full pb-28 pt-24 sm:pb-36 sm:pt-28 lg:pt-32">
+        <div className="max-w-3xl border-l-4 border-lime pl-5 sm:pl-8">
           {logo && <Reveal>{logo}</Reveal>}
           <Reveal>
             <span className="block text-sm font-semibold text-white/75">{label}</span>
-            <h2 className="display mt-4 text-[2rem] sm:text-5xl lg:text-6xl">{title}</h2>
-            {description && <p className="mt-6 max-w-2xl text-base leading-[1.8] text-white/85 sm:text-lg">{description}</p>}
+            <h2 className="display mt-3 text-[1.75rem] sm:mt-4 sm:text-5xl lg:text-6xl">{title}</h2>
+            {description && <p className="mt-4 max-w-2xl text-[15px] leading-[1.75] text-white/85 sm:mt-6 sm:text-lg">{description}</p>}
           </Reveal>
           {children}
         </div>
@@ -253,10 +249,6 @@ export function HeroPanel({
             <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="square" />
           </svg>
         </Link>
-      </div>
-      <div className="absolute bottom-10 right-8 z-10 hidden items-center gap-3 text-xs font-semibold text-white/70 lg:flex">
-        <span className="h-px w-10 bg-white/50" />
-        {String(index).padStart(2, "0")} / {String(total).padStart(2, "0")}
       </div>
     </section>
   );

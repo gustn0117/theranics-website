@@ -1,9 +1,14 @@
+"use client";
+
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { siteConfig } from "@/config/site";
 
 export function Footer() {
   const { contact } = siteConfig;
+  const pathname = usePathname();
+  if (pathname === "/") return null;
   return (
     <footer className="border-t-4 border-ink bg-paper">
       <div className="container-x pt-14 sm:pt-20">

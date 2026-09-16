@@ -17,17 +17,15 @@ type HeroVideoProps = {
   /** 하단 중앙 버튼. label을 비우면 글씨가 없는 빈 버튼이 된다. */
   button: { href: string; label?: string; ariaLabel: string };
   index: number;
-  /** 메인 전체 구간 수 (우측 하단 표기용) */
-  total?: number;
 };
 
-export function HeroVideo({ src, fallbackImage, label, title, description, button, index, total = 2 }: HeroVideoProps) {
+export function HeroVideo({ src, fallbackImage, label, title, description, button, index }: HeroVideoProps) {
   const [status, setStatus] = useState<"loading" | "ready" | "missing">("loading");
   const isEmptyButton = !button.label;
 
   return (
     <section
-      className="snap-hero relative isolate flex h-[100svh] min-h-[600px] w-full items-end overflow-hidden bg-ink text-white"
+      className="relative isolate flex min-h-[100svh] w-full items-end overflow-hidden bg-ink text-white"
       aria-labelledby={`hero-${index}-title`}
     >
       {/* 영상 준비 전: 사진 슬로우 줌 */}
@@ -102,16 +100,6 @@ export function HeroVideo({ src, fallbackImage, label, title, description, butto
         </Link>
       </div>
 
-      <div className="absolute bottom-10 right-8 z-10 hidden items-center gap-3 text-xs font-semibold text-white/70 lg:flex">
-        <span className="h-px w-10 bg-white/50" />
-        {String(index).padStart(2, "0")} / {String(total).padStart(2, "0")}
-      </div>
-      <div className="absolute bottom-8 left-5 z-10 hidden flex-col items-center gap-2 text-[11px] font-semibold text-white/70 sm:left-10 lg:flex">
-        <span>SCROLL</span>
-        <svg className="scroll-cue" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden>
-          <path d="M6 9l6 6 6-6" strokeLinecap="square" />
-        </svg>
-      </div>
       {status === "missing" && (
         <p className="absolute left-5 top-20 z-10 text-[11px] text-white/45 sm:left-10 sm:top-24">영상 준비 중 · 파일 등록 시 자동 재생</p>
       )}
