@@ -205,14 +205,22 @@ export default function AboutPage() {
             title="사회적 기업가 소개"
             description="협력 및 자문 네트워크: 의료기 인증(GMP·ISO·FDA·CE), 국내외 마케팅(KIMES 등 전시회), 장애인 협회 협업, 액추에이터 제어·하드웨어 개발"
           />
-          <div className="mt-8 grid gap-px border border-ink bg-ink lg:grid-cols-[7fr_5fr]">
-            <Reveal as="article" className="grid bg-white sm:grid-cols-[220px_1fr]">
-              <Image src={ceo.photo} alt={`${ceo.name} ${ceo.role}`} width={600} height={800} quality={90} className="aspect-[3/4] w-full max-w-[220px] object-cover" />
-              <div className="p-6 lg:p-8">
+          {/* 위: 대표 한 줄 / 아래: 나머지 두 명 */}
+          <div className="mt-8 border border-ink">
+            <Reveal as="article" className="grid gap-px bg-ink sm:grid-cols-[240px_1fr]">
+              <Image
+                src={ceo.photo}
+                alt={`${ceo.name} ${ceo.role}`}
+                width={600}
+                height={800}
+                quality={90}
+                className="aspect-[3/4] w-full bg-white object-cover sm:aspect-auto sm:h-full"
+              />
+              <div className="bg-white p-6 lg:p-8">
                 <p className="text-sm font-semibold text-ink-soft">{ceo.role}</p>
                 <h3 className="display mt-1 text-4xl">{ceo.name}</h3>
                 <p className="mt-3 text-sm font-semibold">{ceo.summary}</p>
-                <ul className="mt-4 grid gap-1.5 text-sm leading-relaxed text-ink-soft sm:grid-cols-2">
+                <ul className="mt-4 grid gap-1.5 text-sm leading-relaxed text-ink-soft sm:grid-cols-2 sm:gap-x-8">
                   {ceo.bullets.map((b) => (
                     <li key={b} className="border-t border-line pt-1.5">
                       {b}
@@ -221,15 +229,15 @@ export default function AboutPage() {
                 </ul>
               </div>
             </Reveal>
-            <Reveal stagger className="grid gap-px bg-ink">
+            <Reveal stagger className="grid gap-px border-t border-ink bg-ink sm:grid-cols-2">
               {members.map((m) => (
-                <article key={m.name} className="grid grid-cols-[110px_1fr] gap-5 bg-white p-5">
+                <article key={m.name} className="grid grid-cols-[120px_1fr] gap-5 bg-white p-6">
                   <Image src={m.photo} alt={`${m.name} ${m.role}`} width={600} height={800} quality={90} className="aspect-[3/4] w-full object-cover" />
                   <div>
-                    <p className="text-xs font-semibold text-ink-soft">{m.role}</p>
+                    <p className="text-sm font-semibold text-ink-soft">{m.role}</p>
                     <h3 className="display mt-1 text-2xl">{m.name}</h3>
-                    <p className="mt-2 text-xs font-semibold">{m.summary}</p>
-                    <ul className="mt-2 space-y-0.5 text-xs leading-relaxed text-ink-soft">
+                    <p className="mt-2 text-[13px] font-semibold leading-snug">{m.summary}</p>
+                    <ul className="mt-3 space-y-1 border-t border-line pt-2 text-[13px] leading-relaxed text-ink-soft">
                       {m.bullets.map((b) => (
                         <li key={b}>{b}</li>
                       ))}
