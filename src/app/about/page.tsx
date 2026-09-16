@@ -83,14 +83,17 @@ export default function AboutPage() {
       </section>
 
       {/* 2. 세 가지 약속 */}
-      <section id="promise" className="screen bg-paper">
-        <div className="container-x py-16 lg:py-12">
-          <SectionHeading title="테라닉스의 세 가지 약속" />
-          <Reveal as="ul" stagger className="mt-10 border-t border-ink">
-            {coreValues.map((v) => (
-              <li key={v.title} className="grid gap-3 border-b border-ink/20 py-8 lg:grid-cols-[14rem_1fr] lg:gap-10 lg:py-10">
-                <span className="display text-3xl lg:text-4xl">{v.title}</span>
-                <span className="text-base leading-[1.85] text-ink-soft lg:text-xl">{v.body}</span>
+      <section id="promise" className="screen relative isolate overflow-hidden bg-ink text-white">
+        <Image src="/images/photo/hero-doorway-hq.jpg" alt="" fill sizes="100vw" quality={90} className="object-cover opacity-30" />
+        <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/80 to-ink" />
+        <div className="container-x relative py-16 lg:py-12">
+          <SectionHeading light title="테라닉스의 세 가지 약속" description="제품 하나가 아니라, 사회적 약자의 하루를 바꾸는 일을 합니다." />
+          <Reveal as="ul" stagger className="mt-10 grid gap-px bg-white/15 lg:grid-cols-3">
+            {coreValues.map((v, i) => (
+              <li key={v.title} className="bg-ink p-7 lg:p-10">
+                <span className="display text-4xl text-lime lg:text-5xl">{String(i + 1).padStart(2, "0")}</span>
+                <h3 className="display mt-5 text-2xl lg:text-3xl">{v.title}</h3>
+                <p className="mt-3 text-[15px] leading-[1.85] text-white/75 lg:text-base">{v.body}</p>
               </li>
             ))}
           </Reveal>
