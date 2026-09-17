@@ -117,22 +117,35 @@ export default function ProductsPage() {
       {/* 아이디어 */}
       <section className="screen bg-white">
         <div className="container-x py-16 lg:py-12">
-          <div className="grid gap-10 lg:grid-cols-[5fr_7fr] lg:items-center">
-            <SectionHeading
-              title="“바퀴 세척”이 아니라 “휠 교환”"
-              description="전 세계 장애인 대부분이 사용하는 퀵릴리즈 휠체어의 휠이 원터치로 분리된다는 점에 착안했습니다. 마이리프트는 발상의 전환을 휠을 교환하는 데 두었습니다."
-            />
-            <Reveal stagger className="grid grid-cols-3 gap-px bg-line">
-              {["qr-1", "qr-2", "qr-3"].map((n, i) => (
-                <figure key={n} className="zoom-img bg-white">
-                  <Image src={`/images/photo/${n}.jpg`} alt="" width={1200} height={677} quality={90} className="aspect-[16/10] w-full object-cover" />
-                  <figcaption className="px-2 py-2 text-xs font-semibold text-ink-soft sm:text-sm">
-                    {["휠 가운데 버튼을 누르고 잡아당기면", "쉽게 분리됩니다", "장착 시 버튼을 누른 채 끼워주세요"][i]}
-                  </figcaption>
-                </figure>
-              ))}
-            </Reveal>
-          </div>
+          <SectionHeading
+            title="“바퀴 세척”이 아니라 “휠 교환”"
+            description="전 세계 장애인 대부분이 사용하는 퀵릴리즈 휠체어의 휠이 원터치로 분리된다는 점에 착안했습니다. 마이리프트는 발상의 전환을 휠을 교환하는 데 두었습니다."
+          />
+          <Reveal as="ol" stagger className="mt-10 grid gap-px border border-ink bg-ink sm:grid-cols-3 lg:mt-12">
+            {[
+              { img: "qr-1", caption: "휠 가운데 버튼을 누르고 잡아당기면" },
+              { img: "qr-2", caption: "쉽게 분리됩니다" },
+              { img: "qr-3", caption: "장착 시 버튼을 누른 채 끼워주세요" },
+            ].map((s, i) => (
+              <li key={s.img} className="bg-white">
+                <div className="zoom-img">
+                  <Image
+                    src={`/images/photo/${s.img}.jpg`}
+                    alt={s.caption}
+                    width={1200}
+                    height={677}
+                    quality={90}
+                    sizes="(min-width: 640px) 33vw, 100vw"
+                    className="aspect-[16/10] w-full object-cover"
+                  />
+                </div>
+                <div className="flex items-baseline gap-4 px-5 py-5 sm:px-6 sm:py-6">
+                  <span className="display shrink-0 text-2xl text-lime-deep sm:text-3xl">0{i + 1}</span>
+                  <p className="text-[15px] font-bold leading-snug sm:text-base">{s.caption}</p>
+                </div>
+              </li>
+            ))}
+          </Reveal>
         </div>
       </section>
 
