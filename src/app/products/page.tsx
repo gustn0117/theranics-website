@@ -407,22 +407,22 @@ export default function ProductsPage() {
       </section>
 
       {/* IP */}
-      <section className="screen bg-lime">
+      <section className="screen bg-white">
         <div className="container-x grid gap-12 py-16 lg:py-12 lg:grid-cols-[5fr_7fr]">
           <div>
             <SectionHeading size="sm" label="지식재산" title={<>특허·디자인·상표와 PCT로<br className="hidden lg:inline" /> 세운 다층 진입장벽</>} />
-            <p className="display mt-10 text-7xl sm:text-8xl">10건</p>
-            <p className="mt-3 text-sm font-semibold text-ink/75">마이리프트 IP: 특허출원 3건 · PCT출원 1건 · 디자인출원 2건 · 국내 상표출원 2건 · 해외 상표출원 2건</p>
-            <p className="mt-5 border-t border-ink/30 pt-4 text-sm text-ink/75">
+            <p className="display mt-10 text-7xl text-lime-deep sm:text-8xl">10건</p>
+            <p className="mt-3 text-sm font-semibold text-ink-soft">마이리프트 IP: 특허출원 3건 · PCT출원 1건 · 디자인출원 2건 · 국내 상표출원 2건 · 해외 상표출원 2건</p>
+            <p className="mt-5 border-t border-line pt-4 text-sm text-ink-soft">
               연관 IP 14건 (마이프렌드 11건 · 마이스포츠 3건): 특허등록 3건 / 특허출원 1건, 상표등록 5건 / 상표출원 2건, 디자인등록 3건
             </p>
           </div>
-          <Reveal as="ul" stagger className="grid gap-px border border-ink/30 bg-ink/30 sm:grid-cols-2">
+          <Reveal as="ul" stagger className="grid gap-px border border-ink bg-ink sm:grid-cols-2">
             {ipSummary.map((ip) => (
-              <li key={ip.title} className="bg-lime p-6">
-                <p className="display text-4xl">{ip.count}</p>
+              <li key={ip.title} className="bg-white p-6">
+                <p className="display text-4xl text-lime-deep">{ip.count}</p>
                 <p className="mt-3 font-bold">{ip.title}</p>
-                <p className="mt-1 text-sm text-ink/75">{ip.desc}</p>
+                <p className="mt-1 text-sm text-ink-soft">{ip.desc}</p>
               </li>
             ))}
           </Reveal>
