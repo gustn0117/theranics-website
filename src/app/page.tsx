@@ -13,6 +13,7 @@ export default function HomePage() {
         key="s1"
         index={1}
         src="/videos/mobility.mp4"
+        videoPosition="50% 0%"
         fallbackImage={{ src: "/images/photo/hero-doorway-hq.jpg", alt: "현관에서 MYLIFT 위에 올라 휠을 교체하는 휠체어 사용자", position: "65% 45%" }}
         label="이동권"
         title={

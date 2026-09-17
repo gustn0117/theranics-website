@@ -11,6 +11,11 @@ type HeroVideoProps = {
   src: string;
   /** 영상 파일이 준비되기 전까지 보여줄 사진 */
   fallbackImage: { src: string; alt: string; position?: string };
+  /**
+   * 화면이 16:9보다 가로로 넓으면 영상 위아래가 잘린다.
+   * 인물 머리가 프레임 맨 위에 붙어 있는 영상은 "50% 0%"로 위를 기준에 맞춰 아래쪽만 잘리게 한다.
+   */
+  videoPosition?: string;
   label: string;
   title: React.ReactNode;
   description?: string;
@@ -19,7 +24,7 @@ type HeroVideoProps = {
   index: number;
 };
 
-export function HeroVideo({ src, fallbackImage, label, title, description, button, index }: HeroVideoProps) {
+export function HeroVideo({ src, fallbackImage, label, title, description, button, index, videoPosition }: HeroVideoProps) {
   const [status, setStatus] = useState<"loading" | "ready" | "missing">("loading");
   const isEmptyButton = !button.label;
 
@@ -55,6 +60,7 @@ export function HeroVideo({ src, fallbackImage, label, title, description, butto
           loop
           playsInline
           preload="metadata"
+          style={{ objectPosition: videoPosition ?? "50% 50%" }}
           onLoadedData={() => setStatus("ready")}
           onError={() => setStatus("missing")}
         >
