@@ -51,6 +51,25 @@ body {
   font-feature-settings: "ss01", "cv01";
   overflow-x: hidden;
   word-break: keep-all;
+  /* 드래그·길게 누르기로 글자가 선택되지 않게 한다 */
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+/* 입력 요소는 선택·편집이 가능해야 한다 */
+input,
+textarea,
+select,
+[contenteditable="true"] {
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+/* 이미지 드래그로 끌어내는 것도 막는다 */
+img {
+  -webkit-user-drag: none;
+  user-select: none;
 }
 
 /* 마지막 줄에 한두 글자만 남는 어색한 줄바꿈 방지 (좁은 화면에서 특히 잘 생긴다) */
@@ -346,9 +365,6 @@ figcaption {
   font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 1.08;
-  /* 큰 제목은 클릭·드래그로 선택되며 색이 덮이지 않게 한다 */
-  -webkit-user-select: none;
-  user-select: none;
 }
 
 .prose-ko p + p {

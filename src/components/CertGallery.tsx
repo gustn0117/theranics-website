@@ -39,7 +39,7 @@ export function CertGallery({ items }: { items: Cert[] }) {
 
   return (
     <>
-      <Reveal as="ul" stagger className="mt-8 grid select-none grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-7 lg:gap-3">
+      <Reveal as="ul" stagger className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-7 lg:gap-3">
         {items.map((c, i) => (
           <li key={c.title}>
             <button

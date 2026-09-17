@@ -281,8 +281,7 @@ export default function AboutPage() {
       </section>
 
       {/* 8. 인증 및 수상 */}
-      {/* 상장을 클릭할 때 제목·캡션이 드래그 선택되지 않도록 이 구간은 선택을 막는다 */}
-      <section id="awards" className="screen select-none bg-paper">
+      <section id="awards" className="screen bg-paper">
         <div className="container-x py-16 lg:py-12">
           <SectionHeading size="sm" title="정부와 지자체가 검증한 사회적 기업" />
           <CertGallery items={certificates} />
