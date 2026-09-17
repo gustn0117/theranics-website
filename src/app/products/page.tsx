@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { Placeholder } from "@/components/Placeholder";
 import { ButtonLink, PhotoHero, SectionHeading } from "@/components/ui";
 import { customerValues, features, ipSummary, lineup, mylift2Features, overseas, problems, usageSteps } from "@/data/products";
 import { cn } from "@/lib/cn";
@@ -444,20 +445,7 @@ export default function ProductsPage() {
               title="2026년 10월 시제품 완성"
               description="디자인·설계 확정과 H/W 개발을 마쳤습니다. 시제품 완성 뒤 제품 테스트, 촬영·홍보 제작, 금형 제작 순으로 진행됩니다."
             />
-            <Reveal className="w-full border border-ink" delay={120}>
-              <video
-                className="aspect-video w-full object-cover"
-                poster="/images/photo/wheelchair-park-poster.jpg"
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                aria-label="공원 벤치에서 친구와 이야기를 나누는 휠체어 사용자"
-              >
-                <source src="/videos/wheelchair-park.mp4" type="video/mp4" />
-              </video>
-            </Reveal>
+            <Placeholder label="제품 시연 영상 영역" hint="시제품 촬영 후 영상으로 교체" className="aspect-video w-full border border-ink" />
           </div>
           <div className="mt-12 flex flex-wrap gap-3 border-t border-ink pt-8">
             <ButtonLink href="/contact" variant="dark">

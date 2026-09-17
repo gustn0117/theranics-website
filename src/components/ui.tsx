@@ -90,6 +90,7 @@ export function ButtonLink({
  */
 export function PhotoHero({
   image,
+  video,
   title,
   description,
   children,
@@ -99,6 +100,8 @@ export function PhotoHero({
   minH = "lg:min-h-[88svh]",
 }: {
   image: { src: string; alt: string; position?: string };
+  /** 배경 영상. 재생 전·실패 시에는 아래 깔린 image 가 그대로 보인다. */
+  video?: { src: string; position?: string };
   label?: string;
   title: React.ReactNode;
   description?: React.ReactNode;
@@ -123,9 +126,24 @@ export function PhotoHero({
             preload
             sizes="100vw"
             quality={90}
-            className="kenburns object-cover"
+            className={cn("object-cover", !video && "kenburns")}
             style={{ objectPosition: image.position ?? "70% 50%" }}
           />
+          {video && (
+            <video
+              className="absolute inset-0 h-full w-full object-cover"
+              style={{ objectPosition: video.position ?? "50% 50%" }}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              poster={image.src}
+              aria-label={image.alt}
+            >
+              <source src={video.src} type="video/mp4" />
+            </video>
+          )}
         </Parallax>
         <div
           aria-hidden

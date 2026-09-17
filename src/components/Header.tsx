@@ -43,8 +43,9 @@ export function Header() {
     };
   }, [open]);
 
-  // 메인의 어두운 영상 구간 위에서만 흰 글자를 쓰고, 나머지 페이지의 투명 구간은 검은 글자를 유지한다
-  const light = atTop && !open && isHome && !lightSlide;
+  // 첫 화면이 어두운 영상·사진인 페이지에서는 흰 글자, 밝은 히어로에서는 검은 글자를 쓴다
+  const darkHero = isHome || pathname.startsWith("/about");
+  const light = atTop && !open && darkHero && !(isHome && lightSlide);
   const solid = !light;
 
   return (
