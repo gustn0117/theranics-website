@@ -21,7 +21,7 @@ export default function ProductsPage() {
       {/* Hero: 사진 배경, 왼쪽 여백에 텍스트 */}
       <PhotoHero
         minH="lg:min-h-[100svh]"
-        image={{ src: "/images/photo/hero-doorway-hq.jpg", alt: "현관에서 MYLIFT 위에 올라 휠을 교체하는 휠체어 사용자", position: "72% 50%" }}
+        image={{ src: "/images/photo/home-wheel-change-hero.jpg", alt: "집 안에서 MYLIFT 위에 올라 앉은 채로 휠을 교체하는 휠체어 사용자", position: "78% 50%" }}
         logo={<Image src="/images/logo/mylift-en.png" alt="MYLIFT" width={1021} height={497} className="mb-6 h-20 w-auto sm:h-24" preload />}
         title={
           <>

@@ -337,13 +337,17 @@ body {
   font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 1.08;
+  /* 큰 제목은 클릭·드래그로 선택되며 색이 덮이지 않게 한다 */
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .prose-ko p + p {
   margin-top: 1.1rem;
 }
 
+/* 본문을 드래그해도 라임 덩어리가 생기지 않도록 아주 옅게 */
 ::selection {
-  background: var(--color-lime-light);
+  background: var(--color-lime-soft);
   color: var(--color-ink);
 }

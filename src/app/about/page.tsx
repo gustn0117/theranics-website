@@ -37,7 +37,8 @@ export default function AboutPage() {
     <>
       <PhotoHero
         minH="lg:min-h-[100svh]"
-        image={{ src: "/images/photo/home-wheel-change-hero.jpg", alt: "집 안에서 MYLIFT 위에 올라 앉은 채로 휠을 교체하는 휠체어 사용자", position: "78% 50%" }}
+        // TODO: 클라이언트가 전달할 회사소개 영상으로 교체 예정
+        image={{ src: "/images/photo/wheel-change-hq.jpg", alt: "MYLIFT 위에서 뒷바퀴를 교체하는 휠체어 사용자", position: "78% 50%" }}
         title={
           <>
             국민 모두에게 보다{" "}
