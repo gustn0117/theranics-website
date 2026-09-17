@@ -392,14 +392,16 @@ export default function ProductsPage() {
 
       {/* 비교 */}
       <section className="screen bg-white">
-        <div className="container-x py-16 lg:py-12">
+        {/* 제목 + 차트가 한 화면에 들어가도록 차트가 남는 높이를 채운다 */}
+        {/* 화면 높이에 맞추되, 너무 낮은 화면에서는 차트 라벨이 겹치지 않게 770px 아래로는 줄이지 않는다 */}
+        <div className="container-x flex flex-col py-16 lg:h-[max(calc(100svh-5.75rem),770px)] lg:py-10">
           <SectionHeading
             label="경쟁 비교"
             title={<>안전과 청결을 동시에 만족하는<br className="hidden lg:inline" /> 유일한 포지셔닝</>}
             description="직접 경쟁사인 휠크린은 수입 중지, 휠스터킴은 단종되었습니다. 마이리프트는 낙상(안전)과 오염(청결)을 동시에 해결합니다."
           />
-          <div className="mt-12">
-            <PositioningChart />
+          <div className="mt-10 min-h-0 lg:flex-1">
+            <PositioningChart className="lg:aspect-auto lg:h-full" />
           </div>
         </div>
       </section>

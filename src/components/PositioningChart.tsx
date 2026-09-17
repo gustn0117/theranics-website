@@ -19,10 +19,10 @@ const quadrants = [
   { pos: "right-5 bottom-14", text: "청결은 해결, 낙상은 잔존", sub: "세척형의 한계" },
 ];
 
-export function PositioningChart() {
+export function PositioningChart({ className }: { className?: string }) {
   return (
     <Reveal
-      className="relative aspect-[4/3] w-full overflow-hidden border border-ink bg-white sm:aspect-[16/9]"
+      className={cn("relative aspect-[4/3] w-full overflow-hidden border border-ink bg-white sm:aspect-[16/9]", className)}
       delay={120}
     >
       {/* 좋아지는 방향으로 옅어지는 배경 */}
