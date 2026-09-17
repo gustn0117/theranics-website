@@ -10,7 +10,7 @@ import { cn } from "@/lib/cn";
 export function Header() {
   const pathname = usePathname();
   const isHome = pathname === "/";
-  const [overVideo, setOverVideo] = useState(isHome);
+  const [atTop, setAtTop] = useState(true);
   const [lightSlide, setLightSlide] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -21,13 +21,11 @@ export function Header() {
     return () => window.removeEventListener("slide-tone", onTone);
   }, []);
 
-  const showLightSlide = isHome && lightSlide;
-
-  // 메인의 영상 구간 2개(각 화면 높이) 위에서는 투명, 그 아래부터 흰 배경
+  // 첫 화면(메인은 영상 구간 2개, 나머지 페이지는 히어로 1개) 안에서는 투명, 그 아래부터 흰 배경
   useEffect(() => {
     const onScroll = () => {
-      const limit = window.innerHeight * 2 - 120;
-      setOverVideo(isHome && window.scrollY < limit);
+      const limit = (isHome ? window.innerHeight * 2 : window.innerHeight) - 120;
+      setAtTop(window.scrollY < limit);
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -45,17 +43,22 @@ export function Header() {
     };
   }, [open]);
 
-  const solid = !overVideo || open || showLightSlide;
+  // 메인의 어두운 영상 구간 위에서만 흰 글자를 쓰고, 나머지 페이지의 투명 구간은 검은 글자를 유지한다
+  const light = atTop && !open && isHome && !lightSlide;
+  const solid = !light;
 
   return (
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-50 pt-2 transition-colors duration-500 sm:pt-3",
-        !overVideo || open
+        !atTop || open
           ? "border-b border-line bg-white/95 backdrop-blur-md"
-          : showLightSlide
-            ? "bg-transparent"
-            : "bg-gradient-to-b from-black/45 to-transparent",
+          : light
+            ? "bg-gradient-to-b from-black/45 to-transparent"
+            : isHome
+              ? "bg-transparent"
+              : // 사진 히어로 위에서도 검은 로고·메뉴가 읽히도록 아주 옅은 흰 그라데이션만 깐다
+                "bg-gradient-to-b from-white/80 via-white/40 to-transparent",
       )}
     >
       <div className="container-x flex h-16 items-center justify-between sm:h-20">
