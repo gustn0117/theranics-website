@@ -22,7 +22,8 @@ const quadrants = [
 export function PositioningChart({ className }: { className?: string }) {
   return (
     <Reveal
-      className={cn("relative aspect-[4/3] w-full overflow-hidden border border-ink bg-white sm:aspect-[16/9]", className)}
+      // 모바일은 세로로 길게 잡아 제품 라벨이 서로 겹치지 않게 한다
+      className={cn("relative aspect-[4/5] w-full overflow-hidden border border-ink bg-white sm:aspect-[16/9]", className)}
       delay={120}
     >
       {/* 좋아지는 방향으로 옅어지는 배경 */}

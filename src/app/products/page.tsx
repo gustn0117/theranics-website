@@ -26,7 +26,7 @@ export default function ProductsPage() {
           <>
             휠을 바꾸면,{" "}
             <br className="hidden lg:inline" />
-            집에 들어가는 데{" "}
+            집에 <span className="whitespace-nowrap">들어가는 데</span>{" "}
             <br className="hidden lg:inline" />
             20초면 됩니다.
           </>
@@ -152,14 +152,15 @@ export default function ProductsPage() {
       <section className="screen bg-paper">
         <div className="container-x py-16 lg:py-12">
           <SectionHeading title="외출에서 돌아와 집에 들어가기까지, 20초" description="레일에 올라 뒷바퀴만 들어올리고 휠을 바꾸면 끝입니다. 외출은 역순입니다." />
-          <Reveal className="mt-10" delay={100}>
+          {/* 5단계 일러스트가 모바일에서 뭉개지지 않도록 최소 폭을 주고 가로 스크롤 */}
+          <Reveal className="-mx-5 mt-10 overflow-x-auto px-5 sm:mx-0 sm:px-0" delay={100}>
             <Image
               src="/images/product/usage-steps.png"
               alt="외출을 마치고 레일로 이동, 뒷바퀴만 리프트, 원터치 휠 분리, 실내용 휠 교체, 집 안으로 이동"
               width={2400}
               height={445}
-              className="h-auto w-full"
-              sizes="100vw"
+              className="h-auto w-full min-w-[640px] sm:min-w-0"
+              sizes="(min-width: 640px) 100vw, 640px"
             />
           </Reveal>
           <Reveal as="ol" stagger className="mt-8 grid divide-y divide-line border-t border-ink sm:grid-cols-5 sm:divide-x sm:divide-y-0">
@@ -397,7 +398,12 @@ export default function ProductsPage() {
           <SectionHeading
             label="경쟁 비교"
             title={<>안전과 청결을 동시에 만족하는<br className="hidden lg:inline" /> 유일한 포지셔닝</>}
-            description="직접 경쟁사인 휠크린은 수입 중지, 휠스터킴은 단종되었습니다. 마이리프트는 낙상(안전)과 오염(청결)을 동시에 해결합니다."
+            description={
+              <>
+                직접 경쟁사인 휠크린은 수입 중지, 휠스터킴은 단종되었습니다. 마이리프트는{" "}
+                <span className="whitespace-nowrap">낙상(안전)과</span> <span className="whitespace-nowrap">오염(청결)을</span> 동시에 해결합니다.
+              </>
+            }
           />
           <div className="mt-10 min-h-0 lg:flex-1">
             <PositioningChart className="lg:aspect-auto lg:h-full" />
@@ -409,11 +415,12 @@ export default function ProductsPage() {
       <section className="screen bg-white">
         <div className="container-x grid gap-12 py-16 lg:py-12 lg:grid-cols-[5fr_7fr]">
           <div>
-            <SectionHeading size="sm" label="지식재산" title={<>특허·디자인·상표와 PCT로<br className="hidden lg:inline" /> 세운 다층 진입장벽</>} />
+            <SectionHeading size="sm" label="지식재산" title={<><span className="whitespace-nowrap">특허·디자인·상표와</span> PCT로<br className="hidden lg:inline" /> 세운 다층 진입장벽</>} />
             <p className="display mt-10 text-7xl text-lime-deep sm:text-8xl">10건</p>
             <p className="mt-3 text-sm font-semibold text-ink-soft">마이리프트 IP: 특허출원 3건 · PCT출원 1건 · 디자인출원 2건 · 국내 상표출원 2건 · 해외 상표출원 2건</p>
             <p className="mt-5 border-t border-line pt-4 text-sm text-ink-soft">
-              연관 IP 14건 (마이프렌드 11건 · 마이스포츠 3건): 특허등록 3건 / 특허출원 1건, 상표등록 5건 / 상표출원 2건, 디자인등록 3건
+              연관 IP 14건 (마이프렌드 11건 · 마이스포츠 3건): <span className="whitespace-nowrap">특허등록 3건 / 특허출원 1건</span>,{" "}
+              <span className="whitespace-nowrap">상표등록 5건 / 상표출원 2건</span>, 디자인등록 3건
             </p>
           </div>
           <Reveal as="ul" stagger className="grid gap-px border border-ink bg-ink sm:grid-cols-2">

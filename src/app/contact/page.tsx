@@ -31,7 +31,8 @@ export default function ContactPage() {
                 ["이메일", c.email],
                 ["운영시간", c.hours],
               ].map(([k, v]) => (
-                <div key={k} className="grid grid-cols-[6.5rem_1fr] gap-4 border-b border-line py-4 text-[15px]">
+                // 좁은 화면에서는 값이 잘게 쪼개지지 않도록 항목명을 위로 올린다
+                <div key={k} className="grid grid-cols-1 gap-1 border-b border-line py-4 text-[15px] min-[420px]:grid-cols-[6.5rem_1fr] min-[420px]:gap-4">
                   <dt className="font-bold text-ink-soft">{k}</dt>
                   <dd className="font-medium">
                     {k === "이메일" ? (

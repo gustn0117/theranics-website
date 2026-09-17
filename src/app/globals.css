@@ -53,6 +53,15 @@ body {
   word-break: keep-all;
 }
 
+/* 마지막 줄에 한두 글자만 남는 어색한 줄바꿈 방지 (좁은 화면에서 특히 잘 생긴다) */
+p,
+dd,
+dt,
+li,
+figcaption {
+  text-wrap: pretty;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

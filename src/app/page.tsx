@@ -52,7 +52,7 @@ export default function HomePage() {
           <>
             옮겨타지 않고, 앉은 채로{" "}
             <br className="hidden lg:inline" />
-            20초 만에 실내 진입
+            <span className="whitespace-nowrap">20초 만에</span> 실내 진입
           </>
         }
         description="뒷바퀴만 살짝 들어올려 퀵릴리즈 휠을 원터치로 교체하는 세계 최초 휠 교체용 전동 리프트"
@@ -70,7 +70,8 @@ export default function HomePage() {
           </Reveal>
         }
       >
-        <Reveal as="dl" stagger className="mt-8 flex max-w-2xl flex-wrap gap-x-8 gap-y-4 border-t border-ink/20 pt-6" delay={120}>
+        {/* 모바일에서는 2×2로 고르게, 그 이상에서는 한 줄로 */}
+        <Reveal as="dl" stagger className="mt-8 grid max-w-2xl grid-cols-2 gap-x-6 gap-y-4 border-t border-ink/20 pt-6 sm:flex sm:flex-wrap sm:gap-x-8" delay={120}>
           {[
             ["20초", "휠 교체 시간"],
             ["255kg", "최대 하중"],
@@ -91,7 +92,8 @@ export default function HomePage() {
         label="문의"
         title={
           <>
-            MYLIFT 도입·협력·시범사업,{" "}
+            {/* 좁은 화면에서 줄이 가운뎃점으로 시작하지 않도록 묶어 둔다 */}
+            MYLIFT <span className="whitespace-nowrap">도입·협력·</span>시범사업,{" "}
             <br className="hidden lg:inline" />
             지금 이야기해 주세요
           </>

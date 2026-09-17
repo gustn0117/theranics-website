@@ -209,6 +209,7 @@ export default function AboutPage() {
           />
           {/* 위: 대표 한 줄 / 아래: 나머지 두 명 */}
           <div className="mt-8 border border-ink">
+            {/* 좁은 화면에서는 본문 줄이 너무 짧아지므로 사진을 위로 올려 한 단으로 쌓는다 */}
             <Reveal as="article" className="grid gap-px bg-ink sm:grid-cols-[240px_1fr]">
               <Image
                 src={ceo.photo}
@@ -216,9 +217,9 @@ export default function AboutPage() {
                 width={600}
                 height={800}
                 quality={90}
-                className="aspect-[3/4] w-full bg-white object-cover sm:aspect-auto sm:h-full"
+                className="aspect-[3/2] w-full bg-white object-cover object-[center_22%] sm:aspect-auto sm:h-full sm:object-top"
               />
-              <div className="bg-white p-6 lg:p-8">
+              <div className="min-w-0 bg-white p-5 sm:p-6 lg:p-8">
                 <p className="text-sm font-semibold text-ink-soft">{ceo.role}</p>
                 <h3 className="display mt-1 text-4xl">{ceo.name}</h3>
                 <p className="mt-3 text-sm font-semibold">{ceo.summary}</p>
@@ -232,10 +233,11 @@ export default function AboutPage() {
               </div>
             </Reveal>
             <Reveal stagger className="grid gap-px border-t border-ink bg-ink sm:grid-cols-2">
+              {/* minmax(0,1fr): 좁은 화면에서 텍스트 칸이 최소 너비로 화면을 밀어내지 않게 한다 */}
               {members.map((m) => (
-                <article key={m.name} className="grid grid-cols-[120px_1fr] gap-5 bg-white p-6">
-                  <Image src={m.photo} alt={`${m.name} ${m.role}`} width={600} height={800} quality={90} className="aspect-[3/4] w-full object-cover" />
-                  <div>
+                <article key={m.name} className="grid grid-cols-[96px_minmax(0,1fr)] gap-4 bg-white p-5 sm:grid-cols-[120px_minmax(0,1fr)] sm:gap-5 sm:p-6">
+                  <Image src={m.photo} alt={`${m.name} ${m.role}`} width={600} height={800} quality={90} className="aspect-[3/4] w-full self-start object-cover object-top" />
+                  <div className="min-w-0">
                     <p className="text-sm font-semibold text-ink-soft">{m.role}</p>
                     <h3 className="display mt-1 text-2xl">{m.name}</h3>
                     <p className="mt-2 text-[13px] font-semibold leading-snug">{m.summary}</p>
