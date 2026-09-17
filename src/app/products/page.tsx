@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { Placeholder } from "@/components/Placeholder";
 import { ButtonLink, PhotoHero, SectionHeading } from "@/components/ui";
-import { comparison, customerValues, features, ipSummary, lineup, mylift2Features, overseas, problems, usageSteps } from "@/data/products";
+import { customerValues, features, ipSummary, lineup, mylift2Features, overseas, problems, usageSteps } from "@/data/products";
 import { cn } from "@/lib/cn";
 import { Reveal } from "@/components/Reveal";
 import { Parallax } from "@/components/Parallax";
@@ -400,32 +400,6 @@ export default function ProductsPage() {
           />
           <div className="mt-12">
             <PositioningChart />
-          </div>
-          <div className="mt-8 overflow-x-auto border border-ink">
-            <table className="w-full min-w-[840px] border-collapse text-sm">
-              <thead>
-                <tr className="bg-ink text-white">
-                  <th className="w-24 px-4 py-3 text-left font-bold">구분</th>
-                  {comparison.columns.map((c, i) => (
-                    <th key={c} className={cn("px-4 py-3 text-left font-bold", i === comparison.columns.length - 1 && "bg-lime text-ink")}>
-                      {c}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {comparison.rows.map((r) => (
-                  <tr key={r.label} className="border-t border-line align-top">
-                    <th className="bg-paper px-4 py-3 text-left font-bold">{r.label}</th>
-                    {r.cells.map((cell, i) => (
-                      <td key={i} className={cn("px-4 py-3 leading-[1.7] text-ink-soft", i === r.cells.length - 1 && "bg-lime-soft font-semibold text-ink")}>
-                        {cell}
-                      </td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
           </div>
         </div>
       </section>
