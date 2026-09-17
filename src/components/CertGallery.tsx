@@ -39,12 +39,14 @@ export function CertGallery({ items }: { items: Cert[] }) {
 
   return (
     <>
-      <Reveal as="ul" stagger className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-7 lg:gap-3">
+      <Reveal as="ul" stagger className="mt-8 grid select-none grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-7 lg:gap-3">
         {items.map((c, i) => (
           <li key={c.title}>
             <button
               type="button"
               onClick={() => setOpen(i)}
+              // 마우스로 누를 때는 포커스를 주지 않아 닫은 뒤 라임 테두리가 남지 않게 한다 (키보드 탭 이동은 그대로)
+              onMouseDown={(e) => e.preventDefault()}
               className="group block w-full text-left"
               aria-label={`${c.title} 상장 크게 보기`}
             >
