@@ -43,25 +43,9 @@ export default function HomePage() {
         description="취약계층의 고용을 도와 적극적인 경제활동을 지원하는 것, (주)테라닉스의 소셜미션입니다."
         button={{ href: siteConfig.secondVideoButtonHref, ariaLabel: "다음 페이지로 이동" }}
       />,
-      // 3. 안전과 청결
+      // 3. MYLIFT 하이라이트
       <HeroPanel
         key="s3"
-        image={{ src: "/images/photo/wheel-change-hq.jpg", alt: "MYLIFT 위에서 앉은 채 뒷바퀴를 교체하는 휠체어 사용자", position: "70% 40%" }}
-        label="안전과 청결"
-        title={
-          <>
-            낙상 없는 귀가,{" "}
-            <br className="hidden lg:inline" />
-            오염 없는 실내
-          </>
-        }
-        description="옮겨타지 않고 앉은 채 휠만 바꿔 낙상사고와 실내 오염, 호흡기 질환을 한 번에 해결합니다."
-        button={{ href: "/about", label: "회사소개 보기" }}
-      />,
-
-      // 4. MYLIFT 하이라이트
-      <HeroPanel
-        key="s4"
         tone="light"
         label="제품"
         title={
@@ -100,9 +84,9 @@ export default function HomePage() {
           ))}
         </Reveal>
       </HeroPanel>,
-      // 5. 문의
+      // 4. 문의
       <HeroPanel
-        key="s5"
+        key="s4"
         image={{ src: "/images/activity/act-104-hq.jpg", alt: "재도전 마인드업 힐링캠프 단체 사진", position: "50% 30%" }}
         label="문의"
         title={
@@ -129,8 +113,8 @@ export default function HomePage() {
   return (
     <MainSlider
       slides={slides}
-      labels={["이동권", "고용권", "안전과 청결", "제품", "문의"]}
-      tones={["dark", "dark", "dark", "light", "dark"]}
+      labels={["이동권", "고용권", "제품", "문의"]}
+      tones={["dark", "dark", "light", "dark"]}
     />
   );
 }
