@@ -26,7 +26,7 @@ export function HeroVideo({ src, poster, label, title, description, button, inde
 
   return (
     <section
-      className="relative isolate flex min-h-[100svh] w-full items-center overflow-hidden bg-ink text-white"
+      className="relative isolate flex min-h-full w-full items-center overflow-hidden bg-ink text-white"
       aria-labelledby={`hero-${index}-title`}
     >
       <video

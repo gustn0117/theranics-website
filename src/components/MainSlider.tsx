@@ -89,7 +89,9 @@ export function MainSlider({ slides, labels, tones }: { slides: React.ReactNode[
   }, [active, go]);
 
   return (
-    <div className="relative h-[100svh] min-h-[600px] w-full overflow-hidden bg-ink" aria-roledescription="carousel">
+    // 화면에 고정해 항상 보이는 영역을 꽉 채운다. 100svh 로 두면 다른 페이지에서 스크롤해
+    // 모바일 주소창이 접힌 채 돌아왔을 때 화면이 더 길어져 아래가 흰색으로 비었다.
+    <div className="fixed inset-0 min-h-[600px] w-full overflow-hidden bg-ink" aria-roledescription="carousel">
       {slides.map((slide, i) => {
         const isActive = i === active;
         const isLeaving = i === leaving;
