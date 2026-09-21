@@ -20,8 +20,8 @@ export const siteConfig = {
   secondVideoButtonHref: "/coming-soon",
   nav: [
     { href: "/about", label: "About us", labelKo: "회사소개" },
-    { href: "/products", label: "MYLIFT", labelKo: "제품소개" },
     { href: "/contact", label: "Contact us", labelKo: "문의하기" },
+    { href: "/products", label: "MYLIFT", labelKo: "제품소개" },
   ],
 } as const;
 
