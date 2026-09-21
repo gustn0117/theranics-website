@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { Placeholder } from "@/components/Placeholder";
-import { ButtonLink, PhotoHero, SectionHeading } from "@/components/ui";
+import { Lines, PhotoHero, SectionHeading } from "@/components/ui";
 import { customerValues, features, ipSummary, lineup, mylift2Features, overseas, problems, usageSteps } from "@/data/products";
 import { cn } from "@/lib/cn";
 import { Reveal } from "@/components/Reveal";
@@ -11,7 +11,7 @@ import { PositioningChart } from "@/components/PositioningChart";
 export const metadata: Metadata = {
   title: "Products · MYLIFT 마이리프트",
   description:
-    "휠체어 휠을 쉽게 교체하여 자택 출입 시 20초 만에 안전과 청결을 해결하는 전동 리프트 MYLIFT. 시저형 2,500N 액추에이터, 받침용 헤더, 접이식 구조, 기본형·고급형 라인업.",
+    "휠체어 휠을 쉽게 교체하여 자택 출입 시 20초 만에 안전과 청결을 해결하는 전동 리프트 MYLIFT. 시저형 2,500N 액추에이터, 받침용 헤더, 접이식 구조, 기본형 · 고급형 라인업.",
   alternates: { canonical: "/products" },
 };
 
@@ -25,9 +25,9 @@ export default function ProductsPage() {
         logo={<Image src="/images/logo/mylift-en.png" alt="MYLIFT" width={1021} height={497} className="mb-6 h-20 w-auto sm:h-24" preload />}
         title={
           <>
-            휠을 바꾸면,{" "}
+            휠을 교체하면,{" "}
             <br className="hidden lg:inline" />
-            집에 <span className="whitespace-nowrap">들어가는 데</span>{" "}
+            집에 <span className="whitespace-nowrap">들어갈 때</span>{" "}
             <br className="hidden lg:inline" />
             20초면 됩니다.
           </>
@@ -52,12 +52,7 @@ export default function ProductsPage() {
             ))}
           </dl>
         }
-      >
-        <ButtonLink href="#lineup">라인업 보기</ButtonLink>
-        <ButtonLink href="/contact" variant="outline">
-          도입 문의
-        </ButtonLink>
-      </PhotoHero>
+      />
 
       {/* 문제 1: 국내 */}
       <section className="screen relative isolate overflow-hidden bg-ink text-white">
@@ -81,13 +76,15 @@ export default function ProductsPage() {
                 </div>
                 <div className="p-5">
                   <h3 className="text-lg font-extrabold">{p.title}</h3>
-                  <p className="mt-2 text-sm leading-[1.75] text-white/70">{p.desc}</p>
+                  <p className="mt-2 text-sm leading-[1.75] text-white/70">
+                    <Lines text={p.desc} />
+                  </p>
                 </div>
               </li>
             ))}
           </Reveal>
-          <p className="mt-8 border-l-4 border-lime pl-5 text-lg font-bold sm:text-xl">
-            낙상사고 + 호흡기 질환 + 휠체어 중복수급 = 건강보험·민간보험으로 확산되는 사회적 비용
+          <p className="mt-10 border-l-4 border-lime pl-5 text-xl font-bold leading-snug sm:text-2xl lg:text-3xl">
+            낙상사고 + 호흡기 질환 + 휠체어 중복수급 = 건강보험 · 민간보험으로 확산되는 사회적 비용
           </p>
         </div>
       </section>
@@ -164,9 +161,9 @@ export default function ProductsPage() {
               sizes="(min-width: 640px) 100vw, 640px"
             />
           </Reveal>
-          <Reveal as="ol" stagger className="mt-8 grid divide-y divide-line border-t border-ink sm:grid-cols-5 sm:divide-x sm:divide-y-0">
+          <Reveal as="ol" stagger className="mt-8 grid border-t border-ink sm:grid-cols-3 lg:grid-cols-6">
             {usageSteps.map((s) => (
-              <li key={s.no} className="py-6 sm:px-5 sm:py-8 first:sm:pl-0">
+              <li key={s.no} className="border-b border-line py-6 sm:px-5 sm:py-8 sm:[&:nth-child(3n+1)]:pl-0 lg:border-b-0 lg:border-l lg:[&:nth-child(3n+1)]:pl-5 lg:first:border-l-0 lg:first:pl-0">
                 <span className="display text-3xl text-lime-deep">{s.no}</span>
                 <p className="mt-2 font-bold">{s.title}</p>
                 <p className="mt-1 text-sm leading-relaxed text-ink-soft">{s.desc}</p>
@@ -193,10 +190,12 @@ export default function ProductsPage() {
             <Reveal as="dl" stagger className="mt-10 grid gap-px border border-line bg-line sm:grid-cols-2">
               {features.map((f) => (
                 <div key={f.title} className="bg-white p-6">
-                  <dt className="text-xs font-bold text-sky">{f.label}</dt>
+                  <dt className="text-base font-bold text-sky">{f.label}</dt>
                   <dd className="display mt-1 text-3xl">{f.value}</dd>
                   <dd className="mt-2 font-bold">{f.title}</dd>
-                  <dd className="mt-1 text-sm leading-[1.7] text-ink-soft">{f.desc}</dd>
+                  <dd className="mt-1 text-sm leading-[1.7] text-ink-soft">
+                    <Lines text={f.desc} />
+                  </dd>
                 </div>
               ))}
             </Reveal>
@@ -210,14 +209,25 @@ export default function ProductsPage() {
           <SectionHeading
             label="라인업"
             title="소비자에게 폭넓은 선택권"
-            description="기능, 옵션, 가격을 선택할 수 있습니다. 건강보험공단 급여제품 등록 시 자기부담금 9만원 또는 무료."
+            description={
+              <>
+                기능, 옵션, 가격을 선택할 수 있습니다.
+                <br />
+                건강보험공단 급여제품 등록 시 자기부담금 9만원 또는 무료.
+              </>
+            }
           />
           <Reveal stagger className="mt-12 grid gap-px border border-ink bg-ink lg:grid-cols-3">
             {lineup.map((p) => (
               <article key={`${p.model}-${p.name}`} className="flex flex-col bg-white">
                 <div className={cn("zoom-img relative aspect-[4/3]", p.accent)}>
                   <Image src={p.image} alt={`${p.model} ${p.name}`} fill sizes="(min-width: 1024px) 33vw, 100vw" className="object-contain p-8" />
-                  {p.highlight && <span className="absolute left-0 top-0 bg-ink px-3 py-1.5 text-xs font-bold text-white">대표 모델</span>}
+                  {p.highlight && (
+                    // 왼쪽 위 모서리 삼각형 + 빗금. 배경 노랑보다 한 톤 진한 색
+                    <span aria-label="대표 모델" className="hatch-ribbon absolute left-0 top-0 h-28 w-28">
+                      <span className="absolute left-3 top-[1.9rem] -rotate-45 text-xs font-extrabold tracking-tight text-ink">대표 모델</span>
+                    </span>
+                  )}
                 </div>
                 <div className="flex flex-1 flex-col p-6">
                   <p className="text-sm font-bold text-lime-deep">{p.model}</p>
@@ -348,12 +358,12 @@ export default function ProductsPage() {
         <div className="container-x py-16 lg:py-12">
           <div className="grid gap-12 lg:grid-cols-[5fr_7fr] lg:items-center">
             <div>
-              <Image src="/images/logo/mylift2.png" alt="MYLIFT 2" width={1260} height={164} className="h-10 w-auto" />
+              <Image src="/images/logo/mylift2-blue.png" alt="MYLIFT 2" width={1600} height={193} className="h-10 w-auto" />
               <SectionHeading
                 className="mt-8"
                 label="제품 고도화"
                 title="“Less is More”에서 “딥테크”로"
-                description="단순화된 마이리프트로 시장을 선점한 뒤, 앱 연동·센서·음성·유압 방식을 적용한 마이리프트2로 고도화합니다. 구독형 부가 서비스와 소모품 판매로 고객 Lock-in 효과를 가진 서비스 기업으로 진화합니다."
+                description="단순화된 마이리프트로 시장을 선점한 뒤, 앱 연동 · 센서 · 음성 · 유압 방식을 적용한 마이리프트2로 고도화합니다. 구독형 부가 서비스와 소모품 판매로 고객 Lock-in 효과를 가진 서비스 기업으로 진화합니다."
               />
             </div>
             <div className="grid grid-cols-[1fr_auto] items-end gap-6">
@@ -378,7 +388,7 @@ export default function ProductsPage() {
           </Reveal>
           <dl className="mt-8 grid gap-px border border-ink/15 bg-ink/15 text-sm sm:grid-cols-3">
             {[
-              ["소모품 구독", "세척 소모품(롤브러시·헤파필터) 정기 배송"],
+              ["소모품 구독", "세척 소모품(롤브러시 · 헤파필터) 정기 배송"],
               ["배터리 교체", "18개월 주기 (급여 가능)"],
               ["본체 재구매", "6년 주기 → 반복 매출 · LTV 확대"],
             ].map(([k, v]) => (
@@ -416,9 +426,13 @@ export default function ProductsPage() {
       <section className="screen bg-white">
         <div className="container-x grid gap-12 py-16 lg:py-12 lg:grid-cols-[5fr_7fr]">
           <div>
-            <SectionHeading size="sm" label="지식재산" title={<><span className="whitespace-nowrap">특허·디자인·상표와</span> PCT로<br className="hidden lg:inline" /> 세운 다층 진입장벽</>} />
+            <SectionHeading size="sm" label="지식재산" title={<><span className="whitespace-nowrap">특허 · 디자인 · 상표와</span> PCT로<br className="hidden lg:inline" /> 세운 다층 진입장벽</>} />
             <p className="display mt-10 text-7xl text-lime-deep sm:text-8xl">10건</p>
-            <p className="mt-3 text-sm font-semibold text-ink-soft">마이리프트 IP: 특허출원 3건 · PCT출원 1건 · 디자인출원 2건 · 국내 상표출원 2건 · 해외 상표출원 2건</p>
+            <p className="mt-3 text-sm font-semibold text-ink-soft">
+              마이리프트 IP: 특허출원 3건 · PCT출원 1건
+              <br />
+              디자인출원 2건 · 국내 상표출원 2건 · 해외 상표출원 2건
+            </p>
             <p className="mt-5 border-t border-line pt-4 text-sm text-ink-soft">
               연관 IP 14건 (마이프렌드 11건 · 마이스포츠 3건): <span className="whitespace-nowrap">특허등록 3건 / 특허출원 1건</span>,{" "}
               <span className="whitespace-nowrap">상표등록 5건 / 상표출원 2건</span>, 디자인등록 3건
@@ -429,7 +443,9 @@ export default function ProductsPage() {
               <li key={ip.title} className="bg-white p-6">
                 <p className="display text-4xl text-lime-deep">{ip.count}</p>
                 <p className="mt-3 font-bold">{ip.title}</p>
-                <p className="mt-1 text-sm text-ink-soft">{ip.desc}</p>
+                <p className="mt-1 text-sm text-ink-soft">
+                  <Lines text={ip.desc} />
+                </p>
               </li>
             ))}
           </Reveal>
@@ -443,17 +459,9 @@ export default function ProductsPage() {
             <SectionHeading
               label="개발 로드맵"
               title="2026년 10월 시제품 완성"
-              description="디자인·설계 확정과 H/W 개발을 마쳤습니다. 시제품 완성 뒤 제품 테스트, 촬영·홍보 제작, 금형 제작 순으로 진행됩니다."
+              description="디자인 · 설계 확정과 H/W 개발을 마쳤습니다. 시제품 완성 뒤 제품 테스트, 촬영 · 홍보 제작, 금형 제작 순으로 진행됩니다."
             />
             <Placeholder label="제품 시연 영상 영역" hint="시제품 촬영 후 영상으로 교체" className="aspect-video w-full border border-ink" />
-          </div>
-          <div className="mt-12 flex flex-wrap gap-3 border-t border-ink pt-8">
-            <ButtonLink href="/contact" variant="dark">
-              MYLIFT 도입 문의하기
-            </ButtonLink>
-            <ButtonLink href="/about" variant="outline">
-              회사소개
-            </ButtonLink>
           </div>
         </div>
       </section>

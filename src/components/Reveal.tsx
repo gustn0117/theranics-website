@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import { cn } from "@/lib/cn";
 
 /**
- * 스크롤로 화면에 들어오면 페이드·상승하며 나타나고, 다시 벗어나면 원래 상태로 돌아간다.
+ * 스크롤로 화면에 들어오면 페이드 · 상승하며 나타나고, 다시 벗어나면 원래 상태로 돌아간다.
  * 내려올 때마다 모션이 다시 재생된다. stagger 를 켜면 자식 요소들이 순서대로 시차를 두고 나타난다.
  * prefers-reduced-motion 환경에서는 globals.css 규칙으로 즉시 표시된다.
  */

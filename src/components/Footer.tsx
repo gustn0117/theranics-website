@@ -30,19 +30,27 @@ export function Footer() {
               className="h-12 w-auto"
             />
             <p className="mt-5 max-w-md text-sm leading-[1.8] text-ink-soft">
-              {siteConfig.slogan} 국민의 건강·행복·안전지킴이를 비전으로 사회적 약자의 안전구현을 위한
+              {siteConfig.slogan} 국민의 건강 · 행복 · 안전지킴이를 비전으로 사회적 약자의 안전구현을 위한
               제품과 서비스를 개발합니다.
             </p>
             {/* 좁은 화면에서 인증 배지가 뭉개지지 않도록 높이를 지키고 가로 스크롤로 둔다 */}
             <div className="-mx-5 mt-7 overflow-x-auto px-5 sm:mx-0 sm:px-0">
               <Image
-                src="/images/logo/partners-row.png"
+                src="/images/logo/partners-row-v2.png"
                 alt="고용노동부 예비사회적기업 · 중소벤처기업부 소셜벤처기업 · 한국사회적기업진흥원 사회적기업가 육성사업"
-                width={1771}
+                width={1336}
                 height={142}
                 className="h-9 w-auto max-w-none sm:h-8 sm:max-w-full"
               />
             </div>
+            <ul className="mt-5 space-y-1 text-[13px] leading-relaxed text-ink-soft">
+              <li>
+                <strong className="font-bold text-ink">예비사회적기업 지정</strong> · 고용노동부 일자리 제공형 (2023. 12 ~ 2026. 12)
+              </li>
+              <li>
+                <strong className="font-bold text-ink">소셜벤처기업 판별</strong> · 중소벤처기업부 기술보증기금 (2024. 05)
+              </li>
+            </ul>
           </div>
 
           <div>

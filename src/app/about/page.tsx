@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { ButtonLink, PhotoHero, SectionHeading, StatRow } from "@/components/ui";
+import { ButtonLink, Lines, SectionHeading, StatRow } from "@/components/ui";
 import { Reveal } from "@/components/Reveal";
 import { PhotoSlider } from "@/components/PhotoSlider";
 import { CertGallery } from "@/components/CertGallery";
@@ -21,9 +21,12 @@ import {
 export const metadata: Metadata = {
   title: "About us · 회사소개",
   description:
-    "(주)테라닉스의 소셜미션, 비전, 경영진, 주요 연혁과 인증·수상, 대외활동을 소개합니다. 국민의 건강·행복·안전지킴이를 비전으로 하는 예비사회적기업입니다.",
+    "(주)테라닉스의 소셜미션, 비전, 경영진, 주요 연혁과 인증 · 수상, 대외활동을 소개합니다. 국민의 건강 · 행복 · 안전지킴이를 비전으로 하는 예비사회적기업입니다.",
   alternates: { canonical: "/about" },
 };
+
+/** 사회적 기업가 소개(경영진) 구간 노출 여부 */
+const SHOW_TEAM = false;
 
 const vision = [
   { key: "건강", desc: "흙먼지와 실내 오염을 줄여 호흡기 질환을 낮추는 청결한 생활환경" },
@@ -35,36 +38,21 @@ export default function AboutPage() {
   const [ceo, ...members] = team;
   return (
     <>
-      <PhotoHero
-        minH="lg:min-h-[100svh]"
-        tone="dark"
-        image={{ src: "/images/photo/wheelchair-park-poster.jpg", alt: "공원 벤치에서 친구와 이야기를 나누는 휠체어 사용자", position: "72% 45%" }}
-        video={{ src: "/videos/wheelchair-park.mp4", position: "72% 45%" }}
-        title={
-          <>
-            국민 모두에게 보다{" "}
-            <br className="hidden lg:inline" />
-            안전하고 풍요로운 삶을
-          </>
-        }
-        description="예비사회적기업 (주)테라닉스가 ESG와 함께 합니다. 사회적 약자의 안전구현을 위한 제품과 서비스를 개발하고 제공합니다."
-      />
-
       {/* 1. 소셜 미션 */}
       <section id="mission" className="screen bg-white">
-        <div className="container-x grid gap-12 py-16 lg:grid-cols-[5fr_7fr] lg:items-center lg:py-12">
+        <div className="container-x grid gap-12 pb-16 pt-28 lg:grid-cols-[5fr_7fr] lg:items-center lg:py-12">
           <div>
             <SectionHeading
               size="sm"
               title={
                 <>
-                  교통약자의 이동과{" "}
+                  (주)테라닉스는 교통약자의 이동과{" "}
                   <br className="hidden lg:inline" />
                   취약계층의 고용을 돕습니다
                 </>
               }
             />
-            <p className="mt-8 text-sm font-semibold text-ink-soft">비전 ‘국민의 건강, 행복, 안전지킴이’</p>
+            <p className="mt-8 text-sm font-semibold text-ink-soft">‘국민의 건강, 행복, 안전지킴이’</p>
             <Reveal as="ul" stagger className="mt-3 border-t border-ink">
               {vision.map((v) => (
                 <li key={v.key} className="grid grid-cols-[5rem_1fr] gap-4 border-b border-line py-5">
@@ -86,17 +74,17 @@ export default function AboutPage() {
       </section>
 
       {/* 2. 세 가지 약속 */}
-      <section id="promise" className="screen relative isolate overflow-hidden bg-ink text-white">
-        <Image src="/images/photo/hero-doorway-hq.jpg" alt="" fill sizes="100vw" quality={90} className="object-cover opacity-30" />
-        <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/80 to-ink" />
-        <div className="container-x relative py-16 lg:py-12">
+      <section id="promise" className="screen bg-ink text-white">
+        <div className="container-x py-16 lg:py-12">
           <SectionHeading light title="테라닉스의 세 가지 약속" description="제품 하나가 아니라, 사회적 약자의 하루를 바꾸는 일을 합니다." />
           <Reveal as="ul" stagger className="mt-10 grid gap-px bg-white/15 lg:grid-cols-3">
             {coreValues.map((v, i) => (
               <li key={v.title} className="bg-ink p-7 lg:p-10">
                 <span className="display text-4xl text-lime lg:text-5xl">{String(i + 1).padStart(2, "0")}</span>
                 <h3 className="display mt-5 text-2xl lg:text-3xl">{v.title}</h3>
-                <p className="mt-3 text-[15px] leading-[1.85] text-white/75 lg:text-base">{v.body}</p>
+                <p className="mt-3 text-[15px] leading-[1.85] text-white/75 lg:text-base">
+                  <Lines text={v.body} />
+                </p>
               </li>
             ))}
           </Reveal>
@@ -107,30 +95,36 @@ export default function AboutPage() {
       <section id="company" className="screen bg-white">
         <div className="container-x py-16 lg:py-12">
           <SectionHeading
+            className="max-w-none"
             title={
               <>
-                제품 200여 개와 지식재산 34건을 만든{" "}
+                200여개의 제품과 34건의 지식재산권을 만든{" "}
                 <br className="hidden lg:inline" />
-                제조 전문 기업
+                제조 + 서비스 전문 기업
               </>
             }
-            description="2023년 8월 경기도 의정부시 지식산업센터에서 법인을 설립했습니다. 장애인 이동·돌봄 플랫폼 ‘마이프렌드’에서 출발해 세계 최초 휠 교체용 전동 리프트 ‘마이리프트’ 제조로 피보팅했습니다."
+            description={
+              <>
+                2023년 8월 경기도 의정부시 지식산업센터에서 법인을 설립했습니다. 장애인 이동 · 돌봄 플랫폼 ‘마이프렌드’에서 출발해 세계
+                최초 휠 교체용 전동 보조기기 <span className="whitespace-nowrap">‘마이리프트’로</span> 피보팅했습니다.
+              </>
+            }
           />
           <Reveal className="mt-10" delay={100}>
             <StatRow
               items={[
-                { value: "2023.08", label: "법인 설립 · 경기도 의정부" },
-                { value: "34건", label: "보유 지식재산권 (특허·디자인·상표)" },
+                { value: "2023. 08", label: "법인 설립 · 경기도 의정부시 민락동" },
+                { value: "34건", label: "보유 지식재산권 (특허 · 디자인 · 상표)" },
                 { value: "50개사", label: "국내외 제조 협력사 네트워크" },
-                { value: "200여 종", label: "디자인·설계·금형·양산 제품" },
+                { value: "200여 종", label: "디자인 · 설계 · 금형 · 양산 제품 제조 경력" },
               ]}
             />
           </Reveal>
           <Reveal as="dl" stagger className="mt-8 grid gap-px border border-line bg-line md:grid-cols-3">
             {[
-              ["예비사회적기업", "고용노동부 · 일자리 제공형 (2023.12)"],
-              ["소셜벤처기업", "중소벤처기업부 · 기술보증기금 판별 (2024.05)"],
-              ["사회적기업가 육성사업", "한국사회적기업진흥원 · 인큐베이팅 (2023.02)"],
+              ["예비사회적기업", "고용노동부 · 일자리 제공형 (2026. 12)"],
+              ["소셜벤처기업", "중소벤처기업부 · 기술보증기금 판별 (2024. 05)"],
+              ["사회적기업가 육성사업", "한국사회적기업진흥원 · 인큐베이팅 (2023. 02)"],
             ].map(([t, d]) => (
               <div key={t} className="bg-white p-6">
                 <dt className="text-lg font-extrabold">{t}</dt>
@@ -155,7 +149,7 @@ export default function AboutPage() {
             description="협회 회원 기반의 조직화된 수요와 건강보험공단 급여 제도 위에서 마이리프트를 시작합니다."
           />
           <Reveal className="mt-10" delay={100}>
-            <StatRow items={marketStats} />
+            <StatRow items={marketStats} spread />
           </Reveal>
           <Reveal as="ul" stagger className="mt-6 space-y-1.5 text-[15px] text-ink-soft">
             {marketNotes.map((n) => (
@@ -172,7 +166,7 @@ export default function AboutPage() {
             <SectionHeading size="sm" title="마이리프트 단품을 넘어 유니버설 제조기업으로" />
             <Reveal as="ul" stagger className="mt-8 border-t border-ink">
               {productFamily.map((f) => (
-                <li key={f.en} className="grid grid-cols-[8.5rem_1fr] gap-4 border-b border-line py-4 sm:grid-cols-[10rem_1fr]">
+                <li key={f.en} className="grid grid-cols-[8.5rem_minmax(0,1fr)] gap-4 border-b border-line py-4 sm:grid-cols-[10rem_minmax(0,1fr)]">
                   <div>
                     <p className="font-extrabold">{f.name}</p>
                     <p className="text-xs font-semibold text-ink-soft">{f.en}</p>
@@ -200,13 +194,14 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 6. 경영진 */}
+      {/* 6. 경영진 (사회적 기업가 소개) — 클라이언트 요청으로 잠시 숨김. 다시 보이려면 SHOW_TEAM 을 true 로 */}
+      {SHOW_TEAM && (
       <section id="team" className="screen bg-paper">
         <div className="container-x py-16 lg:py-12">
           <SectionHeading
             size="sm"
             title="사회적 기업가 소개"
-            description="협력 및 자문 네트워크: 의료기 인증(GMP·ISO·FDA·CE), 국내외 마케팅(KIMES 등 전시회), 장애인 협회 협업, 액추에이터 제어·하드웨어 개발"
+            description="협력 및 자문 네트워크: 의료기 인증(GMP · ISO · FDA · CE), 국내외 마케팅(KIMES 등 전시회), 장애인 협회 협업, 액추에이터 제어 · 하드웨어 개발"
           />
           {/* 위: 대표 한 줄 / 아래: 나머지 두 명 */}
           <div className="mt-8 border border-ink">
@@ -254,22 +249,23 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+      )}
 
       {/* 7. 주요 연혁: 스크롤에 따라 연도별로 나타남 */}
       <section id="history" className="bg-white">
         <div className="container-x py-16 lg:pt-32 lg:pb-24">
-          <SectionHeading title="회사가 걸어온 길" description="2022년 사업의 만남에서 2026년 마이리프트 시제품 완성까지." />
+          <SectionHeading title="걸어온 길" description="2022년 장애인 세상의 만남에서 마이리프트 시제품 완성까지!" />
           <div className="mt-12 border-t border-ink">
             {history.map((group) => (
               <div key={group.year} className="grid border-b border-ink/20 py-8 md:grid-cols-[10rem_1fr] lg:grid-cols-[14rem_1fr] lg:py-12">
                 <Reveal className="display text-5xl text-lime-deep md:sticky md:top-28 md:self-start lg:text-7xl">{group.year}</Reveal>
                 <Reveal as="ol" stagger className="mt-6 md:mt-2">
                   {group.items.map((it) => (
-                    <li key={`${it.date}-${it.title}`} className="grid gap-1 border-t border-line py-4 first:border-t-0 first:pt-0 sm:grid-cols-[5.5rem_1fr] sm:gap-6">
-                      <span className="text-sm font-bold text-ink-soft">{it.date}</span>
+                    <li key={`${it.date}-${it.title}`} className="grid gap-1 border-t border-line py-5 first:border-t-0 first:pt-0 sm:grid-cols-[7.5rem_minmax(0,1fr)] sm:gap-6">
+                      <span className="text-base font-bold text-ink-soft sm:text-lg">{it.date}</span>
                       <div>
-                        <p className="text-lg font-bold">{it.title}</p>
-                        <p className="text-sm text-ink-soft">{it.desc}</p>
+                        <p className="text-xl font-bold leading-snug sm:text-2xl">{it.title}</p>
+                        <p className="mt-1 text-[15px] text-ink-soft sm:text-base">{it.desc}</p>
                       </div>
                     </li>
                   ))}
@@ -297,7 +293,7 @@ export default function AboutPage() {
           <PhotoSlider items={activities} />
         </div>
         <div className="container-x flex flex-wrap gap-3 py-10 lg:hidden">
-          <ButtonLink href="/products">MYLIFT 제품소개</ButtonLink>
+          <ButtonLink href="/products">MY LIFT 제품소개</ButtonLink>
           <ButtonLink href="/contact" variant="white">
             문의하기
           </ButtonLink>

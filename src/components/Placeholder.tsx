@@ -10,7 +10,7 @@ type PlaceholderProps = {
 };
 
 /**
- * 아직 준비되지 않은 영상·이미지·약도 자리를 빗금 패턴으로 표시한다.
+ * 아직 준비되지 않은 영상 · 이미지 · 약도 자리를 빗금 패턴으로 표시한다.
  * 부모 요소가 크기를 정하고, 이 컴포넌트는 absolute 또는 지정된 className 크기로 채운다.
  */
 export function Placeholder({ label, hint, className, dark }: PlaceholderProps) {

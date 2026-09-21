@@ -14,13 +14,13 @@ export const siteConfig = {
     fax: "0504-155-7164",
     email: "theranics@naver.com",
     website: "www.theranics.com",
-    hours: "평일 09:00 ~ 18:00 (주말·공휴일 휴무)",
+    hours: "평일 09:00 ~ 18:00 (주말 · 공휴일 휴무)",
   },
   /** 메인 두 번째 영상 영역의 빈 버튼이 이동할 경로. 향후 신규 페이지로 교체 */
   secondVideoButtonHref: "/coming-soon",
   nav: [
     { href: "/about", label: "About us", labelKo: "회사소개" },
-    { href: "/products", label: "Products", labelKo: "제품소개" },
+    { href: "/products", label: "MYLIFT", labelKo: "제품소개" },
     { href: "/contact", label: "Contact us", labelKo: "문의하기" },
   ],
 } as const;

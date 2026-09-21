@@ -5,6 +5,24 @@ import { Reveal } from "@/components/Reveal";
 import { CountUp } from "@/components/CountUp";
 import { Parallax } from "@/components/Parallax";
 
+/**
+ * 데이터 문자열의 \n 위치에서 줄을 바꾼다.
+ * 좁은 화면에서는 억지 줄바꿈이 짧은 줄을 만들기 쉬워 sm 이상에서만 끊는다.
+ */
+export function Lines({ text }: { text: string }) {
+  return (
+    <>
+      {text.split("\n").map((line, i) => (
+        <span key={i}>
+          {i > 0 && <br className="hidden sm:inline" />}
+          {i > 0 && " "}
+          {line}
+        </span>
+      ))}
+    </>
+  );
+}
+
 export function SectionHeading({
   title,
   description,
@@ -100,7 +118,7 @@ export function PhotoHero({
   minH = "lg:min-h-[88svh]",
 }: {
   image: { src: string; alt: string; position?: string };
-  /** 배경 영상. 재생 전·실패 시에는 아래 깔린 image 가 그대로 보인다. */
+  /** 배경 영상. 재생 전 · 실패 시에는 아래 깔린 image 가 그대로 보인다. */
   video?: { src: string; position?: string };
   label?: string;
   title: React.ReactNode;
@@ -116,7 +134,7 @@ export function PhotoHero({
   const dark = tone === "dark";
   return (
     <section className={cn("relative isolate flex min-h-[92svh] items-end overflow-hidden lg:items-center", minH, dark ? "bg-ink text-white" : "bg-paper text-ink")}>
-      {/* 사진을 배경 전체에 깔고, 모바일은 하단·데스크톱은 왼쪽 여백에 텍스트 */}
+      {/* 사진을 배경 전체에 깔고, 모바일은 하단 · 데스크톱은 왼쪽 여백에 텍스트 */}
       <div className="absolute inset-0 overflow-hidden">
         <Parallax>
           <Image
@@ -177,17 +195,22 @@ export function StatRow({
   items,
   light,
   cols = 4,
+  spread,
 }: {
   items: { value: string; label: string }[];
   light?: boolean;
   cols?: 2 | 4;
+  /** PC에서 칸을 균등 분할하지 않고 항목 사이 여백을 균등하게 (숫자 길이가 제각각일 때) */
+  spread?: boolean;
 }) {
   return (
     <dl
       className={cn(
         "grid grid-cols-2 border-t",
         cols === 4 && "lg:grid-cols-4",
+        spread && "lg:flex lg:justify-between lg:border-b",
         light ? "border-white/20" : "border-ink",
+        spread && !light && "lg:border-b-line",
       )}
     >
       {items.map((s) => (
@@ -195,6 +218,7 @@ export function StatRow({
           key={s.label}
           className={cn(
             "border-b py-7 pr-4 sm:py-9",
+            spread && "lg:flex-none lg:border-b-0 lg:pr-0",
             light ? "border-white/20" : "border-line",
           )}
         >

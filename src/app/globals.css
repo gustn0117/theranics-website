@@ -118,6 +118,19 @@ figcaption {
   );
 }
 
+/* 라인업 '대표 모델' 모서리 삼각형: 카드 노란 배경(#fdf1c7)보다 한 톤 진한 노랑 + 빗금 */
+.hatch-ribbon {
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+  background-color: #f5d777;
+  background-image: repeating-linear-gradient(
+    135deg,
+    transparent 0,
+    transparent 6px,
+    rgba(35, 31, 32, 0.1) 6px,
+    rgba(35, 31, 32, 0.1) 8px
+  );
+}
+
 .container-x {
   width: 100%;
   max-width: 84rem;

@@ -3,38 +3,67 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/cn";
 
+type Tone = "dark" | "light";
+
+/** rgb()/oklab()/oklch() 계산값에서 밝기와 불투명도를 뽑는다 */
+function readColor(value: string): { dark: boolean; alpha: number } | null {
+  const rgb = value.match(/^rgba?\(([^)]+)\)/);
+  if (rgb) {
+    const [r, g, b, a = 1] = rgb[1].split(/[\s,/]+/).filter(Boolean).map(parseFloat);
+    return { dark: 0.2126 * r + 0.7152 * g + 0.0722 * b < 128, alpha: a };
+  }
+  const ok = value.match(/^okl(?:ab|ch)\(([^)]+)\)/);
+  if (ok) {
+    const [body, a] = ok[1].split("/");
+    const l = parseFloat(body);
+    return { dark: l < 0.6, alpha: a === undefined ? 1 : parseFloat(a) };
+  }
+  return null;
+}
+
+/** 헤더 바로 아래에 깔린 구간의 배경이 어두운지 밝은지 판별한다 */
+function toneUnder(header: HTMLElement): Tone {
+  const y = header.offsetHeight / 2;
+  for (const el of document.elementsFromPoint(window.innerWidth / 2, y)) {
+    if (header.contains(el)) continue;
+    for (let n: Element | null = el; n && n !== document.body; n = n.parentElement) {
+      const c = readColor(getComputedStyle(n).backgroundColor);
+      if (c && c.alpha > 0.5) return c.dark ? "dark" : "light";
+    }
+  }
+  return "light";
+}
+
 export function Header() {
   const pathname = usePathname();
-  const isHome = pathname === "/";
-  const [atTop, setAtTop] = useState(true);
-  const [lightSlide, setLightSlide] = useState(false);
+  const ref = useRef<HTMLElement>(null);
+  const [tone, setTone] = useState<Tone>("light");
   const [open, setOpen] = useState(false);
 
-  // 메인 슬라이드가 흰 배경일 때는 메뉴 글자를 검정으로
+  // 스크롤 · 슬라이드 전환마다 헤더 아래 배경 밝기를 읽어 글자색을 맞춘다 (배경은 투명 유지)
   useEffect(() => {
-    const onTone = (e: Event) => setLightSlide((e as CustomEvent<string>).detail === "light");
-    window.addEventListener("slide-tone", onTone);
-    return () => window.removeEventListener("slide-tone", onTone);
-  }, []);
-
-  // 첫 화면(메인은 영상 구간 2개, 나머지 페이지는 히어로 1개) 안에서는 투명, 그 아래부터 흰 배경
-  useEffect(() => {
-    const onScroll = () => {
-      const limit = (isHome ? window.innerHeight * 2 : window.innerHeight) - 120;
-      setAtTop(window.scrollY < limit);
+    let raf = 0;
+    const update = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        if (ref.current) setTone(toneUnder(ref.current));
+      });
     };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    window.addEventListener("slide-tone", update);
     return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
+      cancelAnimationFrame(raf);
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+      window.removeEventListener("slide-tone", update);
     };
-  }, [isHome]);
+  }, [pathname]);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -43,23 +72,20 @@ export function Header() {
     };
   }, [open]);
 
-  // 첫 화면이 어두운 영상·사진인 페이지에서는 흰 글자, 밝은 히어로에서는 검은 글자를 쓴다
-  const darkHero = isHome || pathname.startsWith("/about");
-  const light = atTop && !open && darkHero && !(isHome && lightSlide);
+  const light = tone === "dark" && !open;
   const solid = !light;
 
   return (
     <header
+      ref={ref}
       className={cn(
         "fixed inset-x-0 top-0 z-50 pt-2 transition-colors duration-500 sm:pt-3",
-        !atTop || open
-          ? "border-b border-line bg-white/95 backdrop-blur-md"
-          : light
-            ? "bg-gradient-to-b from-black/45 to-transparent"
-            : isHome
-              ? "bg-transparent"
-              : // 사진 히어로 위에서도 검은 로고·메뉴가 읽히도록 아주 옅은 흰 그라데이션만 깐다
-                "bg-gradient-to-b from-white/80 via-white/40 to-transparent",
+        open
+          ? "bg-white"
+          : // 배경은 투명하게 두고, 사진 위에서도 글자가 읽히도록 아주 옅은 그라데이션만 깐다
+            light
+            ? "bg-gradient-to-b from-black/55 via-black/25 to-transparent"
+            : "bg-gradient-to-b from-white/95 via-white/75 to-transparent",
       )}
     >
       <div className="container-x flex h-16 items-center justify-between sm:h-20">
@@ -99,15 +125,6 @@ export function Header() {
               </Link>
             );
           })}
-          <Link
-            href="/products"
-            className={cn(
-              "ml-4 inline-flex h-10 items-center px-5 text-sm font-bold transition-colors",
-              solid ? "bg-ink text-white hover:bg-lime hover:text-ink" : "bg-lime text-ink hover:bg-white",
-            )}
-          >
-            MYLIFT
-          </Link>
         </nav>
 
         <button
@@ -138,9 +155,6 @@ export function Header() {
               <span className="text-sm font-medium text-ink-soft">{item.labelKo}</span>
             </Link>
           ))}
-          <Link href="/products" className="mt-4 mb-2 flex h-13 items-center justify-center bg-ink font-bold text-white">
-            MYLIFT 제품 보기
-          </Link>
         </nav>
       </div>
     </header>

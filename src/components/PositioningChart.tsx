@@ -46,7 +46,7 @@ export function PositioningChart({ className }: { className?: string }) {
 
       {/* 우상단 목표 영역 */}
       <div aria-hidden className="absolute right-0 top-0 h-1/2 w-1/2 border-b border-l border-dashed border-lime-deep/60 bg-lime/20" />
-      <div className="absolute right-4 top-[42%] hidden border border-ink bg-white px-3 py-1.5 text-xs font-bold sm:block sm:text-sm">
+      <div className="absolute right-4 top-[42%] hidden bg-white px-3 py-1.5 text-xs font-bold sm:block sm:text-sm">
         안전 + 청결 동시 해결 · <span className="text-lime-deep">유일</span>
       </div>
 
@@ -83,7 +83,7 @@ export function PositioningChart({ className }: { className?: string }) {
           vectorEffect="non-scaling-stroke"
         />
       </svg>
-      <div className="absolute left-[58%] top-[44%] hidden -translate-y-full border border-lime-deep bg-white px-2.5 py-1 text-[11px] font-bold text-lime-deep sm:block">
+      <div className="absolute left-[58%] top-[44%] hidden -translate-y-full bg-white px-2.5 py-1 text-[11px] font-bold text-lime-deep sm:block">
         발상의 전환 · 세척 → 교체
       </div>
 
@@ -94,10 +94,10 @@ export function PositioningChart({ className }: { className?: string }) {
             {p.hero ? (
               <div className="flex flex-row-reverse items-end gap-3">
                 <div className="relative">
-                  <span className="pc-pulse absolute inset-0 bg-lime" />
-                  <span className="relative block h-7 w-7 bg-lime ring-4 ring-ink sm:h-8 sm:w-8" />
+                  <span className="pc-pulse absolute inset-0 rounded-full bg-lime" />
+                  <span className="relative block h-7 w-7 rounded-full bg-lime ring-4 ring-ink sm:h-8 sm:w-8" />
                 </div>
-                <div className="hidden w-52 border border-ink bg-white p-3 text-right sm:block lg:w-64">
+                <div className="hidden w-52 bg-white p-3 text-right sm:block lg:w-64">
                   <Image src="/images/product/basic-ramps.png" alt="" width={1920} height={1262} className="ml-auto h-16 w-auto" />
                   <p className="display mt-1 text-xl">{p.name}</p>
                   <p className="text-[11px] text-ink-soft">{p.note}</p>

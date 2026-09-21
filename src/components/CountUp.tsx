@@ -10,7 +10,7 @@ import { useEffect, useRef } from "react";
  */
 export function CountUp({ value, duration = 1400 }: { value: string; duration?: number }) {
   const m = value.match(/^(\d[\d,]*)(\.\d+)?(.*)$/);
-  const animatable = !!m && !/^\d{4}\.\d{2}$/.test(value) && !value.includes("조");
+  const animatable = !!m && !/^\d{4}\.\s?\d{2}$/.test(value) && !value.includes("조");
   const ref = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {

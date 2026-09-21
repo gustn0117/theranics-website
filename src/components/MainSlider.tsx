@@ -4,9 +4,10 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/cn";
 
 const DURATION = 900;
+const AUTOPLAY = 5000;
 
 /**
- * 메인 페이지 슬라이드. 스크롤 대신 좌우 버튼·키보드·휠·스와이프로 화면을 넘기고,
+ * 메인 페이지 슬라이드. 스크롤 대신 좌우 버튼 · 키보드 · 휠 · 스와이프로 화면을 넘기고,
  * 나가는 화면은 페이드 아웃, 들어오는 화면은 페이드 인 된다.
  */
 export function MainSlider({ slides, labels, tones }: { slides: React.ReactNode[]; labels: string[]; tones?: ("dark" | "light")[] }) {
@@ -40,6 +41,12 @@ export function MainSlider({ slides, labels, tones }: { slides: React.ReactNode[
       delete document.documentElement.dataset.slideTone;
     };
   }, [active, tones]);
+
+  // 5초마다 다음 화면으로 자동 전환. 직접 넘기면 그 시점부터 다시 5초를 센다
+  useEffect(() => {
+    const t = window.setTimeout(() => go(active + 1), AUTOPLAY);
+    return () => window.clearTimeout(t);
+  }, [active, go]);
 
   // 키보드 / 휠 / 스와이프
   useEffect(() => {
@@ -132,7 +139,7 @@ export function MainSlider({ slides, labels, tones }: { slides: React.ReactNode[
             onClick={() => go(i)}
             aria-label={`${i + 1}번째 화면: ${labels[i]}`}
             aria-current={i === active ? "true" : undefined}
-            className={cn("h-1.5 transition-all", i === active ? "w-8 bg-lime" : "w-3 bg-white/50 hover:bg-white")}
+            className={cn("h-1.5 rounded-full transition-all", i === active ? "w-8 bg-lime" : "w-3 bg-white/50 hover:bg-white")}
           />
         ))}
       </div>
