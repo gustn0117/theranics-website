@@ -376,8 +376,14 @@ figcaption {
 .display {
   text-wrap: balance;
   font-weight: 800;
-  letter-spacing: -0.03em;
+  /* 모바일 작은 글씨에서 자간을 너무 좁히면 한글이 뭉쳐 보여 조금 푼다 */
+  letter-spacing: -0.02em;
   line-height: 1.08;
+}
+@media (min-width: 640px) {
+  .display {
+    letter-spacing: -0.03em;
+  }
 }
 
 .prose-ko p + p {

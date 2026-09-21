@@ -42,6 +42,7 @@ export function Header() {
   const pathname = usePathname();
   const ref = useRef<HTMLElement>(null);
   const [tone, setTone] = useState<Tone>("light");
+  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
   // 스크롤 · 슬라이드 전환마다 헤더 아래 배경 밝기를 읽어 글자색을 맞춘다 (배경은 투명 유지)
@@ -51,6 +52,7 @@ export function Header() {
       cancelAnimationFrame(raf);
       raf = requestAnimationFrame(() => {
         if (ref.current) setTone(toneUnder(ref.current));
+        setScrolled(window.scrollY > 8);
       });
     };
     update();
@@ -79,23 +81,26 @@ export function Header() {
     <header
       ref={ref}
       className={cn(
-        "fixed inset-x-0 top-0 z-50 pt-2 transition-colors duration-500 sm:pt-3",
+        "fixed inset-x-0 top-0 z-50 transition-colors duration-300 lg:pt-3",
         open
           ? "bg-white"
-          : // 배경은 투명하게 두고, 사진 위에서도 글자가 읽히도록 아주 옅은 그라데이션만 깐다
+          : // PC: 배경은 투명하게 두고, 사진 위에서도 글자가 읽히도록 옅은 그라데이션만 깐다
             light
-            ? "bg-gradient-to-b from-black/55 via-black/25 to-transparent"
-            : "bg-gradient-to-b from-white/95 via-white/75 to-transparent",
+            ? "lg:bg-gradient-to-b lg:from-black/55 lg:via-black/25 lg:to-transparent"
+            : "lg:bg-gradient-to-b lg:from-white/95 lg:via-white/75 lg:to-transparent",
+        // 모바일: 화면이 좁아 본문이 로고 밑으로 겹쳐 보이므로, 스크롤하면 아래 배경 톤에 맞춘 반투명 바를 깐다
+        !open && !scrolled && (light ? "max-lg:bg-gradient-to-b max-lg:from-black/40 max-lg:to-transparent" : "max-lg:bg-gradient-to-b max-lg:from-white/80 max-lg:to-transparent"),
+        !open && scrolled && (light ? "max-lg:bg-ink/85 max-lg:backdrop-blur-md" : "max-lg:border-b max-lg:border-line max-lg:bg-white/90 max-lg:backdrop-blur-md"),
       )}
     >
-      <div className="container-x flex h-16 items-center justify-between sm:h-20">
-        <Link href="/" className="flex items-center gap-3" aria-label="테라닉스 홈으로">
+      <div className="container-x flex h-14 items-center justify-between lg:h-20">
+        <Link href="/" className="flex items-center gap-2 lg:gap-3" aria-label="테라닉스 홈으로">
           <Image
             src="/images/logo/theranics-symbol.png"
             alt=""
             width={424}
             height={382}
-            className={cn("h-8 w-auto transition sm:h-9", !solid && "brightness-0 invert")}
+            className={cn("h-6 w-auto transition lg:h-9", !solid && "brightness-0 invert")}
             preload
           />
           <Image
@@ -103,7 +108,7 @@ export function Header() {
             alt="THERANICS"
             width={1587}
             height={170}
-            className={cn("h-4 w-auto transition sm:h-[18px]", !solid && "brightness-0 invert")}
+            className={cn("h-3 w-auto transition lg:h-[18px]", !solid && "brightness-0 invert")}
             preload
           />
         </Link>

@@ -115,7 +115,7 @@ export function MainSlider({ slides, labels, tones }: { slides: React.ReactNode[
         type="button"
         onClick={() => go(active - 1)}
         aria-label="이전 화면"
-        className="absolute bottom-7 left-3 z-20 p-3 text-white/80 drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] transition hover:text-lime sm:bottom-9 sm:left-6 lg:bottom-auto lg:left-4 lg:top-1/2 lg:-translate-y-1/2"
+        className="absolute left-4 top-1/2 z-20 hidden -translate-y-1/2 p-3 text-white/80 drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] transition hover:text-lime lg:block"
       >
         <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
           <path d="M15 5l-7 7 7 7" strokeLinecap="square" />
@@ -125,15 +125,15 @@ export function MainSlider({ slides, labels, tones }: { slides: React.ReactNode[
         type="button"
         onClick={() => go(active + 1)}
         aria-label="다음 화면"
-        className="absolute bottom-7 right-3 z-20 p-3 text-white/80 drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] transition hover:text-lime sm:bottom-9 sm:right-6 lg:bottom-auto lg:right-4 lg:top-1/2 lg:-translate-y-1/2"
+        className="absolute right-4 top-1/2 z-20 hidden -translate-y-1/2 p-3 text-white/80 drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] transition hover:text-lime lg:block"
       >
         <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
           <path d="M9 5l7 7-7 7" strokeLinecap="square" />
         </svg>
       </button>
 
-      {/* 인디케이터 */}
-      <div className="absolute bottom-8 right-24 z-20 hidden items-center gap-2 lg:bottom-10 lg:right-28 lg:flex">
+      {/* 인디케이터: 모바일은 하단 가운데(좌우 화살표 대신 스와이프), PC는 오른쪽 아래 */}
+      <div className="absolute inset-x-0 bottom-6 z-20 flex items-center justify-center gap-2 lg:inset-x-auto lg:bottom-10 lg:right-28">
         {slides.map((_, i) => (
           <button
             key={i}

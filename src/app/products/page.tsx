@@ -22,7 +22,7 @@ export default function ProductsPage() {
       <PhotoHero
         minH="lg:min-h-[100svh]"
         image={{ src: "/images/photo/home-wheel-change-hero.jpg", alt: "집 안에서 MYLIFT 위에 올라 앉은 채로 휠을 교체하는 휠체어 사용자", position: "78% 50%" }}
-        logo={<Image src="/images/logo/mylift-en.png" alt="MYLIFT" width={1021} height={497} className="mb-6 h-20 w-auto sm:h-24" preload />}
+        logo={<Image src="/images/logo/mylift-en.png" alt="MYLIFT" width={1021} height={497} className="mb-5 h-14 w-auto sm:mb-6 sm:h-24" preload />}
         title={
           <>
             휠을 교체하면,{" "}
