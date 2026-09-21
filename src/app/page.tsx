@@ -45,9 +45,10 @@ export default function HomePage() {
       index={3}
       src="/videos/wheelchair-park.mp4"
       poster="/images/photo/wheelchair-park-poster.jpg"
-      videoPosition="72% 45%"
-      // PC에서 왼쪽 인물 얼굴이 로고와 겹치지 않도록 영상을 헤더 높이만큼 내린다
-      videoClassName="lg:translate-y-[5.75rem]"
+      // PC에서 왼쪽 인물 얼굴이 로고와 겹치지 않도록: 영상 위쪽부터 채우고(위가 잘리지 않게)
+      // 왼쪽 위를 기준으로 살짝 확대해 인물을 오른쪽 아래로 옮긴다. 화면 위에 빈 띠가 생기지 않는다.
+      videoPosition="72% 0%"
+      videoClassName="lg:origin-top-left lg:scale-[1.14]"
       label="‘국민의 건강, 행복, 안전지킴이’"
       title={
         <>
