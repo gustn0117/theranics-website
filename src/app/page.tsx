@@ -10,7 +10,8 @@ export default function HomePage() {
       index={1}
       src="/videos/mobility.mp4"
       poster="/images/photo/mobility-poster.jpg"
-      videoPosition="50% 0%"
+      // 가로: 모바일(세로 화면)에서 오른쪽 휠체어 사용자 남성이 중앙에 오도록 / 세로: 위 인물 머리가 잘리지 않게 위 기준
+      videoPosition="78% 0%"
       label="이동권"
       title={
         <>
